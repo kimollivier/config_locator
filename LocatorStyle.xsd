@@ -1,0 +1,2856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" 
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+
+  <xs:simpleType name="dot_notation_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+(\.[0-9]+)*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="include_type">
+    <xs:annotation>
+      <xs:documentation>
+        Include XML content from another resource (file or URL). This tag can appear anywhere (ignore any validation errors for &lt;include&gt; tags)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="uri" type="xs:anyURI" use ="required">
+      <xs:annotation>
+        <xs:documentation>URI (universal resource indentifier - URL or file name) of the internal XML content to be included.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="xpath" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>XPath expression describing nodes to include. Default value is '/*' (root nodes).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="strict" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation>If true, the XML content specified by this tag is requied to be resolved correctlty (in case of en error while processing this tag load of the entire document will fail. If false, this tag will be ignored if cannot be processed correctly.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="decimal_digits_type">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="builtin_plugin_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CalculatePermutableScore" />
+      <xs:enumeration value="CalculatePolygonCentroid" />
+      <xs:enumeration value="Compare" />
+      <xs:enumeration value="Concatenate" />
+      <xs:enumeration value="CreatePoint" />
+      <xs:enumeration value="CreatePointMGRS" />
+      <xs:enumeration value="DirectedOffset" />
+      <xs:enumeration value="DistanceAlongStreet" />
+      <xs:enumeration value="GenerateHousesFromRange" />
+      <xs:enumeration value="Interpolate" />
+      <xs:enumeration value="Intersection" />
+      <xs:enumeration value="MatchHouseToRange" />
+      <xs:enumeration value="MatchHouseToUSPSRange" />
+      <xs:enumeration value="MatchZipPlus4ToRange" />
+      <xs:enumeration value="NoOp" />
+      <xs:enumeration value="ReverseGeocodeIntersections" />
+      <xs:enumeration value="ReverseMGRS" />
+      <xs:enumeration value="CalculateScore" />
+      <xs:enumeration value="Substring" />
+      <xs:enumeration value="Select" />
+      <xs:enumeration value="Translate" />
+      <xs:enumeration value="OpAdd" />
+      <xs:enumeration value="OpSubtract" />
+      <xs:enumeration value="OpMultiply" />
+      <xs:enumeration value="OpDivide" />
+      <xs:enumeration value="OpAnd" />
+      <xs:enumeration value="OpOr" />
+      <xs:enumeration value="OpXor" />
+      <xs:enumeration value="OpNot" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="std_grammar_result_tag_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Address" />
+      <xs:enumeration value="Intersection" />
+      <xs:enumeration value="Coordinates" />
+      <xs:enumeration value="SpatialOperator" />
+      <xs:enumeration value="MGRS" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="grammar_result_tag_type">
+    <xs:annotation>
+      <xs:documentation>Specifies value for the "Addr_type" field for geocoding results produced by this branch of the grammar</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xs:string std_grammar_result_tag_type" />
+  </xs:simpleType>
+
+  <xs:simpleType name="alt_selector_type">
+    <xs:annotation>
+      <xs:documentation>
+        The element (alternative or alias) is only active if the property referenced by this selector is set to "true".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NCName" />
+  </xs:simpleType>
+  
+  <xs:complexType name="alias_list_ref_type">
+    <xs:annotation>
+      <xs:documentation>Reference to a defined list of aliases.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" use="required" />
+    <xs:attribute name="selector" type="alt_selector_type" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="collect_aliases_type">
+    <xs:annotation>
+      <xs:documentation>Incude lists of aliases recursively from a non-terminal definition, using alias lists specified with is_alias_list="true" attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" use="required" type="xs:NCName" />
+  </xs:complexType>
+  
+  <xs:complexType name="alias_list_type">
+    <xs:annotation>
+      <xs:documentation>List of aliases. Contains groups of definitions that have equivalent meaning but spelled differently.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alias_list_ref" minOccurs="0" maxOccurs="unbounded" type="alias_list_ref_type" />
+      <xs:element name="collect_aliases" minOccurs="0" maxOccurs="unbounded" type="collect_aliases_type" />
+      <xs:element name="alias_def" minOccurs="0" maxOccurs="unbounded" type="alias_def_type" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="character_table" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies character equivalency table to be applied.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="use_separators" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation>If False, aliases can be applied to characters within a token (such as a word).</xs:documentation>
+        <xs:documentation>If True, aliases are applied to the entire token.</xs:documentation>
+        <xs:documentation>The default for this value is True.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="alias_def_type">
+    <xs:annotation>
+      <xs:documentation>Defines a list of strings that considered equivalent.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional description of the alias.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alt" minOccurs="1" maxOccurs="unbounded" type="grammar_alt_type">
+        <xs:annotation>
+          <xs:documentation>Defines one of the alias values.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>Unique name of the alias definition (optional; case sensitive).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- element types -->
+  <xs:complexType name="grammar_def_type">
+    <xs:annotation>
+      <xs:documentation>Defines grammar entity.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional description of the grammar entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="alias_list_ref" type="alias_list_ref_type" minOccurs="1" maxOccurs="1" />
+        <xs:element name="alias_list" type="alias_list_type" minOccurs="1" maxOccurs="1" />
+      </xs:choice>
+      <xs:element name="alt" minOccurs="0" maxOccurs="unbounded" type="grammar_alt_type">
+        <xs:annotation>
+          <xs:documentation>Defines one of the possible interpretations of the grammar entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Unique name of the grammar entity (case sensitive; Unicode allowed).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="optimize" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>If true, the parser will use special means to match input text to this entity; assumes that all alternative intepretations (&lt;alt&gt; tags) resolve into a finite list of values. Use with caution.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="character_table" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies character equivalency table to be applied; only effective if "optimize" flag is defined.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="is_alias_list" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>If is_alias_list is true, all alternative representations of the definition are considered equivalent for matching purposes</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="match_as" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies reference to another entity that this entity will act as during the scoring process.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="separator_list" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies list of characters that separate words withing the context of the definition.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="grammar_multiline_def_type">
+    <xs:sequence>
+      <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+      <xs:element name="alt" minOccurs="1" maxOccurs="unbounded" type="grammar_multiline_alt_type">
+        <xs:annotation>
+          <xs:documentation>Alternative element</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="grammar_multiline_field_ref_type">
+    <xs:annotation>
+      <xs:documentation>Reference to an input field</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:NCName" />
+  </xs:complexType>
+
+  <xs:complexType name="grammar_multiline_alt_type" mixed="true">
+    <xs:sequence minOccurs="0">
+      <xs:element name="field_ref" minOccurs="1" maxOccurs="1" type="grammar_multiline_field_ref_type" />
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="field_ref" minOccurs="1" maxOccurs="unbounded" type="grammar_multiline_field_ref_type"/>
+        <xs:element name="elt" maxOccurs="unbounded" type="grammar_elt_type" />
+      </xs:choice>
+      <xs:element name="result" minOccurs="0" maxOccurs="1" type="grammar_result_type" />
+    </xs:sequence>
+    <xs:attribute name="locale" type="locale_type" use="optional" />
+    <xs:attribute name="lang" type="lang_type" use="optional" />
+    <xs:attribute name="standard" type="xs:boolean" use="optional" />
+    <xs:attribute name="likehood" type="xs:decimal" use="optional" />
+    <xs:attribute name="ref" type="xs:NCName" use="optional" />
+    <xs:attribute name="selector" type="alt_selector_type" use="optional" />
+    <xs:attribute name="fallback" type="fallback_type" use="optional" />
+    <xs:attribute name="fallback_score" type="fallback_value_type" use="optional" />
+  </xs:complexType>
+
+  <xs:simpleType name="ranking_type_type">
+    <xs:annotation>
+      <xs:documentation>Ranking type. Default ranking is "same_score_only" - only applies if two candidates received the same score.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="same_score_only" />
+      <xs:enumeration value="superceeds_score" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ranking_order_type">
+    <xs:annotation>
+      <xs:documentation>Ranking order type. Default ranking oder is "ascending", i.e. rank 1 is higher than 2.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="descending" />
+      <xs:enumeration value="ascending" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="rank_mappings_type">
+    <xs:annotation>
+      <xs:documentation>Maps reference data values of a ranking field to a numeric value.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="mapping" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="from" use="required" type="xs:string"/>
+          <xs:attribute name="to" use="required" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ranking_definition_type">
+    <xs:annotation>
+      <xs:documentation>Sefines rules for ranking candidates.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="field_ref" minOccurs="1" maxOccurs="1" type="fieldref_type" />
+      <xs:element name="rank_mappings" minOccurs="0" maxOccurs="1" type="rank_mappings_type"/>
+      <xs:element name="method" minOccurs="0" maxOccurs="1" type="method_type" />
+    </xs:sequence>
+    <xs:attribute name="type" use="optional" type="ranking_type_type" />
+    <xs:attribute name="order" use="optional" type="ranking_order_type"/>
+  </xs:complexType>
+  
+  <xs:complexType name="dictionary_type">
+    <xs:annotation>
+      <xs:documentation>Specifies parameters of the dictionaries used to store the reference data values.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:NCName" use="required">
+      <xs:annotation>
+        <xs:documentation>Mapping schema field stored by the dictionary.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="search" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation>If true, the dictionary will be used to search reference data for the candidates</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="input_field_ref" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>If specified, appearance of the input field referenced here (see locators/locator/inputs/input) will depend on the content of the dictionary. If the dictionary contains no values (i.e. either the reference data were not mapped to the 'ref' field, or it did not contain any non-blank values), then the input field will not be displayed by the locator. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="type" type="dictionary_type_type" use="optional"/>
+  </xs:complexType>
+
+  <xs:simpleType name="dictionary_type_type">
+    <xs:annotation>
+      <xs:documentation>Specifies specialized dictionary types.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ids">
+        <xs:annotation>
+          <xs:documentation>Dictionary type for storing uniques IDs.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="word">
+        <xs:annotation>
+          <xs:documentation>Dictionary type for gazetteer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="fallback_type">
+    <xs:annotation>
+      <xs:documentation>
+        The alternative will only be used if matching candidate has not yet been found.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+
+  <xs:simpleType name="fallback_value_type">
+    <xs:annotation>
+      <xs:documentation>
+        The alternative will only be used if current best candidate score is below the specified value.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double">
+      <xs:minExclusive value="0" />
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="standardization_selector_type">
+    <xs:annotation>
+      <xs:documentation>Used to enable current grammar alternative if text value of the specified reference data field can be parsed by the following grammar. Used by standardization process only (ignored during geocoding process).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="field_value" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="ref" type="xs:NCName" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="grammar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alt" minOccurs="0" maxOccurs="unbounded" type="grammar_alt_type" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="grammar_alt_type" mixed="true">
+    <xs:sequence minOccurs="0">
+      <xs:element name="standardization_selector" minOccurs="0" maxOccurs="1" type="standardization_selector_type" />
+      <xs:element name="elt" maxOccurs="unbounded" type="grammar_elt_type"/>
+      <xs:element name="result" type="grammar_result_type" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="locale" type="locale_type" use="optional" />
+    <xs:attribute name="lang" type="lang_type" use="optional" />
+    <xs:attribute name="standard" type="xs:boolean" use="optional" />
+    <xs:attribute name="likehood" type="xs:decimal" use="optional" />
+    <xs:attribute name="ref" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Reference to another grammar entity; shortcut form for &lt;alt&gt;&lt;elt ref="..."&gt;&lt;/alt&gt;</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="selector" type="alt_selector_type" use="optional" />
+    <xs:attribute name="fallback" type="fallback_type" use="optional" />
+    <xs:attribute name="fallback_score" type="fallback_value_type" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="grammar_elt_type" mixed="true">
+    <xs:annotation>
+      <xs:documentation>Element inside an alternative (literal or a reference to another grammar entity).</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Reference to another grammar entity.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="weight" type="xs:unsignedInt" use="optional">
+      <xs:annotation>
+        <xs:documentation>Relative scoring weight (within enclosing alternative) for the grammar element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- TODO: unsupported
+    <xs:attribute name="type" type="nonterm_type" use="optional" />
+    -->
+    <xs:attribute name="search_context" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>TODO: this item needs documentation info.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="pre_separator" type="pre_post_separator_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Defines separation rules for the element and preceding text.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="post_separator" type="pre_post_separator_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Defines separation rules for the element and succeeding text.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- TODO: unsupported
+    <xs:attribute name="pre_separator_list" type="xs:string" use="optional" />
+    <xs:attribute name="post_separator_list" type="xs:string" use="optional" />
+    -->
+    <xs:attribute name="separator_list" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>Defines list of separators for the scope of this element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="stan_weight" type="xs:unsignedInt" use="optional">
+      <xs:annotation>
+        <xs:documentation>Relative scoring weight (within enclosing alternative) for the grammar element; used for standardization purposes.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="match_as" type="xs:NCName" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies reference to another entity that this element will act as during the scoring process.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="output_data_type">
+    <xs:union memberTypes="data_type from_data_field_type" />
+  </xs:simpleType>
+
+  <xs:simpleType name="from_data_field_type">
+    <xs:annotation>
+      <xs:documentation>Field type will be derived from the reference data.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fromdata" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="component_value_type">
+    <xs:attribute name="component" type="xs:NCName" use="required" />
+    <xs:attribute name="type" type="data_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Force change of the value type; 'no change' by default.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="defaultValue" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>Value that is returned is no such property exists.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="value_type" mixed ="true">
+    <xs:annotation>
+      <xs:documentation>Constant value.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="type" type="data_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Type of the value; 'string' by default.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:simpleType name="data_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="geometry" />
+      <xs:enumeration value="string" />
+      <xs:enumeration value="Int" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="dateTime" />
+      <xs:enumeration value="float" />
+      <xs:enumeration value="uuid" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="pre_post_separator_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="required" />
+      <xs:enumeration value="optional" />
+      <xs:enumeration value="list" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="data_source_type_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="live"/>
+      <xs:enumeration value="indexed"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- GUID in form {0123abcd-45ef-67ab-78cd-901234efabcd} -->
+  <xs:simpleType name="com_guid">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="38"/>
+      <xs:maxLength value="38"/>
+      <xs:pattern value="\{[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}\}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- progID in form esriLocation.SomeClass -->
+  <xs:simpleType name="com_progid">
+    <xs:annotation>
+      <xs:documentation>Human readable ProgID of the COM component, e.g. esriDataSourcesFile.ShapefileWorkspaceFactory, myLibrary.MyComponent .</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z_]+[0-9A-Za-z_]*\.[A-Za-z_]+[0-9A-Za-z_]*(\.[0-9]+)?" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- source code types used in plugins -->
+  <xs:simpleType name="plugin_script_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="vbscript"/>
+      <xs:enumeration value="javascript"/>
+      <xs:enumeration value="python"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="code_line">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- grammar element types -->
+  <xs:simpleType name="nonterm_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="regex">
+        <xs:annotation>
+          <xs:documentation>The element is a terminal as specified by regular expression in the element's body.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="literal">
+        <xs:annotation>
+          <xs:documentation>The element is a terminal as specified in the element's body.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="join">
+        <xs:annotation>
+          <xs:documentation>The element forces its enclosing elements to follow without any spaces between them.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- type for different kinds of geometry -->
+  <xs:simpleType name="geometry_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="point"/>
+      <xs:enumeration value="polyline"/>
+      <xs:enumeration value="polygon"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- type for ArcSDE connection authorization mode -->
+  <xs:simpleType name="auth_mode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OSA"/>
+      <xs:enumeration value="DBMS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- type for suported DBMS flavors -->
+  <xs:simpleType name="dbms_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Oracle"/>
+      <xs:enumeration value="MSSql"/>
+      <xs:enumeration value="MSAccess"/>
+      <xs:enumeration value="DB2"/>
+      <xs:enumeration value="Informix"/>
+      <xs:enumeration value="Postgres"/>
+      <xs:enumeration value="FileGDB"/>
+      <xs:enumeration value="Shapefile"/>
+      <xs:enumeration value="SDC"/>
+      <xs:enumeration value="Coverage"/>
+      <xs:enumeration value="CAD"/>
+      <xs:enumeration value="default">
+        <xs:annotation>
+          <xs:documentation>The default expression that will be applied in any databases unless it is specified otherwise. See dbms_speific.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- type language names -->
+  <xs:simpleType name="lang_type">
+    <xs:restriction base="xs:string">
+      <!-- Afar -->
+      <xs:enumeration value="aa"/>
+      <!-- Abkhazian -->
+      <xs:enumeration value="ab"/>
+      <!-- Afrikaans -->
+      <xs:enumeration value="af"/>
+      <!-- Akan -->
+      <xs:enumeration value="ak"/>
+      <!-- Albanian -->
+      <xs:enumeration value="sq"/>
+      <!-- Amharic -->
+      <xs:enumeration value="am"/>
+      <!-- Arabic -->
+      <xs:enumeration value="ar"/>
+      <!-- Aragonese -->
+      <xs:enumeration value="an"/>
+      <!-- Armenian -->
+      <xs:enumeration value="hy"/>
+      <!-- Assamese -->
+      <xs:enumeration value="as"/>
+      <!-- Avaric -->
+      <xs:enumeration value="av"/>
+      <!-- Avestan -->
+      <xs:enumeration value="ae"/>
+      <!-- Aymara -->
+      <xs:enumeration value="ay"/>
+      <!-- Azerbaijani -->
+      <xs:enumeration value="az"/>
+      <!-- Bashkir -->
+      <xs:enumeration value="ba"/>
+      <!-- Bambara -->
+      <xs:enumeration value="bm"/>
+      <!-- Basque -->
+      <xs:enumeration value="eu"/>
+      <!-- Belarusian -->
+      <xs:enumeration value="be"/>
+      <!-- Bengali -->
+      <xs:enumeration value="bn"/>
+      <!-- Bihari -->
+      <xs:enumeration value="bh"/>
+      <!-- Bislama -->
+      <xs:enumeration value="bi"/>
+      <!-- Bosnian -->
+      <xs:enumeration value="bs"/>
+      <!-- Breton -->
+      <xs:enumeration value="br"/>
+      <!-- Bulgarian -->
+      <xs:enumeration value="bg"/>
+      <!-- Burmese -->
+      <xs:enumeration value="my"/>
+      <!-- Catalan; Valencian -->
+      <xs:enumeration value="ca"/>
+      <!-- Chamorro -->
+      <xs:enumeration value="ch"/>
+      <!-- Chechen -->
+      <xs:enumeration value="ce"/>
+      <!-- Chinese -->
+      <xs:enumeration value="zh"/>
+      <!-- Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic -->
+      <xs:enumeration value="cu"/>
+      <!-- Chuvash -->
+      <xs:enumeration value="cv"/>
+      <!-- Cornish -->
+      <xs:enumeration value="kw"/>
+      <!-- Corsican -->
+      <xs:enumeration value="co"/>
+      <!-- Cree -->
+      <xs:enumeration value="cr"/>
+      <!-- Czech -->
+      <xs:enumeration value="cs"/>
+      <!-- Danish -->
+      <xs:enumeration value="da"/>
+      <!-- Divehi; Dhivehi; Maldivian -->
+      <xs:enumeration value="dv"/>
+      <!-- Dutch; Flemish -->
+      <xs:enumeration value="nl"/>
+      <!-- Dzongkha -->
+      <xs:enumeration value="dz"/>
+      <!-- English -->
+      <xs:enumeration value="en"/>
+      <!-- Esperanto -->
+      <xs:enumeration value="eo"/>
+      <!-- Estonian -->
+      <xs:enumeration value="et"/>
+      <!-- Ewe -->
+      <xs:enumeration value="ee"/>
+      <!-- Faroese -->
+      <xs:enumeration value="fo"/>
+      <!-- Fijian -->
+      <xs:enumeration value="fj"/>
+      <!-- Finnish -->
+      <xs:enumeration value="fi"/>
+      <!-- French -->
+      <xs:enumeration value="fr"/>
+      <!-- Western Frisian -->
+      <xs:enumeration value="fy"/>
+      <!-- Fulah -->
+      <xs:enumeration value="ff"/>
+      <!-- Georgian -->
+      <xs:enumeration value="ka"/>
+      <!-- German -->
+      <xs:enumeration value="de"/>
+      <!-- Gaelic; Scottish Gaelic -->
+      <xs:enumeration value="gd"/>
+      <!-- Irish -->
+      <xs:enumeration value="ga"/>
+      <!-- Galician -->
+      <xs:enumeration value="gl"/>
+      <!-- Manx -->
+      <xs:enumeration value="gv"/>
+      <!-- Greek, Modern (1453-) -->
+      <xs:enumeration value="el"/>
+      <!-- Guarani -->
+      <xs:enumeration value="gn"/>
+      <!-- Gujarati -->
+      <xs:enumeration value="gu"/>
+      <!-- Haitian; Haitian Creole -->
+      <xs:enumeration value="ht"/>
+      <!-- Hausa -->
+      <xs:enumeration value="ha"/>
+      <!-- Hebrew -->
+      <xs:enumeration value="he"/>
+      <!-- Herero -->
+      <xs:enumeration value="hz"/>
+      <!-- Hindi -->
+      <xs:enumeration value="hi"/>
+      <!-- Hiri Motu -->
+      <xs:enumeration value="ho"/>
+      <!-- Croatian -->
+      <xs:enumeration value="hr"/>
+      <!-- Hungarian -->
+      <xs:enumeration value="hu"/>
+      <!-- Igbo -->
+      <xs:enumeration value="ig"/>
+      <!-- Icelandic -->
+      <xs:enumeration value="is"/>
+      <!-- Ido -->
+      <xs:enumeration value="io"/>
+      <!-- Sichuan Yi; Nuosu -->
+      <xs:enumeration value="ii"/>
+      <!-- Inuktitut -->
+      <xs:enumeration value="iu"/>
+      <!-- Interlingue; Occidental -->
+      <xs:enumeration value="ie"/>
+      <!-- Interlingua (International Auxiliary Language Association) -->
+      <xs:enumeration value="ia"/>
+      <!-- Indonesian -->
+      <xs:enumeration value="id"/>
+      <!-- Inupiaq -->
+      <xs:enumeration value="ik"/>
+      <!-- Italian -->
+      <xs:enumeration value="it"/>
+      <!-- Javanese -->
+      <xs:enumeration value="jv"/>
+      <!-- Japanese -->
+      <xs:enumeration value="ja"/>
+      <!-- Kalaallisut; Greenlandic -->
+      <xs:enumeration value="kl"/>
+      <!-- Kannada -->
+      <xs:enumeration value="kn"/>
+      <!-- Kashmiri -->
+      <xs:enumeration value="ks"/>
+      <!-- Kanuri -->
+      <xs:enumeration value="kr"/>
+      <!-- Kazakh -->
+      <xs:enumeration value="kk"/>
+      <!-- Central Khmer -->
+      <xs:enumeration value="km"/>
+      <!-- Kikuyu; Gikuyu -->
+      <xs:enumeration value="ki"/>
+      <!-- Kirghiz; Kyrgyz -->
+      <xs:enumeration value="ky"/>
+      <!-- Komi -->
+      <xs:enumeration value="kv"/>
+      <!-- Kongo -->
+      <xs:enumeration value="kg"/>
+      <!-- Korean -->
+      <xs:enumeration value="ko"/>
+      <!-- Kuanyama; Kwanyama -->
+      <xs:enumeration value="kj"/>
+      <!-- Kurdish -->
+      <xs:enumeration value="ku"/>
+      <!-- Lao -->
+      <xs:enumeration value="lo"/>
+      <!-- Latin -->
+      <xs:enumeration value="la"/>
+      <!-- Latvian -->
+      <xs:enumeration value="lv"/>
+      <!-- Limburgan; Limburger; Limburgish -->
+      <xs:enumeration value="li"/>
+      <!-- Lingala -->
+      <xs:enumeration value="ln"/>
+      <!-- Lithuanian -->
+      <xs:enumeration value="lt"/>
+      <!-- Luxembourgish; Letzeburgesch -->
+      <xs:enumeration value="lb"/>
+      <!-- Luba-Katanga -->
+      <xs:enumeration value="lu"/>
+      <!-- Ganda -->
+      <xs:enumeration value="lg"/>
+      <!-- Macedonian -->
+      <xs:enumeration value="mk"/>
+      <!-- Marshallese -->
+      <xs:enumeration value="mh"/>
+      <!-- Malayalam -->
+      <xs:enumeration value="ml"/>
+      <!-- Maori -->
+      <xs:enumeration value="mi"/>
+      <!-- Marathi -->
+      <xs:enumeration value="mr"/>
+      <!-- Malay -->
+      <xs:enumeration value="ms"/>
+      <!-- Malagasy -->
+      <xs:enumeration value="mg"/>
+      <!-- Maltese -->
+      <xs:enumeration value="mt"/>
+      <!-- Mongolian -->
+      <xs:enumeration value="mn"/>
+      <!-- Nauru -->
+      <xs:enumeration value="na"/>
+      <!-- Navajo; Navaho -->
+      <xs:enumeration value="nv"/>
+      <!-- Ndebele, South; South Ndebele -->
+      <xs:enumeration value="nr"/>
+      <!-- Ndebele, North; North Ndebele -->
+      <xs:enumeration value="nd"/>
+      <!-- Ndonga -->
+      <xs:enumeration value="ng"/>
+      <!-- Nepali -->
+      <xs:enumeration value="ne"/>
+      <!-- Norwegian Nynorsk; Nynorsk, Norwegian -->
+      <xs:enumeration value="nn"/>
+      <!-- Bokmål, Norwegian; Norwegian Bokmål -->
+      <xs:enumeration value="nb"/>
+      <!-- Norwegian -->
+      <xs:enumeration value="no"/>
+      <!-- Chichewa; Chewa; Nyanja -->
+      <xs:enumeration value="ny"/>
+      <!-- Occitan (post 1500); Provençal -->
+      <xs:enumeration value="oc"/>
+      <!-- Ojibwa -->
+      <xs:enumeration value="oj"/>
+      <!-- Oriya -->
+      <xs:enumeration value="or"/>
+      <!-- Oromo -->
+      <xs:enumeration value="om"/>
+      <!-- Ossetian; Ossetic -->
+      <xs:enumeration value="os"/>
+      <!-- Panjabi; Punjabi -->
+      <xs:enumeration value="pa"/>
+      <!-- Persian -->
+      <xs:enumeration value="fa"/>
+      <!-- Pali -->
+      <xs:enumeration value="pi"/>
+      <!-- Polish -->
+      <xs:enumeration value="pl"/>
+      <!-- Portuguese -->
+      <xs:enumeration value="pt"/>
+      <!-- Pushto; Pashto -->
+      <xs:enumeration value="ps"/>
+      <!-- Quechua -->
+      <xs:enumeration value="qu"/>
+      <!-- Romansh -->
+      <xs:enumeration value="rm"/>
+      <!-- Romanian; Moldavian; Moldovan -->
+      <xs:enumeration value="ro"/>
+      <!-- Rundi -->
+      <xs:enumeration value="rn"/>
+      <!-- Russian -->
+      <xs:enumeration value="ru"/>
+      <!-- Kinyarwanda -->
+      <xs:enumeration value="rw"/>
+      <!-- Sanskrit -->
+      <xs:enumeration value="sa"/>
+      <!-- Sindhi -->
+      <xs:enumeration value="sd"/>
+      <!-- Northern Sami -->
+      <xs:enumeration value="se"/>
+      <!-- Sango -->
+      <xs:enumeration value="sg"/>
+      <!-- Sinhala; Sinhalese -->
+      <xs:enumeration value="si"/>
+      <!-- Slovak -->
+      <xs:enumeration value="sk"/>
+      <!-- Slovenian -->
+      <xs:enumeration value="sl"/>
+      <!-- Samoan -->
+      <xs:enumeration value="sm"/>
+      <!-- Shona -->
+      <xs:enumeration value="sn"/>
+      <!-- Somali -->
+      <xs:enumeration value="so"/>
+      <!-- Sotho, Southern -->
+      <xs:enumeration value="st"/>
+      <!-- Spanish; Castilian -->
+      <xs:enumeration value="es"/>
+      <!-- Sardinian -->
+      <xs:enumeration value="sc"/>
+      <!-- Serbian -->
+      <xs:enumeration value="sr"/>
+      <!-- Swati -->
+      <xs:enumeration value="ss"/>
+      <!-- Sundanese -->
+      <xs:enumeration value="su"/>
+      <!-- Swahili -->
+      <xs:enumeration value="sw"/>
+      <!-- Swedish -->
+      <xs:enumeration value="sv"/>
+      <!-- Tahitian -->
+      <xs:enumeration value="ty"/>
+      <!-- Tamil -->
+      <xs:enumeration value="ta"/>
+      <!-- Tatar -->
+      <xs:enumeration value="tt"/>
+      <!-- Telugu -->
+      <xs:enumeration value="te"/>
+      <!-- Tajik -->
+      <xs:enumeration value="tg"/>
+      <!-- Tagalog -->
+      <xs:enumeration value="tl"/>
+      <!-- Thai -->
+      <xs:enumeration value="th"/>
+      <!-- Tibetan -->
+      <xs:enumeration value="bo"/>
+      <!-- Tigrinya -->
+      <xs:enumeration value="ti"/>
+      <!-- Tonga (Tonga Islands) -->
+      <xs:enumeration value="to"/>
+      <!-- Tswana -->
+      <xs:enumeration value="tn"/>
+      <!-- Tsonga -->
+      <xs:enumeration value="ts"/>
+      <!-- Turkmen -->
+      <xs:enumeration value="tk"/>
+      <!-- Turkish -->
+      <xs:enumeration value="tr"/>
+      <!-- Twi -->
+      <xs:enumeration value="tw"/>
+      <!-- Uighur; Uyghur -->
+      <xs:enumeration value="ug"/>
+      <!-- Ukrainian -->
+      <xs:enumeration value="uk"/>
+      <!-- Urdu -->
+      <xs:enumeration value="ur"/>
+      <!-- Uzbek -->
+      <xs:enumeration value="uz"/>
+      <!-- Venda -->
+      <xs:enumeration value="ve"/>
+      <!-- Vietnamese -->
+      <xs:enumeration value="vi"/>
+      <!-- Volapük -->
+      <xs:enumeration value="vo"/>
+      <!-- Welsh -->
+      <xs:enumeration value="cy"/>
+      <!-- Walloon -->
+      <xs:enumeration value="wa"/>
+      <!-- Wolof -->
+      <xs:enumeration value="wo"/>
+      <!-- Xhosa -->
+      <xs:enumeration value="xh"/>
+      <!-- Yiddish -->
+      <xs:enumeration value="yi"/>
+      <!-- Yoruba -->
+      <xs:enumeration value="yo"/>
+      <!-- Zhuang; Chuang -->
+      <xs:enumeration value="za"/>
+      <!-- Zulu -->
+      <xs:enumeration value="zu"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- type language names -->
+  <xs:simpleType name="country_type">
+    <xs:restriction base="xs:string">
+      <!-- AFGHANISTAN -->
+      <xs:enumeration value="AF"/>
+      <!-- ÅLAND ISLANDS -->
+      <xs:enumeration value="AX"/>
+      <!-- ALBANIA -->
+      <xs:enumeration value="AL"/>
+      <!-- ALGERIA -->
+      <xs:enumeration value="DZ"/>
+      <!-- AMERICAN SAMOA -->
+      <xs:enumeration value="AS"/>
+      <!-- ANDORRA -->
+      <xs:enumeration value="AD"/>
+      <!-- ANGOLA -->
+      <xs:enumeration value="AO"/>
+      <!-- ANGUILLA -->
+      <xs:enumeration value="AI"/>
+      <!-- ANTARCTICA -->
+      <xs:enumeration value="AQ"/>
+      <!-- ANTIGUA AND BARBUDA -->
+      <xs:enumeration value="AG"/>
+      <!-- ARGENTINA -->
+      <xs:enumeration value="AR"/>
+      <!-- ARMENIA -->
+      <xs:enumeration value="AM"/>
+      <!-- ARUBA -->
+      <xs:enumeration value="AW"/>
+      <!-- AUSTRALIA -->
+      <xs:enumeration value="AU"/>
+      <!-- AUSTRIA -->
+      <xs:enumeration value="AT"/>
+      <!-- AZERBAIJAN -->
+      <xs:enumeration value="AZ"/>
+      <!-- BAHAMAS -->
+      <xs:enumeration value="BS"/>
+      <!-- BAHRAIN -->
+      <xs:enumeration value="BH"/>
+      <!-- BANGLADESH -->
+      <xs:enumeration value="BD"/>
+      <!-- BARBADOS -->
+      <xs:enumeration value="BB"/>
+      <!-- BELARUS -->
+      <xs:enumeration value="BY"/>
+      <!-- BELGIUM -->
+      <xs:enumeration value="BE"/>
+      <!-- BELIZE -->
+      <xs:enumeration value="BZ"/>
+      <!-- BENIN -->
+      <xs:enumeration value="BJ"/>
+      <!-- BERMUDA -->
+      <xs:enumeration value="BM"/>
+      <!-- BHUTAN -->
+      <xs:enumeration value="BT"/>
+      <!-- BOLIVIA -->
+      <xs:enumeration value="BO"/>
+      <!-- BOSNIA AND HERZEGOVINA -->
+      <xs:enumeration value="BA"/>
+      <!-- BOTSWANA -->
+      <xs:enumeration value="BW"/>
+      <!-- BOUVET ISLAND -->
+      <xs:enumeration value="BV"/>
+      <!-- BRAZIL -->
+      <xs:enumeration value="BR"/>
+      <!-- BRITISH INDIAN OCEAN TERRITORY -->
+      <xs:enumeration value="IO"/>
+      <!-- BRUNEI DARUSSALAM -->
+      <xs:enumeration value="BN"/>
+      <!-- BULGARIA -->
+      <xs:enumeration value="BG"/>
+      <!-- BURKINA FASO -->
+      <xs:enumeration value="BF"/>
+      <!-- BURUNDI -->
+      <xs:enumeration value="BI"/>
+      <!-- CAMBODIA -->
+      <xs:enumeration value="KH"/>
+      <!-- CAMEROON -->
+      <xs:enumeration value="CM"/>
+      <!-- CANADA -->
+      <xs:enumeration value="CA"/>
+      <!-- CAPE VERDE -->
+      <xs:enumeration value="CV"/>
+      <!-- CAYMAN ISLANDS -->
+      <xs:enumeration value="KY"/>
+      <!-- CENTRAL AFRICAN REPUBLIC -->
+      <xs:enumeration value="CF"/>
+      <!-- CHAD -->
+      <xs:enumeration value="TD"/>
+      <!-- CHILE -->
+      <xs:enumeration value="CL"/>
+      <!-- CHINA -->
+      <xs:enumeration value="CN"/>
+      <!-- CHRISTMAS ISLAND -->
+      <xs:enumeration value="CX"/>
+      <!-- COCOS (KEELING) ISLANDS -->
+      <xs:enumeration value="CC"/>
+      <!-- COLOMBIA -->
+      <xs:enumeration value="CO"/>
+      <!-- COMOROS -->
+      <xs:enumeration value="KM"/>
+      <!-- CONGO -->
+      <xs:enumeration value="CG"/>
+      <!-- CONGO, THE DEMOCRATIC REPUBLIC OF THE -->
+      <xs:enumeration value="CD"/>
+      <!-- COOK ISLANDS -->
+      <xs:enumeration value="CK"/>
+      <!-- COSTA RICA -->
+      <xs:enumeration value="CR"/>
+      <!-- CÔTE D'IVOIRE -->
+      <xs:enumeration value="CI"/>
+      <!-- CROATIA -->
+      <xs:enumeration value="HR"/>
+      <!-- CUBA -->
+      <xs:enumeration value="CU"/>
+      <!-- CYPRUS -->
+      <xs:enumeration value="CY"/>
+      <!-- CZECH REPUBLIC -->
+      <xs:enumeration value="CZ"/>
+      <!-- DENMARK -->
+      <xs:enumeration value="DK"/>
+      <!-- DJIBOUTI -->
+      <xs:enumeration value="DJ"/>
+      <!-- DOMINICA -->
+      <xs:enumeration value="DM"/>
+      <!-- DOMINICAN REPUBLIC -->
+      <xs:enumeration value="DO"/>
+      <!-- ECUADOR -->
+      <xs:enumeration value="EC"/>
+      <!-- EGYPT -->
+      <xs:enumeration value="EG"/>
+      <!-- EL SALVADOR -->
+      <xs:enumeration value="SV"/>
+      <!-- EQUATORIAL GUINEA -->
+      <xs:enumeration value="GQ"/>
+      <!-- ERITREA -->
+      <xs:enumeration value="ER"/>
+      <!-- ESTONIA -->
+      <xs:enumeration value="EE"/>
+      <!-- ETHIOPIA -->
+      <xs:enumeration value="ET"/>
+      <!-- FALKLAND ISLANDS (MALVINAS) -->
+      <xs:enumeration value="FK"/>
+      <!-- FAROE ISLANDS -->
+      <xs:enumeration value="FO"/>
+      <!-- FIJI -->
+      <xs:enumeration value="FJ"/>
+      <!-- FINLAND -->
+      <xs:enumeration value="FI"/>
+      <!-- FRANCE -->
+      <xs:enumeration value="FR"/>
+      <!-- FRENCH GUIANA -->
+      <xs:enumeration value="GF"/>
+      <!-- FRENCH POLYNESIA -->
+      <xs:enumeration value="PF"/>
+      <!-- FRENCH SOUTHERN TERRITORIES -->
+      <xs:enumeration value="TF"/>
+      <!-- GABON -->
+      <xs:enumeration value="GA"/>
+      <!-- GAMBIA -->
+      <xs:enumeration value="GM"/>
+      <!-- GEORGIA -->
+      <xs:enumeration value="GE"/>
+      <!-- GERMANY -->
+      <xs:enumeration value="DE"/>
+      <!-- GHANA -->
+      <xs:enumeration value="GH"/>
+      <!-- GIBRALTAR -->
+      <xs:enumeration value="GI"/>
+      <!-- GREECE -->
+      <xs:enumeration value="GR"/>
+      <!-- GREENLAND -->
+      <xs:enumeration value="GL"/>
+      <!-- GRENADA -->
+      <xs:enumeration value="GD"/>
+      <!-- GUADELOUPE -->
+      <xs:enumeration value="GP"/>
+      <!-- GUAM -->
+      <xs:enumeration value="GU"/>
+      <!-- GUATEMALA -->
+      <xs:enumeration value="GT"/>
+      <!-- GUERNSEY -->
+      <xs:enumeration value="GG"/>
+      <!-- GUINEA -->
+      <xs:enumeration value="GN"/>
+      <!-- GUINEA-BISSAU -->
+      <xs:enumeration value="GW"/>
+      <!-- GUYANA -->
+      <xs:enumeration value="GY"/>
+      <!-- HAITI -->
+      <xs:enumeration value="HT"/>
+      <!-- HEARD ISLAND AND MCDONALD ISLANDS -->
+      <xs:enumeration value="HM"/>
+      <!-- HOLY SEE (VATICAN CITY STATE) -->
+      <xs:enumeration value="VA"/>
+      <!-- HONDURAS -->
+      <xs:enumeration value="HN"/>
+      <!-- HONG KONG -->
+      <xs:enumeration value="HK"/>
+      <!-- HUNGARY -->
+      <xs:enumeration value="HU"/>
+      <!-- ICELAND -->
+      <xs:enumeration value="IS"/>
+      <!-- INDIA -->
+      <xs:enumeration value="IN"/>
+      <!-- INDONESIA -->
+      <xs:enumeration value="ID"/>
+      <!-- IRAN, ISLAMIC REPUBLIC OF -->
+      <xs:enumeration value="IR"/>
+      <!-- IRAQ -->
+      <xs:enumeration value="IQ"/>
+      <!-- IRELAND -->
+      <xs:enumeration value="IE"/>
+      <!-- ISLE OF MAN -->
+      <xs:enumeration value="IM"/>
+      <!-- ISRAEL -->
+      <xs:enumeration value="IL"/>
+      <!-- ITALY -->
+      <xs:enumeration value="IT"/>
+      <!-- JAMAICA -->
+      <xs:enumeration value="JM"/>
+      <!-- JAPAN -->
+      <xs:enumeration value="JP"/>
+      <!-- JERSEY -->
+      <xs:enumeration value="JE"/>
+      <!-- JORDAN -->
+      <xs:enumeration value="JO"/>
+      <!-- KAZAKHSTAN -->
+      <xs:enumeration value="KZ"/>
+      <!-- KENYA -->
+      <xs:enumeration value="KE"/>
+      <!-- KIRIBATI -->
+      <xs:enumeration value="KI"/>
+      <!-- KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF -->
+      <xs:enumeration value="KP"/>
+      <!-- KOREA, REPUBLIC OF -->
+      <xs:enumeration value="KR"/>
+      <!-- KUWAIT -->
+      <xs:enumeration value="KW"/>
+      <!-- KYRGYZSTAN -->
+      <xs:enumeration value="KG"/>
+      <!-- LAO PEOPLE'S DEMOCRATIC REPUBLIC -->
+      <xs:enumeration value="LA"/>
+      <!-- LATVIA -->
+      <xs:enumeration value="LV"/>
+      <!-- LEBANON -->
+      <xs:enumeration value="LB"/>
+      <!-- LESOTHO -->
+      <xs:enumeration value="LS"/>
+      <!-- LIBERIA -->
+      <xs:enumeration value="LR"/>
+      <!-- LIBYAN ARAB JAMAHIRIYA -->
+      <xs:enumeration value="LY"/>
+      <!-- LIECHTENSTEIN -->
+      <xs:enumeration value="LI"/>
+      <!-- LITHUANIA -->
+      <xs:enumeration value="LT"/>
+      <!-- LUXEMBOURG -->
+      <xs:enumeration value="LU"/>
+      <!-- MACAO -->
+      <xs:enumeration value="MO"/>
+      <!-- MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF -->
+      <xs:enumeration value="MK"/>
+      <!-- MADAGASCAR -->
+      <xs:enumeration value="MG"/>
+      <!-- MALAWI -->
+      <xs:enumeration value="MW"/>
+      <!-- MALAYSIA -->
+      <xs:enumeration value="MY"/>
+      <!-- MALDIVES -->
+      <xs:enumeration value="MV"/>
+      <!-- MALI -->
+      <xs:enumeration value="ML"/>
+      <!-- MALTA -->
+      <xs:enumeration value="MT"/>
+      <!-- MARSHALL ISLANDS -->
+      <xs:enumeration value="MH"/>
+      <!-- MARTINIQUE -->
+      <xs:enumeration value="MQ"/>
+      <!-- MAURITANIA -->
+      <xs:enumeration value="MR"/>
+      <!-- MAURITIUS -->
+      <xs:enumeration value="MU"/>
+      <!-- MAYOTTE -->
+      <xs:enumeration value="YT"/>
+      <!-- MEXICO -->
+      <xs:enumeration value="MX"/>
+      <!-- MICRONESIA, FEDERATED STATES OF -->
+      <xs:enumeration value="FM"/>
+      <!-- MOLDOVA, REPUBLIC OF -->
+      <xs:enumeration value="MD"/>
+      <!-- MONACO -->
+      <xs:enumeration value="MC"/>
+      <!-- MONGOLIA -->
+      <xs:enumeration value="MN"/>
+      <!-- MONTENEGRO -->
+      <xs:enumeration value="ME"/>
+      <!-- MONTSERRAT -->
+      <xs:enumeration value="MS"/>
+      <!-- MOROCCO -->
+      <xs:enumeration value="MA"/>
+      <!-- MOZAMBIQUE -->
+      <xs:enumeration value="MZ"/>
+      <!-- MYANMAR -->
+      <xs:enumeration value="MM"/>
+      <!-- NAMIBIA -->
+      <xs:enumeration value="NA"/>
+      <!-- NAURU -->
+      <xs:enumeration value="NR"/>
+      <!-- NEPAL -->
+      <xs:enumeration value="NP"/>
+      <!-- NETHERLANDS -->
+      <xs:enumeration value="NL"/>
+      <!-- NETHERLANDS ANTILLES -->
+      <xs:enumeration value="AN"/>
+      <!-- NEW CALEDONIA -->
+      <xs:enumeration value="NC"/>
+      <!-- NEW ZEALAND -->
+      <xs:enumeration value="NZ"/>
+      <!-- NICARAGUA -->
+      <xs:enumeration value="NI"/>
+      <!-- NIGER -->
+      <xs:enumeration value="NE"/>
+      <!-- NIGERIA -->
+      <xs:enumeration value="NG"/>
+      <!-- NIUE -->
+      <xs:enumeration value="NU"/>
+      <!-- NORFOLK ISLAND -->
+      <xs:enumeration value="NF"/>
+      <!-- NORTHERN MARIANA ISLANDS -->
+      <xs:enumeration value="MP"/>
+      <!-- NORWAY -->
+      <xs:enumeration value="NO"/>
+      <!-- OMAN -->
+      <xs:enumeration value="OM"/>
+      <!-- PAKISTAN -->
+      <xs:enumeration value="PK"/>
+      <!-- PALAU -->
+      <xs:enumeration value="PW"/>
+      <!-- PALESTINIAN TERRITORY, OCCUPIED -->
+      <xs:enumeration value="PS"/>
+      <!-- PANAMA -->
+      <xs:enumeration value="PA"/>
+      <!-- PAPUA NEW GUINEA -->
+      <xs:enumeration value="PG"/>
+      <!-- PARAGUAY -->
+      <xs:enumeration value="PY"/>
+      <!-- PERU -->
+      <xs:enumeration value="PE"/>
+      <!-- PHILIPPINES -->
+      <xs:enumeration value="PH"/>
+      <!-- PITCAIRN -->
+      <xs:enumeration value="PN"/>
+      <!-- POLAND -->
+      <xs:enumeration value="PL"/>
+      <!-- PORTUGAL -->
+      <xs:enumeration value="PT"/>
+      <!-- PUERTO RICO -->
+      <xs:enumeration value="PR"/>
+      <!-- QATAR -->
+      <xs:enumeration value="QA"/>
+      <!-- RÉUNION -->
+      <xs:enumeration value="RE"/>
+      <!-- ROMANIA -->
+      <xs:enumeration value="RO"/>
+      <!-- RUSSIAN FEDERATION -->
+      <xs:enumeration value="RU"/>
+      <!-- RWANDA -->
+      <xs:enumeration value="RW"/>
+      <!-- SAINT BARTHÉLEMY -->
+      <xs:enumeration value="BL"/>
+      <!-- SAINT HELENA -->
+      <xs:enumeration value="SH"/>
+      <!-- SAINT KITTS AND NEVIS -->
+      <xs:enumeration value="KN"/>
+      <!-- SAINT LUCIA -->
+      <xs:enumeration value="LC"/>
+      <!-- SAINT MARTIN -->
+      <xs:enumeration value="MF"/>
+      <!-- SAINT PIERRE AND MIQUELON -->
+      <xs:enumeration value="PM"/>
+      <!-- SAINT VINCENT AND THE GRENADINES -->
+      <xs:enumeration value="VC"/>
+      <!-- SAMOA -->
+      <xs:enumeration value="WS"/>
+      <!-- SAN MARINO -->
+      <xs:enumeration value="SM"/>
+      <!-- SAO TOME AND PRINCIPE -->
+      <xs:enumeration value="ST"/>
+      <!-- SAUDI ARABIA -->
+      <xs:enumeration value="SA"/>
+      <!-- SENEGAL -->
+      <xs:enumeration value="SN"/>
+      <!-- SERBIA -->
+      <xs:enumeration value="RS"/>
+      <!-- SEYCHELLES -->
+      <xs:enumeration value="SC"/>
+      <!-- SIERRA LEONE -->
+      <xs:enumeration value="SL"/>
+      <!-- SINGAPORE -->
+      <xs:enumeration value="SG"/>
+      <!-- SLOVAKIA -->
+      <xs:enumeration value="SK"/>
+      <!-- SLOVENIA -->
+      <xs:enumeration value="SI"/>
+      <!-- SOLOMON ISLANDS -->
+      <xs:enumeration value="SB"/>
+      <!-- SOMALIA -->
+      <xs:enumeration value="SO"/>
+      <!-- SOUTH AFRICA -->
+      <xs:enumeration value="ZA"/>
+      <!-- SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS -->
+      <xs:enumeration value="GS"/>
+      <!-- SPAIN -->
+      <xs:enumeration value="ES"/>
+      <!-- SRI LANKA -->
+      <xs:enumeration value="LK"/>
+      <!-- SUDAN -->
+      <xs:enumeration value="SD"/>
+      <!-- SURINAME -->
+      <xs:enumeration value="SR"/>
+      <!-- SVALBARD AND JAN MAYEN -->
+      <xs:enumeration value="SJ"/>
+      <!-- SWAZILAND -->
+      <xs:enumeration value="SZ"/>
+      <!-- SWEDEN -->
+      <xs:enumeration value="SE"/>
+      <!-- SWITZERLAND -->
+      <xs:enumeration value="CH"/>
+      <!-- SYRIAN ARAB REPUBLIC -->
+      <xs:enumeration value="SY"/>
+      <!-- TAIWAN, PROVINCE OF CHINA -->
+      <xs:enumeration value="TW"/>
+      <!-- TAJIKISTAN -->
+      <xs:enumeration value="TJ"/>
+      <!-- TANZANIA, UNITED REPUBLIC OF -->
+      <xs:enumeration value="TZ"/>
+      <!-- THAILAND -->
+      <xs:enumeration value="TH"/>
+      <!-- TIMOR-LESTE -->
+      <xs:enumeration value="TL"/>
+      <!-- TOGO -->
+      <xs:enumeration value="TG"/>
+      <!-- TOKELAU -->
+      <xs:enumeration value="TK"/>
+      <!-- TONGA -->
+      <xs:enumeration value="TO"/>
+      <!-- TRINIDAD AND TOBAGO -->
+      <xs:enumeration value="TT"/>
+      <!-- TUNISIA -->
+      <xs:enumeration value="TN"/>
+      <!-- TURKEY -->
+      <xs:enumeration value="TR"/>
+      <!-- TURKMENISTAN -->
+      <xs:enumeration value="TM"/>
+      <!-- TURKS AND CAICOS ISLANDS -->
+      <xs:enumeration value="TC"/>
+      <!-- TUVALU -->
+      <xs:enumeration value="TV"/>
+      <!-- UGANDA -->
+      <xs:enumeration value="UG"/>
+      <!-- UKRAINE -->
+      <xs:enumeration value="UA"/>
+      <!-- UNITED ARAB EMIRATES -->
+      <xs:enumeration value="AE"/>
+      <!-- UNITED KINGDOM -->
+      <xs:enumeration value="GB"/>
+      <!-- UNITED STATES -->
+      <xs:enumeration value="US"/>
+      <!-- UNITED STATES MINOR OUTLYING ISLANDS -->
+      <xs:enumeration value="UM"/>
+      <!-- URUGUAY -->
+      <xs:enumeration value="UY"/>
+      <!-- UZBEKISTAN -->
+      <xs:enumeration value="UZ"/>
+      <!-- VANUATU -->
+      <xs:enumeration value="VU"/>
+      <!-- VENEZUELA -->
+      <xs:enumeration value="VE"/>
+      <!-- VIET NAM -->
+      <xs:enumeration value="VN"/>
+      <!-- VIRGIN ISLANDS, BRITISH -->
+      <xs:enumeration value="VG"/>
+      <!-- VIRGIN ISLANDS, U.S. -->
+      <xs:enumeration value="VI"/>
+      <!-- WALLIS AND FUTUNA -->
+      <xs:enumeration value="WF"/>
+      <!-- WESTERN SAHARA -->
+      <xs:enumeration value="EH"/>
+      <!-- YEMEN -->
+      <xs:enumeration value="YE"/>
+      <!-- ZAMBIA -->
+      <xs:enumeration value="ZM"/>
+      <!-- ZIMBABWE -->
+      <xs:enumeration value="ZW"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="locale_type_simplified">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z]{2}((_|-)([\p{L}]{2}))?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="locale_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(aa|ab|af|ak|sq|am|ar|an|hy|as|av|ae|ay|az|ba|bm|eu|be|bn|bh|bi|bs|br|bg|my|ca|ch|ce|zh|cu|cv|kw|co|cr|cs|da|dv|nl|dz|en|eo|et|ee|fo|fj|fi|fr|fy|ff|ka|de|gd|ga|gl|gv|el|gn|gu|ht|ha|he|hz|hi|ho|hr|hu|ig|is|io|ii|iu|ie|ia|id|ik|it|jv|ja|kl|kn|ks|kr|kk|km|ki|rw|ky|kv|kg|ko|kj|ku|lo|la|lv|li|ln|lt|lb|lu|lg|mk|mh|ml|mi|mr|ms|mg|mt|mn|na|nv|nr|nd|ng|ne|nn|nb|no|ny|oc|oj|or|om|os|pa|fa|pi|pl|pt|ps|qu|rm|ro|rn|ru|sg|sa|si|sk|sl|se|sm|sn|sd|so|st|es|sc|sr|ss|su|sw|sv|ty|ta|tt|te|tg|tl|th|bo|ti|to|tn|ts|tk|tr|tw|ug|uk|ur|uz|ve|vi|vo|cy|wa|wo|xh|yi|yo|za|zu)((-|_)(AF|AX|AL|DZ|AS|AD|AO|AI|AQ|AG|AR|AM|AW|AU|AT|AZ|BS|BH|BD|BB|BY|BE|BZ|BJ|BM|BT|BO|BA|BW|BV|BR|IO|BN|BG|BF|BI|KH|CM|CA|CV|KY|CF|TD|CL|CN|CX|CC|CO|KM|CG|CD|CK|CR|CI|HR|CU|CY|CZ|DK|DJ|DM|DO|EC|EG|SV|GQ|ER|EE|ET|FK|FO|FJ|FI|FR|GF|PF|TF|GA|GM|GE|DE|GH|GI|GR|GL|GD|GP|GU|GT|GG|GN|GW|GY|HT|HM|VA|HN|HK|HU|IS|IN|ID|IR|IQ|IE|IM|IL|IT|JM|JP|JE|JO|KZ|KE|KI|KP|KR|KW|KG|LA|LV|LB|LS|LR|LY|LI|LT|LU|MO|MK|MG|MW|MY|MV|ML|MT|MH|MQ|MR|MU|YT|MX|FM|MD|MC|MN|ME|MS|MA|MZ|MM|NA|NR|NP|NL|AN|NC|NZ|NI|NE|NG|NU|NF|MP|NO|OM|PK|PW|PS|PA|PG|PY|PE|PH|PN|PL|PT|PR|QA|RE|RO|RU|RW|BL|SH|KN|LC|MF|PM|VC|WS|SM|ST|SA|SN|RS|SC|SL|SG|SK|SI|SB|SO|ZA|GS|ES|LK|SD|SR|SJ|SZ|SE|CH|SY|TW|TJ|TZ|TH|TL|TG|TK|TO|TT|TN|TR|TM|TC|TV|UG|UA|AE|GB|US|UM|UY|UZ|VU|VE|VN|VG|VI|WF|EH|YE|ZM|ZW))?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="fieldref_type">
+    <xs:attribute name="ref" type="xs:NCName" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="fieldroleref_type">
+    <xs:attribute name="field_role_ref" type="xs:NCName" use="required"/>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>The expression that selects the reocrds in the reference data to be included in the locator. </xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="whereclause_type" mixed ="true">
+    <xs:annotation>
+      <xs:documentation>The DBMS specific selection cexpression.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="field_ref" minOccurs="0" maxOccurs="unbounded" type="fieldref_type">
+        <xs:annotation>
+          <xs:documentation>The reference name of the field used in this expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="dbms" default="default" use="optional" type="dbms_type" />
+  </xs:complexType>
+
+  <xs:complexType name="whereclauseproto_type" mixed ="true">
+    <xs:sequence>
+      <xs:element name="field_ref" minOccurs="0" maxOccurs="unbounded" type="fieldroleref_type" >
+        <xs:annotation>
+          <xs:documentation>The reference name of the field used in this expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="dbms" default="default" use="optional" type="dbms_type" />
+  </xs:complexType>
+
+  <xs:complexType name="relationship_type">
+    <xs:sequence>
+      <xs:element name="field_ref" minOccurs="1" maxOccurs="unbounded" type="fieldref_type" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="std_property_name_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SideOffset">
+        <xs:annotation>
+          <xs:documentation>For locator styles that use interpolation, specify offset from the street centerline.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SideOffsetUnits" />
+      <xs:enumeration value="EndOffset" />
+      <xs:enumeration value="EndOffsetUnits" />
+      <xs:enumeration value="MinimumMatchScore" />
+      <xs:enumeration value="MinimumCandidateScore" />
+      <xs:enumeration value="SpellingSensitivity" />
+      <xs:enumeration value="MatchIfScoresTie" />
+      <xs:enumeration value="WriteXYCoordFields" />
+      <xs:enumeration value="WriteStandardizedAddressField" />
+      <xs:enumeration value="WriteReferenceIDField" />
+      <xs:enumeration value="WriteAdditionalOutputFields" />
+      <xs:enumeration value="WriteLocatorSpecificFields" />
+      <xs:enumeration value="WriteDisplayExtentFields" />
+      <xs:enumeration value="WritePercentAlongField" />
+      <xs:enumeration value="RuntimeMemoryLimit" />
+      <xs:enumeration value="ShowElapsedTime" />
+      <xs:enumeration value="reportScorePerComponent" />
+      <xs:enumeration value="supportsEmptyHouseNumber" />
+      <xs:enumeration value="supportsIntersections" />
+      <xs:enumeration value="StoreStandardizedRefData" />
+      <xs:enumeration value="BatchPresortInputs" />
+      <xs:enumeration value="BatchPresortCacheSize" />
+      <xs:enumeration value="Interpolate.SideValue.Left" />
+      <xs:enumeration value="Interpolate.SideValue.Right" />
+      <xs:enumeration value="IntersectionConnectors" />
+      <xs:enumeration value="MaxCandidates" />
+      <xs:enumeration value="MaxPerfectCandidates" />
+      <xs:enumeration value="SearchTimeout" />
+      <xs:enumeration value="NumThreads" />
+      <!-- low level properties dealing with dictionary, index and storage parameters -->
+      <xs:enumeration value="UseManagedDictionaries" />
+      <xs:enumeration value="StorageSegmentSizeKB" />
+      <xs:enumeration value="L2DictCompStorageBlockSize" />
+      <xs:enumeration value="RelCompStorageBlockSize" />
+      <xs:enumeration value="RevRelCompStorageBlockSize" />
+      <xs:enumeration value="ShapeBlockSize" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="property_name_type">
+    <xs:union memberTypes="xs:Name std_property_name_type" />
+  </xs:simpleType>
+
+
+  <xs:complexType name="propertyset_type">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="prop">
+        <xs:complexType mixed="true">
+          <xs:attribute name="name" type="property_name_type" use="required" />
+          <xs:attribute name="type" type="data_type" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="prop_list">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="value">
+              <xs:complexType mixed="true">
+                <xs:attribute name="type" type="data_type" use="optional" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="name" type="property_name_type" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="method_type">
+    <xs:sequence>
+      <xs:element name="init_properties" minOccurs="0" maxOccurs="unbounded" type="propertyset_type"/>
+      <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded" >
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice>
+              <xs:element name="value" minOccurs="0" maxOccurs="1" type="value_type"/>
+              <xs:element name="field_value" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="ref" type="xs:NCName" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="component_value" minOccurs="0" maxOccurs="1" type="component_value_type" />
+              <xs:element name="search_value" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="ref" type="xs:NCName" use="required" />
+                  <xs:attribute name="original_values" type="xs:boolean" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="method" type="method_type" minOccurs="0" maxOccurs="1"/>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ref" type="xs:NCName" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="fmt_method_type">
+    <xs:complexContent>
+      <xs:extension base="method_type">
+        <xs:attribute name="pre_separator" type="xs:string" use="optional" />
+        <xs:attribute name="nulls" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="format_type ">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="value" minOccurs="0" maxOccurs="1">
+          <xs:complexType mixed="true">
+            <xs:attribute name="pre_separator" type="xs:string" use="optional" />
+            <xs:attribute name="nulls" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="field_value" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="ref" type="xs:NCName" use="optional" />
+            <xs:attribute name="pre_separator" type="xs:string" use="optional" />
+            <xs:attribute name="nulls" type="xs:string" use="optional" />
+            <xs:attribute name="record" type="dot_notation_type" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="component_value">
+          <xs:complexType>
+            <xs:attribute name="component" type="component_name_type" use="required" />
+            <xs:attribute name="pre_separator" type="xs:string" use="optional" />
+            <xs:attribute name="record" type="xs:nonNegativeInteger" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <!--<xs:element name="input_value" minOccurs="0" maxOccurs="1" />-->
+        <xs:element name="method" type="fmt_method_type" minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="format_definition_type" >
+    <xs:complexContent>
+      <xs:extension base="format_type">
+        <xs:attribute name="name" type="xs:NCName" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="format_use">
+    <xs:choice>
+      <xs:element name="format" type="format_type" />
+      <xs:element name="format_ref">
+        <xs:complexType>
+          <xs:attribute name="ref" type="xs:NCName" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="grammar_result_type" mixed="true">
+    <xs:sequence minOccurs="0">
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="method" minOccurs="0" maxOccurs="1" type="method_type" />
+        <xs:element name="component_value" minOccurs="0" maxOccurs="1" type="component_value_type" />
+        <xs:element name="search_value" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="ref" type="xs:NCName" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:group ref="format_use" minOccurs="0" maxOccurs="1"></xs:group>
+    </xs:sequence>
+    <xs:attribute name="tag" type="grammar_result_tag_type" use="optional" />
+    <xs:attribute name="type" type="data_type" use="optional" />
+  </xs:complexType>
+  
+  <xs:complexType name="scoring_method_type">
+    <xs:sequence>
+      <xs:element name="init_properties" minOccurs="0" maxOccurs="unbounded" type="propertyset_type"/>
+      <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded" >
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice>
+              <xs:element name="value" minOccurs="0" maxOccurs="1" type="value_type" />
+              <xs:element name="field_value" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="ref" type="xs:NCName" use="required" />
+                  <xs:attribute name="component" type="xs:NCName" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="input_value" minOccurs="0" maxOccurs="1" />
+              <xs:element name="method" type="method_type" minOccurs="0" maxOccurs="1" />
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ref" type="xs:NCName" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="calculated_field_type" mixed="true">
+    <xs:sequence>
+      <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+      <xs:choice>
+        <xs:element name="value" minOccurs="0" maxOccurs="1" type="value_type"/>
+        <xs:element name="field_value" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="ref" type="xs:NCName" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="method" type="method_type" minOccurs="0" maxOccurs="1"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="base_ref" type="xs:NCName" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="locator_input_type">
+    <xs:sequence>
+      <xs:element name="caption">
+        <xs:annotation>
+          <xs:documentation>The display label for the input field. This string can be localized.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute ref="xml:lang" use="optional" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="std_elt" minOccurs="0" maxOccurs="unbounded" >
+        <xs:annotation>
+          <xs:documentation>Not yet supported. Reserved for future use. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+          <xs:attribute name="standard" type ="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="recognized_name" maxOccurs="unbounded" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The preferred field names that can be recognized in the input address table.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="length" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="required" type="xs:boolean" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="default_locator_input_type">
+    <xs:sequence>
+      <xs:element name="caption">
+        <xs:annotation>
+          <xs:documentation>The display label for the default input field. This string can be localized.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute ref="xml:lang" use="optional" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="std_elt" minOccurs="0" maxOccurs="unbounded" >
+        <xs:annotation>
+          <xs:documentation>Not yet supported. Reserved for future use. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+          <xs:attribute name="standard" type ="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="recognized_name" maxOccurs="unbounded" type="xs:string" >
+        <xs:annotation>
+          <xs:documentation>The preferred field names that may be used in the input address table.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="grammar_ref" type="xs:NCName" use="required" />
+    <xs:attribute name="length" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:simpleType name="component_name_type">
+    <xs:union memberTypes="xs:NCName std_component_name_type std_component_score_name_type" />
+  </xs:simpleType>
+
+  <xs:simpleType name="std_component_name_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Match_addr" />
+      <xs:enumeration value="Shape" />
+      <xs:enumeration value="X" />
+      <xs:enumeration value="Y" />
+      <xs:enumeration value="Z" />
+      <xs:enumeration value="Score" />
+      <xs:enumeration value="Status" />
+      <xs:enumeration value="Pct_along" />
+      <xs:enumeration value="Addr_type" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="component_score_name_type">
+    <xs:union memberTypes="generic_component_score_name_type std_component_score_name_type" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="generic_component_score_name_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="component_score\.[A-Za-z_]+[0-9A-Za-z_]*" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="std_component_score_name_type">
+    <xs:restriction base="generic_component_score_name_type">
+      <xs:enumeration value="component_score.House" />
+      <xs:enumeration value="component_score.prefix" />
+      <xs:enumeration value="component_score.pretype" />
+      <xs:enumeration value="component_score.StName" />
+      <xs:enumeration value="component_score.suftype" />
+      <xs:enumeration value="component_score.suffix" />
+      <xs:enumeration value="component_score.City" />
+      <xs:enumeration value="component_score.State" />
+      <xs:enumeration value="component_score.ZIP5" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="output_type">
+    <xs:sequence>
+      <xs:group ref="format_use" minOccurs="0" maxOccurs="1"></xs:group>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="optional" />
+    <xs:attribute name="alias" type="xs:string" use="optional" />
+    <xs:attribute name="ref" type="xs:NCName" use="optional" />
+    <xs:attribute name="component" type="component_name_type" use="optional">
+      <xs:annotation><xs:documentation>Specifies name of candidate component to be returned in this field. Built-in component names are: "Match_addr", "Shape", "X", "Y", "Z", "Score", "Status", "Pct_along", "Addr_type". Custom result functions can define other components.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="type" type="output_data_type" use="optional" />
+    <xs:attribute name="decimal_digits" type="decimal_digits_type">
+      <xs:annotation>
+        <xs:documentation>Set number of decimal digits to round the output value to. Applies to values of 'float' data type.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="spatial_ref_string">
+      <xs:annotation>
+        <xs:documentation>Defines output spatial reference of the locator using a projection string (in *.prj file format). Spatial reference of the locator's original reference data is used by default. Note: make sure to use "&amp;quot;" notation for the double quote characters</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="length" type="xs:integer" use="optional" />
+    <xs:attribute name="record" type="xs:nonNegativeInteger" use="optional" />
+    <xs:attribute name="batch_mode" type="xs:boolean" use="optional">
+      <xs:annotation><xs:documentation>If false, the field will not be present in the result of IAddressGeocoding::MatchAddress() methods (i.e. Batch match). Default value: true.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="candidate_mode" type="xs:boolean" use="optional">
+      <xs:annotation><xs:documentation>If false, the field will not be present in the result of IAddressGeocoding::GetAddressCandidates() and IntersectionGeocoding::GetIntersectionCandidates() methods (i.e. Find Dialog). Default value: true.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="selector" type="xs:NCName" use="optional">
+      <xs:annotation><xs:documentation>If specified, the output field can be turned on or off using specified boolean property. Example: X and Y output fields turned on or off according to the value of the WriteXYCoordFields property.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="outputs_type">
+    <xs:sequence>
+      <xs:element name="output" minOccurs="1" maxOccurs="unbounded" type="output_type">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reverse_geocoding_method_type">
+    <xs:sequence>
+      <xs:element name="method" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence> 
+            <xs:element name="init_properties" minOccurs="0" maxOccurs="unbounded" type="propertyset_type"/>
+          </xs:sequence>
+          <xs:attribute name="ref" type="xs:NCName" />
+        </xs:complexType>
+      </xs:element>
+      <xs:group ref="format_use" minOccurs="0" maxOccurs="1" />
+      <xs:element name="outputs" minOccurs="1" maxOccurs="1" type="outputs_type" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" />
+    <xs:attribute name="use_spatial_search" type="xs:boolean" />
+    <xs:attribute name="selector" type="xs:NCName">
+      <xs:annotation>
+        <xs:documentation>If specified, the reverse geocoding method can be turned on or off using specified boolean property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:complexType name="reverse_geocoding_type">
+    <xs:sequence>
+      <xs:element name="reverse_geocoding_method" minOccurs="1" maxOccurs="unbounded" type="reverse_geocoding_method_type" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="standardization_section_type">
+    <xs:sequence>
+      <xs:element name="build" minOccurs="1" maxOccurs="1" type="compatible_standardization_process_type" />
+      <xs:element name="tool" minOccurs="1" maxOccurs="1" type="compatible_standardization_process_type" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="standardization_process_type">
+    <xs:sequence>
+      <xs:element name="use_standard_values" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="format" type="format_type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="grammar" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alt" minOccurs="0" maxOccurs="unbounded" type="grammar_alt_type" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="outputs" minOccurs="1" maxOccurs="1" type="outputs_type"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="compatible_standardization_process_type">
+    <xs:complexContent>
+      <xs:extension base="standardization_process_type">
+        <xs:sequence>
+          <xs:element name="multipart" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="part" minOccurs="1" maxOccurs="unbounded" type="standardization_process_type"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="formatted_desc_type" mixed="true">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="br" minOccurs="1" maxOccurs="1" type="formatted_text_type" />
+        <xs:element name="span" minOccurs="1" maxOccurs="1" type="formatted_text_type" />
+        <xs:element name="div" minOccurs="1" maxOccurs="1" type="formatted_text_type" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="formatted_text_type">
+    <xs:complexContent>
+      <xs:extension base="formatted_desc_type">
+        <xs:attribute name="class" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+    <xs:complexType name="plugin_type">
+    <xs:sequence>
+      <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="formatted_desc_type" />
+      <xs:choice>
+        <xs:element minOccurs="1" maxOccurs="1" name="com_progid" type="com_progid" />
+        <xs:element minOccurs="1" maxOccurs="1" name="com_clsid" type="com_guid" />
+        <xs:element minOccurs="1" maxOccurs="1" name="builtin" type="builtin_plugin_type" />
+        <xs:element minOccurs="1" maxOccurs="1" name="script">
+          <xs:annotation>
+            <xs:documentation>Currently unsupported</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="line" minOccurs="0" maxOccurs="unbounded" type="code_line" />
+            </xs:sequence>
+            <xs:attribute name="type" type="plugin_script_type" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="mapping" mixed="true">
+    <xs:sequence>
+      <xs:element name="field" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="ref" type="xs:NCName" use="required" />
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="multiline_section_type">
+    <xs:sequence>
+      <xs:element name="multiline_def" minOccurs="0" maxOccurs="unbounded"  type="grammar_multiline_def_type">
+        <xs:annotation>
+          <xs:documentation>The defintion for the multiline input component.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="section_type">
+    <xs:sequence>
+      <xs:element name="alias_list" minOccurs="0" maxOccurs="unbounded" type="alias_list_type" />
+      <xs:element name="def" minOccurs="0" maxOccurs="unbounded" type="grammar_def_type" />
+    </xs:sequence>
+    <xs:attribute name="desc" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="abstract_data_source_type">
+    <xs:sequence>
+      <xs:element name="mapping_schema" minOccurs="1" maxOccurs ="1">
+        <xs:complexType>
+          <xs:attribute name="ref" type="xs:NCName" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="queries">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="query" minOccurs ="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="tables" minOccurs ="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="table" minOccurs ="1" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:attribute name="role_ref" type="xs:NCName"/>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="fields">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="field" minOccurs ="1" maxOccurs="unbounded">
+                          <xs:complexType mixed="true">
+                            <xs:attribute name="ref" type="xs:NCName" use="required" />
+                            <!--xs:attribute name="table_role_ref" type="xs:NCName" use="required" /-->
+                            <xs:attribute name="field_role_ref" type="xs:NCName" use="required" />
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="join_clause" minOccurs="0" maxOccurs="1" type="whereclauseproto_type" />
+                  <xs:element name="selection_clause" minOccurs="0" maxOccurs="1" type="whereclauseproto_type" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="type" type="data_source_type_type" />
+  </xs:complexType>
+
+  <xs:simpleType name="spell_sensitivity_value_type">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="spell_cost_value_type">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0." />
+      <xs:maxInclusive value="1." />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="spell_type_value_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="simple" />
+      <xs:enumeration value="group" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="character_equivalency_table_entry_type">
+    <xs:attribute name="from" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="to" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="spell" type="spell_sensitivity_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies maximum value of the SpellingSensitivity property that this entry will be active at. Default is 100, i.e. if "spell" attibute is not specified, the entry is active for any value of SpellingSensitivity property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cost" type="spell_cost_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Cost (penalty) of applying character equivalency or ignoring a noise character.</xs:documentation>
+        <xs:documentation>Value ranges from 0 to 1. Default is 0.0.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="type" type="spell_type_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Default is 'simple'.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="casesensitive" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation>Default is false (i.e. not case sensitive).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bidirectional" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation>Default is true (i.e. "from" characters equivalent to "to" characters and vice versa).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="double_chars_type">
+    <xs:annotation>
+      <xs:documentation>List of characters that have a different cost of mismatch in case of duplicate characters. By default, when two characters are used instead of one ("mm" versus "m", for instance), the mismatch cost is 0.5 of the default character mismatch cost.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="list" type="xs:string" use="required"/>
+    <xs:attribute name="cost" type="spell_cost_value_type" use="optional"/>
+    <xs:attribute name="spell" type="spell_sensitivity_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies maximum value of the SpellingSensitivity property that this entry will be active at. Default is 100, i.e. if "spell" attibute is not specified, the entry is active for any value of SpellingSensitivity property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="ignore_end_chars_type">
+    <xs:annotation>
+      <xs:documentation>List of characters that can be ignored if </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="list" type="xs:string" use="required"/>
+    <xs:attribute name="cost" type="spell_cost_value_type" use="optional"/>
+    <xs:attribute name="spell" type="spell_sensitivity_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies maximum value of the SpellingSensitivity property that this entry will be active at. Default is 100, i.e. if "spell" attibute is not specified, the entry is active for any value of SpellingSensitivity property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="allowed_penalties_type">
+    <xs:annotation>
+      <xs:documentation>Penalties assigned for mismatched characters.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="list">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[0-9]+(,[0-9]+)*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="spell" type="spell_sensitivity_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies maximum value of the SpellingSensitivity property that this entry will be active at. Default is 100, i.e. if "spell" attibute is not specified, the entry is active for any value of SpellingSensitivity property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="noise_chars_type">
+    <xs:annotation>
+      <xs:documentation>Characters that are ignored by the corresponding search or match algorithm.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="list" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Default is 0.0</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cost" type="spell_cost_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Value ranges from 0 to 1. Default is 0.0.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="spell" type="spell_sensitivity_value_type" use="optional">
+      <xs:annotation>
+        <xs:documentation>Specifies maximum value of the SpellingSensitivity property that this entry will be active at. Default is 100, i.e. if "spell" attibute is not specified, the entry is active for any value of SpellingSensitivity property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:complexType name="character_equivalency_table_type">
+    <xs:annotation>
+      <xs:documentation>Defines table of equivalent or approximately equivalent characters and character sequences.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="noise_chars" type="noise_chars_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="allowed_penalties" type="allowed_penalties_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="double_chars" type="double_chars_type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="entry" type="character_equivalency_table_entry_type" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="compatible_character_equivalency_table_type">
+    <xs:annotation>
+      <xs:documentation>Defines table of equivalent or approximately equivalent characters and character sequences.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="character_equivalency_table_type">
+        <xs:sequence>
+          <xs:element name="spelling_parameters">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="noise_chars" type="noise_chars_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="allowed_penalties" type="allowed_penalties_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="double_chars" type="double_chars_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="ignore_end_chars" type="ignore_end_chars_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="entry" type="character_equivalency_table_entry_type" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="spelling_type">
+    <xs:annotation>
+      <xs:documentation>Defines language specific properties of the input text processing</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="character_equivalency_table" type="compatible_character_equivalency_table_type" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="data_source_type">
+    <xs:sequence>
+      <xs:element name="mapping_schema" minOccurs="1" maxOccurs ="1">
+        <xs:complexType>
+          <xs:attribute name="ref" type="xs:NCName" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="workspace_properties">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="factory_progid" minOccurs="1" maxOccurs ="1" type="com_progid" />
+            <xs:choice>
+              <xs:element name="path" minOccurs="0" maxOccurs ="1" />
+              <xs:element name="connection_properties">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="server" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="instance" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="dbclient" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="project_instance" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="environment" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="database" minOccurs="0" maxOccurs ="1" />
+                    <xs:element name="authentication_mode" minOccurs="0" maxOccurs="1" type="auth_mode" />
+                    <xs:element name="user" minOccurs="1" maxOccurs="1" />
+                    <xs:choice>
+                      <xs:element name="encrypted_password" minOccurs="1" maxOccurs="1" type="xs:base64Binary" />
+                      <xs:element name="password" minOccurs="1" maxOccurs="1" type="xs:string" />
+                    </xs:choice>
+                    <xs:choice>
+                      <xs:element name="transactional_version" minOccurs="0" maxOccurs="1" />
+                      <xs:element name="historical_name" minOccurs="0" maxOccurs="1" />
+                      <xs:element name="historical_timestamp" minOccurs="0" maxOccurs="1" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="queries">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="query" minOccurs ="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="tables" minOccurs ="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="table" minOccurs ="1" maxOccurs="unbounded" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="fields">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="field" minOccurs ="1" maxOccurs="unbounded">
+                          <xs:complexType mixed="true">
+                            <xs:attribute name="ref" type="xs:NCName" use="required" />
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="calculated_fields" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="calculated_field"  minOccurs="1" maxOccurs="unbounded" type="calculated_field_type" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="join_clause" minOccurs="0" maxOccurs="unbounded" type="whereclause_type" />
+                  <xs:element name="selection_clause" minOccurs="0" maxOccurs="unbounded" type="whereclause_type" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="type" type="data_source_type_type" />
+  </xs:complexType>
+
+  <xs:complexType name="locator_type">
+    <xs:sequence>
+      <xs:element name="debug" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Enables debug output to Windows debug console.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+          <xs:attribute name="report_failed_parse" use="optional" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>If true, reports failed parse attempts to Windows debug console.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="report_parse_steps" use="optional" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>If true, reports all parse steps including loop, name, outcome, depth, and text.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the locator style at the root level. Under this name, individual locator styles can be developed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="desc" minOccurs="1" maxOccurs="unbounded" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The description of the locator style. The length of the description should not be more than 63 characters including spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The ArcGIS version number that this locator style is developed and used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="revision" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The revision number of this locator style.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="revision_date" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The revision date and time of this locator style.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inputs">
+        <xs:annotation>
+          <xs:documentation>Define the input fields for the locator styles.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="default_input" minOccurs="1" maxOccurs="1" type ="default_locator_input_type">
+              <xs:annotation>
+                <xs:documentation>Define the default input field with its name, field length, and reference to the grammar. This field can be used for single line input.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="unbounded" type ="locator_input_type">
+              <xs:annotation>
+                <xs:documentation>Define the individual input field with its name and field length.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="grammar">
+        <xs:annotation>
+          <xs:documentation>Define the grammar for handling the input address.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="spelling" type="spelling_type" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="multiline_grammar" type="multiline_section_type" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Define the grammar for handling input address in multiline format.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="section" type="section_type" minOccurs="1" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="plugins">
+        <xs:annotation>
+          <xs:documentation>Define the plugin functions that can be used to process the address.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="plugin" type ="plugin_type" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="mapping_schemas" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Define the schemas for mapping the fields of the reference data to the specified locator style.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="mapping_schema" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Define the mapping schema for each individual locator style.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="desc" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation>The description of the mapping schema and will be used as a description property for the locator style.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="fields" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>Define a set of fields for the mapping schema.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="field" minOccurs="1" maxOccurs="unbounded">
+                          <xs:annotation>
+                            <xs:documentation>Define the individual field for the mapping schema.</xs:documentation>
+                          </xs:annotation>
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="desc" maxOccurs="1" type="xs:string">
+                                <xs:annotation>
+                                  <xs:documentation>Description of the field. The length should not be more than 63 characters.</xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                              <xs:element name="preferred_name" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+                                <xs:annotation>
+                                  <xs:documentation>The preferred field name that can be recognized in the reference data.</xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                              <xs:element name="scoring_method" minOccurs="0" maxOccurs="1" type="scoring_method_type" />
+                              <xs:element name="default_value" minOccurs="0" maxOccurs="1" type="xs:string">
+                                <xs:annotation>
+                                  <xs:documentation>If the field is not mapped to the reference data, the value specified as default_value is used by the locator.</xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="name" type="xs:NCName" use="required" />
+                            <xs:attribute name="type" type="data_type" use="optional" />
+                            <xs:attribute name="store" type="xs:boolean" use="optional" />
+                            <xs:attribute name="required" type="xs:boolean" use="optional" />
+                            <xs:attribute name="grammar_ref" type="xs:NCName" use="optional" />
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="virtualize_field" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="desc" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                        <xs:element name="scoring_method" minOccurs="1" maxOccurs="1" type="scoring_method_type"/>
+                      </xs:sequence>
+                      <xs:attribute name="base_ref" type="xs:NCName" use="optional" />
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="ranking" minOccurs="0" maxOccurs="1" type="ranking_definition_type"/>
+                  <xs:element name="get_geometry_method" minOccurs="0" maxOccurs="1" type="method_type"/>
+                  <xs:element name="conversions" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="conversion" minOccurs="1" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="mapping" minOccurs="1" maxOccurs="unbounded" type="calculated_field_type" />
+                              <xs:element name="output_format" minOccurs="0" maxOccurs="1">
+                                <xs:complexType mixed="true">
+                                  <xs:sequence>
+                                    <xs:element name="field_ref" minOccurs="0" maxOccurs="unbounded" type="fieldref_type" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="selection_clause" minOccurs="0" maxOccurs="unbounded" type="whereclause_type" />
+                  <xs:element name="index" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>Specify the fields that will be indexed.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="dictionary" minOccurs="0" maxOccurs="unbounded" type="dictionary_type" />
+                        <xs:element name="relationship" minOccurs="0" maxOccurs="unbounded" type="relationship_type" />
+                        <xs:element name="reverse_relationship" minOccurs="0" maxOccurs="1" type="relationship_type" />
+                      </xs:sequence>
+                      <xs:attribute name="override_base_schema" type="xs:boolean" default="false" use="optional" />
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="properties" minOccurs="0" maxOccurs="1" type="propertyset_type"/>
+                  <xs:element name="outputs" minOccurs="0" maxOccurs="1" type="outputs_type" />
+                  <xs:element name="outputs_intersection" minOccurs="0" maxOccurs="1" type="outputs_type" />
+                  <xs:element name="reverse_geocoding" minOccurs="0" maxOccurs="1" type="reverse_geocoding_type" />
+                  <xs:element name="standardization" minOccurs="0" maxOccurs="1" type="standardization_section_type" />
+                </xs:sequence>
+                <xs:attribute name="name" type="xs:NCName" use="required" />
+                <xs:attribute name="base" type="xs:NCName" use="optional" />
+                <xs:attribute name="geom_type" type="geometry_type" use="optional" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="ref_data_styles" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ref_data_style" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="name" type="xs:string" />
+                  <xs:element name="desc" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+                  <xs:element name="table_roles">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="table_role" minOccurs="1" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="display_name" minOccurs="0" maxOccurs="1" type="xs:string" />
+                              <xs:element name="desc" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+                              <xs:element name="field_roles">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="field_role" minOccurs="1" maxOccurs="unbounded">
+                                      <xs:complexType mixed="true">
+                                        <xs:sequence>
+                                          <xs:element name="display_name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                                          <xs:element name="preferred_name" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                                        </xs:sequence>
+                                        <xs:attribute name="name" type="xs:NCName"/>
+                                        <xs:attribute name="is_geometry" type="xs:boolean" use="optional" />
+                                        <xs:attribute name="required" type="xs:boolean" use="optional" />
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="name" type="xs:NCName" />
+                            <xs:attribute name="required" type="xs:boolean" use="optional"/>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="data_source" type="abstract_data_source_type"/>
+                  <xs:element minOccurs="0" maxOccurs="1" name="inputs">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="default_input" type ="default_locator_input_type" />
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="input" type ="locator_input_type" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="multiline_grammar" type="multiline_section_type" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+              </xs:complexType>
+
+              <xs:key name="table_role_key">
+                <xs:selector xpath="table_roles/table_role"  />
+                <xs:field xpath="@name"/>
+              </xs:key>
+
+              <xs:keyref name="table_role_keyref" refer="table_role_key">
+                <xs:selector xpath="data_source/queries/query/fields/field |
+                                      data_source/queries/query/fields/join_clause/field_ref |
+                                      data_source/queries/query/fields/selection_clause/field_ref" />
+                <xs:field xpath="@table_role_ref"/>
+              </xs:keyref>
+
+              <xs:key name="field_role_key">
+                <xs:selector xpath="table_roles/table_role/field_roles/field_role"  />
+                <xs:field xpath="@name"/>
+              </xs:key>
+
+              <xs:keyref name="field_role_keyref" refer="field_role_key">
+                <xs:selector xpath="data_source/queries/query/fields/field |
+                                      data_source/queries/query/join_clause/field_ref |
+                                      data_source/queries/query/selection_clause/field_ref" />
+                <xs:field xpath="@field_role_ref"/>
+              </xs:keyref>
+
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="properties" type="propertyset_type" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Global properties - take precendece over mapping_schema properties</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="output_formats" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="format_definition" type="format_definition_type" minOccurs="0" maxOccurs="unbounded">
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="data_source" minOccurs="0" maxOccurs="1" type="data_source_type" />
+
+      <xs:element name="outputs" minOccurs="0" maxOccurs="1" type="outputs_type" />
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="locators">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="include" type="include_type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="locator" type="locator_type" minOccurs="1" maxOccurs="1">
+
+          <!--
+    <xs:key name="searchcontext">
+      <xs:selector xpath="grammar/section/def/alt/elt" />
+      <xs:field xpath="@search_context"/>
+    </xs:key>
+    <xs:keyref name="searchcontextref" refer="searchcontext">
+      <xs:selector xpath="mapping_schemas/mapping_schema/outputs/output |
+                          mapping_schemas/mapping_schema/outputs/output/field_value |
+                          mapping_schemas/mapping_schema/outputs_intersection/output |
+                          mapping_schemas/mapping_schema/outputs_intersection/output/field_value" />
+      <xs:field xpath="@search_context"/>
+    </xs:keyref>
+
+    <xs:keyref name="searchcontextref1" refer="searchcontext">
+      <xs:selector xpath="grammar/section/def/elt/result/method/parameter/component_value" />
+      <xs:field xpath="@search_context"/>
+    </xs:keyref>
+    -->
+
+          <!--
+    <xs:key name="search_ctx_name">
+      <xs:selector xpath="grammar/section/def/alt/elt" />
+      <xs:field xpath="@search_context"/>
+    </xs:key>
+
+    <xs:keyref name="search_ctx_name_ref" refer="search_ctx_name">
+      <xs:selector xpath="grammar/section/def/alt/result/search_value |
+                          grammar/section/def/alt |
+                          input/grammar_elt" />
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+    -->
+
+          <xs:key name="format_name">
+            <xs:selector xpath="output_formats/format_definition" />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="format_name_ref" refer="format_name">
+            <xs:selector xpath="grammar/section/def/alt/result/format_ref |
+                          mapping_schemas/mapping_schema/reverse_geocoding/reverse_geocoding_method/outputs/output/format_ref |
+                          ref_data_styles/ref_data_style/multiline_grammar/multiline_def/alt/result/format_ref" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:key name="alias_list_name">
+            <xs:selector xpath="grammar/section/alias_list" />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="alias_list_name_ref" refer="alias_list_name">
+            <xs:selector xpath="grammar/section/def/alias_list_ref |
+                          grammar/section/alias_list/alias_list_ref" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:key name="input_name">
+            <xs:selector xpath="inputs/input" />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="input_name_ref" refer="input_name">
+            <xs:selector xpath="mapping_schemas/mapping_schema/index/dictionary" />
+            <xs:field xpath="@input_field_ref"/>
+          </xs:keyref>
+
+            
+          <xs:key name="ntname">
+            <xs:selector xpath="grammar/section/def" />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="ntref" refer="ntname">
+            <xs:selector xpath="grammar/section/def/alt/elt |
+                          grammar/section/def/alt |
+                          grammar/section/alias_list/collect_aliases |
+                          grammar/section/alias_list/alias_def/alt |
+                          grammar/section/alias_list/alias_def/alt/elt |
+                          mapping_schemas/mapping_schema/standardization/build/grammar/alt |
+                          mapping_schemas/mapping_schema/standardization/build/grammar/alt/elt |
+                          mapping_schemas/mapping_schema/standardization/tool/grammar/alt |
+                          mapping_schemas/mapping_schema/standardization/tool/grammar/alt/elt |
+                          input/grammar_elt" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:keyref name="ntref1" refer="ntname">
+            <xs:selector xpath="mapping_schemas/mapping_schema/fields/field |
+                          mapping_schemas/mapping_schema/virtualize_field/scoring_method/parameter/input_value |
+                          inputs/default_input |
+                          inputs/input"/>
+            <xs:field xpath="@grammar_ref"/>
+          </xs:keyref>
+
+          <xs:keyref name="ntref2" refer="ntname">
+            <xs:selector xpath="grammar/section/def | grammar/section/def/alt/elt" />
+            <xs:field xpath="@match_as"/>
+          </xs:keyref>
+
+          <xs:keyref name="ntref3" refer="ntname">
+            <xs:selector xpath="mapping_schemas/mapping_schema/standardization/build/outputs/output |
+                         mapping_schemas/mapping_schema/standardization/tool/outputs/output" />
+            <xs:field xpath="@component"/>
+          </xs:keyref>
+
+          <!--<xs:key name="refdatafield">
+            <xs:selector xpath="mapping_schemas/mapping_schema/fields/field"  />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="refdatafield_ref" refer="refdatafield">
+            <xs:selector xpath="mapping_schemas/mapping_schema/conversions/conversion/mapping/method/parameter/field_value |
+                          mapping_schemas/mapping_schema/conversions/conversion/mapping/field_value |
+                          mapping_schemas/mapping_schema/virtualize_field/scoring_method/parameter/field_value |
+                          mapping_schemas/mapping_schema/get_geometry_method/parameter/field_value |
+                          mapping_schemas/mapping_schema/index/relationship/field_ref |
+                          mapping_schemas/mapping_schema/index/reverse_relationship/field_ref |
+                          mapping_schemas/mapping_schema/index/dictionary |
+                          mapping_schemas/mapping_schema/selection_clause/*/field_ref |
+                          ref_data_styles/ref_data_style/data_source/queries/query/fields/field |
+                          data_source/queries/query/fields/field |
+                          data_source/queries/query/selection_clause |
+                          data_source/queries/query/join_clause" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:keyref name="refdatafield_ref1" refer="refdatafield">
+            <xs:selector xpath="mapping_schemas/mapping_schema/conversions/conversion/mapping |
+                          mapping_schemas/mapping_schema/virtualize_field |
+                          data_source/queries/query/calculated_fields/calculated_field" />
+            <xs:field xpath="@base_ref"/>
+          </xs:keyref>-->
+
+          <xs:key name="mapping_schema">
+            <xs:selector xpath="mapping_schemas/mapping_schema"  />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="mapping_schema_ref" refer="mapping_schema">
+            <xs:selector xpath="mapping_schemas/mapping_schema" />
+            <xs:field xpath="@base"/>
+          </xs:keyref>
+
+          <xs:keyref name="ms" refer="mapping_schema">
+            <xs:selector xpath="ref_data_styles/ref_data_style/data_source/mapping_schema |
+                          data_source/mapping_schema" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:key name="plugin_name">
+            <xs:selector xpath="plugins/plugin"  />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="plugin_name_ref" refer="plugin_name">
+            <xs:selector xpath="mapping_schemas/mapping_schema/get_geometry_method |
+                          mapping_schemas/mapping_schema/conversions/conversion/mapping/method |
+                          mapping_schemas/mapping_schema/virtualize_field/scoring_method |
+                          mapping_schemas/mapping_schema/reverse_geocoding/reverse_geocoding_method/method |
+                          grammar/section/def/alt/result/method" />
+            <xs:field xpath="@ref"/>
+          </xs:keyref>
+
+          <xs:key name="character_equivalency_table_name">
+            <xs:selector xpath="grammar/spelling/character_equivalency_table"  />
+            <xs:field xpath="@name"/>
+          </xs:key>
+
+          <xs:keyref name="character_equivalency_table_name_ref" refer="character_equivalency_table_name">
+            <xs:selector xpath="grammar/section/def | grammar/section/alias_list" />
+            <xs:field xpath="@character_table"/>
+          </xs:keyref>
+
+
+          <!--
+    <xs:key name="selector_property_name">
+      <xs:selector xpath="mapping_schemas/mapping_schema/properties/prop"  />
+      <xs:field xpath="@name"/>
+    </xs:key>
+
+    <xs:keyref name="selector_property_name_ref" refer="selector_property_name">
+      <xs:selector xpath="grammar/def/alt" />
+      <xs:field xpath="@selector" />
+    </xs:keyref>
+    -->
+
+          </xs:element>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
