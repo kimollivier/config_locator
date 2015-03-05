@@ -3,7 +3,7 @@
 <locators xsi:noNamespaceSchemaLocation="LocatorStyle.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <locator>
     <name>NZ Address</name>
-    <desc>Locator style for NZ addresses</desc>
+    <desc>Locator style for NZ addresses 1</desc>
     <version>10.3</version>
     <revision>$Revision$</revision>
     <revision_date>$Date$</revision_date>
@@ -21083,7 +21083,8 @@
 
         <!--This section defines the normal address format. 
         (House Number + Street Name + Optional house units such as building name, apartment number. 
-        If the sectior="supportsSubAddress", matching to house units is supported. )-->
+        If the sectior="supportsSubAddress", matching to house units is supported. )
+		Changed order for subaddress components to front for NZ-->
         <def name="NormalAddress">
           <alt selector="supportsWeightedHouseNumber">
             <elt ref="House" weight="15"/>
@@ -29405,7 +29406,7 @@
         <name>Single House Subaddress</name>
         <type>Address</type>
         <priority>6</priority>
-        <desc>US Single House with Subaddress</desc>
+        <desc>NZ Single House with Subaddress</desc>
         <table_roles>
           <table_role name="Primary">
             <display_name>Primary Table</display_name>
@@ -29867,7 +29868,7 @@
         <name>Street Name</name>
         <type>Address</type>
         <priority>3</priority>
-        <desc>US Street Name</desc>
+        <desc>NZ Street Name</desc>
         <table_roles>
           <table_role name="Primary">
             <display_name>Primary Table</display_name>
@@ -30181,7 +30182,7 @@
         <name>One Range</name>
         <type>Address</type>
         <priority>5</priority>
-        <desc>US Single Range Addresses</desc>
+        <desc>NZ Single Range Addresses</desc>
         <table_roles>
           <table_role name="Primary">
             <display_name>Primary Table</display_name>
@@ -30576,7 +30577,7 @@
         <name>Dual Ranges</name>
         <type>Address</type>
         <priority>5</priority>
-        <desc>US Dual Range Addresses</desc>
+        <desc>NZ Dual Range Addresses</desc>
         <table_roles>
           <table_role name="Primary">
             <display_name>Primary Table</display_name>
@@ -32066,8 +32067,13 @@
         <field_value ref="State" pre_separator=", "/>
         <field_value ref="ZIP" pre_separator=", "/>
       </format_definition>
+	  <!-- NZ order of sub address -->
       <format_definition name="format_normal_subaddress">
-        <field_value ref="PreAddrNum" nulls="0"/>
+		<field_value ref="BldgSubAddrType" />
+        <field_value ref="BldgSubAddrUnit" pre_separator=" "/>
+        <field_value ref="SubAddrType" pre_separator=", "/>
+        <field_value ref="SubAddrUnit" pre_separator=" "/>
+        <field_value ref="PreAddrNum" nulls="0" pre_separator=", "/>
         <field_value ref="House" pre_separator=" "/>
         <field_value ref="AddrNumSuf" pre_separator=" "/>
         <field_value ref="PreDir" pre_separator=" "/>
@@ -32075,10 +32081,7 @@
         <field_value ref="StreetName" pre_separator=" "/>
         <field_value ref="SufType" pre_separator=" "/>
         <field_value ref="SufDir" pre_separator=" "/>
-        <field_value ref="BldgSubAddrType" pre_separator=", "/>
-        <field_value ref="BldgSubAddrUnit" pre_separator=" "/>
-        <field_value ref="SubAddrType" pre_separator=", "/>
-        <field_value ref="SubAddrUnit" pre_separator=" "/>
+        
         <!--Only put the comma if the city exists-->
         <method ref="select" pre_separator="">
           <init_properties>
@@ -32143,8 +32146,13 @@
         <field_value ref="State" pre_separator=", "/>
         <field_value ref="ZIP" pre_separator=", "/>
       </format_definition>
+	  <!-- change output order for NZ -->
       <format_definition name="format_completer_US Address - Single House Subaddress">
-        <field_value ref="PreAddrNum" nulls="0"/>
+	    <field_value ref="BldgSubAddrType" />
+        <field_value ref="BldgSubAddrUnit" pre_separator=" "/>
+        <field_value ref="SubAddrType" pre_separator=", "/>
+        <field_value ref="SubAddrUnit" pre_separator=" "/>
+        <field_value ref="PreAddrNum" nulls="0" pre_separator=", "/>
         <field_value ref="House" pre_separator=" "/>
         <field_value ref="AddrNumSuf" pre_separator=" "/>
         <field_value ref="PreDir" pre_separator=" "/>
@@ -32152,10 +32160,7 @@
         <field_value ref="StreetName" pre_separator=" "/>
         <field_value ref="SufType" pre_separator=" "/>
         <field_value ref="SufDir" pre_separator=" "/>
-        <field_value ref="BldgSubAddrType" pre_separator=", "/>
-        <field_value ref="BldgSubAddrUnit" pre_separator=" "/>
-        <field_value ref="SubAddrType" pre_separator=", "/>
-        <field_value ref="SubAddrUnit" pre_separator=" "/>
+        
         <!--Only put the comma if the city exists-->
         <method ref="select" pre_separator="">
           <init_properties>
