@@ -3,7 +3,7 @@
 <locators xsi:noNamespaceSchemaLocation="LocatorStyle.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <locator>
     <name>NZ Address</name>
-    <desc>Locator style for NZ addresses 1</desc>
+    <desc>Locator style for NZ addresses C</desc>
     <version>10.3</version>
     <revision>$Revision$</revision>
     <revision_date>$Date$</revision_date>
@@ -21086,11 +21086,6 @@
         If the sectior="supportsSubAddress", matching to house units is supported. )
 		Changed order for subaddress components to front for NZ-->
         <def name="NormalAddress">
-          <alt selector="supportsWeightedHouseNumber">
-            <elt ref="House" weight="15"/>
-            <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
-            <elt ref="OptionalUnit" weight="0"/>
-          </alt>
           <alt selector="supportsSubAddress">
             <elt ref="OptPreAddrNum" weight="10"/>
             <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
@@ -21100,14 +21095,12 @@
             <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
             <elt ref="OptSubAddress" weight="10"/>
           </alt>
-          <alt fallback_score="90" selector="supportsSubAddress">
-            <elt ref="OptSubAddrUnit" weight="5" />
-            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
-            <elt ref="HouseOptSub" match_as="House" weight="15" pre_separator="optional"/>
-            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
-            <elt ref="AddrNumSuf" weight="5" pre_separator="optional"/>
+		  <alt selector="supportsWeightedHouseNumber">
+            <elt ref="House" weight="15"/>
             <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
+            <elt ref="OptionalUnit" weight="0"/>
           </alt>
+          
           <alt selector="supportsEmptyHouseNumber">
             <elt ref="_HouseNum" weight="0"/>
             <elt ref="FullStreetName" weight="100" pre_separator="required" separator_list=".,;-"/>
@@ -21117,6 +21110,14 @@
             <elt ref="EmptyHouse" weight="20"/>
             <elt ref="FullStreetName" weight="70" pre_separator="required" separator_list=".,;-"/>
             <elt ref="OptionalUnit" weight="0"/>
+          </alt>
+		  <alt fallback_score="90" selector="supportsSubAddress">
+            <elt ref="OptSubAddrUnit" weight="5" />
+            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
+            <elt ref="HouseOptSub" match_as="House" weight="15" pre_separator="optional"/>
+            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
+            <elt ref="AddrNumSuf" weight="5" pre_separator="optional"/>
+            <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
           </alt>
         </def>
 
@@ -21146,15 +21147,7 @@
             <elt ref="OptAddrNumSuf" weight="5" pre_separator="optional"/>
             <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
           </alt>
-          <alt selector="supportsSubAddress" fallback="true">
-            <elt ref="PreAddrNum" weight="5" />
-            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
-            <elt ref="HouseOptSub" match_as="House" weight="15" pre_separator="optional"/>
-            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
-            <elt ref="OptAddrNumSuf" weight="5" pre_separator="optional"/>
-            <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
-            <elt ref="OptSubAddress" weight="10"/>
-          </alt>
+          
           <alt selector="supportsWeightedHouseNumber" fallback="true">
             <elt ref="MultiLineOptionalUnitPrefix" weight="0"/>
             <elt ref="House" weight="15" pre_separator="required"/>
@@ -21166,6 +21159,15 @@
             <elt ref="House" weight="0" pre_separator="required"/>
             <elt ref="FullStreetName" weight="80" separator_list=".,;-" pre_separator="required" post_separator="required"/>
             <elt ref="OptionalUnit" weight="0"/>
+          </alt>
+		  <alt selector="supportsSubAddress" fallback="true">
+            <elt ref="PreAddrNum" weight="5" />
+            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
+            <elt ref="HouseOptSub" match_as="House" weight="15" pre_separator="optional"/>
+            <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
+            <elt ref="OptAddrNumSuf" weight="5" pre_separator="optional"/>
+            <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
+            <elt ref="OptSubAddress" weight="10"/>
           </alt>
         </def>
 
