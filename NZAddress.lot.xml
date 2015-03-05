@@ -3,7 +3,7 @@
 <locators xsi:noNamespaceSchemaLocation="LocatorStyle.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <locator>
     <name>NZ Address</name>
-    <desc>Locator style for NZ addresses C</desc>
+    <desc>Locator style for NZ addresses D</desc>
     <version>10.3</version>
     <revision>$Revision$</revision>
     <revision_date>$Date$</revision_date>
@@ -21087,13 +21087,14 @@
 		Changed order for subaddress components to front for NZ-->
         <def name="NormalAddress">
           <alt selector="supportsSubAddress">
+		    <elt ref="OptSubAddress" weight="10"/>
             <elt ref="OptPreAddrNum" weight="10"/>
             <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
             <elt ref="HouseOptSub" match_as="House" weight="15" pre_separator="optional"/>
             <elt ref="OptSeparators" weight="0" pre_separator="optional"/>
             <elt ref="AddrNumSuf" weight="5" pre_separator="optional"/>
             <elt ref="FullStreetName" weight="60" pre_separator="required" separator_list=".,;-"/>
-            <elt ref="OptSubAddress" weight="10"/>
+            
           </alt>
 		  <alt selector="supportsWeightedHouseNumber">
             <elt ref="House" weight="15"/>
