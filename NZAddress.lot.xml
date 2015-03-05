@@ -3,7 +3,7 @@
 <locators xsi:noNamespaceSchemaLocation="LocatorStyle.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <locator>
     <name>NZ Address</name>
-    <desc>Locator style for NZ addresses E</desc>
+    <desc>Locator style for NZ addresses F</desc>
     <version>10.3</version>
     <revision>$Revision$</revision>
     <revision_date>$Date$</revision_date>
@@ -25258,12 +25258,12 @@
           <alt/>
         </def>
 
-        <!--ZIP Code parameters (ZIP 9, ZIP5 and ZIP4)-->
+        <!--ZIP Code parameters (ZIP 9, ZIP5 and ZIP4) NZ only zip4-->
 
         <def name="GenZIP">
           <alt>
-            <elt ref="ZIP5" post_separator="required"/>
-            <elt ref="OptPlus4" pre_separator="optional"/>
+            <elt ref="ZIP4" post_separator="required"/>
+            <!-- <elt ref="OptPlus4" pre_separator="optional"/> -->
           </alt>
         </def>
         <def name="ZIP5">
@@ -25487,11 +25487,16 @@
             <elt ref="Hyphen" pre_separator="optional" post_separator="optional"/>
             <elt ref="alpha" post_separator="optional"/>
           </alt>
+		  <alt fallback="true"> <!-- added kmo -->
+            <elt ref="alpha"/>
+            <elt ref="Hyphen" pre_separator="optional" post_separator="optional"/>
+            <elt ref="number" post_separator="optional"/>
+          </alt>
           <alt fallback="true">
             <elt ref="number" post_separator="none"/>
             <elt ref="alpha" pre_separator="none"/>
             <elt ref="OptAlpha" pre_separator="none"/>
-            <elt ref="OptAlpha" pre_separator="none"/>
+            <!-- <elt ref="OptAlpha" pre_separator="none"/> meanless duplicate kmo -->
             <elt ref="OptNumber" pre_separator="none" post_separator="required"/>
           </alt>
           <alt fallback="true">
@@ -29351,10 +29356,16 @@
           <alt>United States of America</alt>
           <alt>America</alt>
         </def>
+		<def name="nz" is_alias_list="true">
+          <alt>NZ</alt>
+          <alt>New Zealand</alt>
+          <alt>N Zealand</alt>
+          <alt>Aotearoa</alt>
+        </def>
         <def name="Countryname" optimize="true">
           <alt/>
           <alt fallback="true">
-            <elt ref="usa"/>
+            <elt ref="nz"/>
           </alt>
         </def>
       </section>
@@ -30395,11 +30406,14 @@
           </field>
           <field name="ID">
             <desc>Unique ID field</desc>
+			<preferred_name>SAD_ID</preferred_name>
+			<preferred_name>DP_ID</preferred_name>
+			<preferred_name>DELIVERY_POINT_ID</preferred_name>
           </field>
           <field name="House" grammar_ref="House">
             <desc>House number</desc>
             <preferred_name>HN</preferred_name>
-            <preferred_name>ADDRESS</preferred_name>
+            <preferred_name>HOUSE_NUMBER</preferred_name>
           </field>
           <field name="PreDir" grammar_ref="prefix">
             <desc>Prefix Direction</desc>
@@ -30438,6 +30452,8 @@
             <desc>Suffix Direction</desc>
             <preferred_name>SUFDIR</preferred_name>
             <preferred_name>SUFFIX_DIR</preferred_name>
+			<preferred_name>SUFFIX_DIRECTION</preferred_name>
+			<preferred_name>STREET_DIRECTION</preferred_name>
           </field>
           <field name="CityPrefixDir" grammar_ref="CityPrefixDir" required="false">
             <desc>City or Place Directional Prefix (i.e. West Hollywood)</desc>
@@ -30446,9 +30462,10 @@
             <desc>City or Place Prefix</desc>
           </field>
           <field name="City" grammar_ref="City">
-            <desc>City</desc>
-            <preferred_name>CITY</preferred_name>
-            <preferred_name>CITY_NAME</preferred_name>
+            <desc>Suburb or Locality</desc>
+            <preferred_name>SUBURB</preferred_name>
+            <preferred_name>SUBURB_NAME</preferred_name>
+			<preferred_name>SUBURB_4TH</preferred_name>
             <scoring_method ref="calculate_score">
               <init_properties>
                 <prop name="CharacterTable">scoring</prop>
@@ -30462,17 +30479,18 @@
             </scoring_method>
           </field>
           <field name="CitySuffixType" grammar_ref="CitySuffixType" required="false">
-            <desc>City or Place Suffix</desc>
+            <desc>Suburb or Place Suffix</desc>
           </field>
           <field name="ZIP" grammar_ref="ZIP5">
-            <desc>USPS 5 digit Zip Code</desc>
-            <preferred_name>ZIP</preferred_name>
-            <preferred_name>ZIPCODE</preferred_name>
+            <desc>Postcode</desc>
+            <preferred_name>POSTCODE</preferred_name>
+            <preferred_name>PCODE</preferred_name>
           </field>
           <field name="State" grammar_ref="State">
-            <desc>State</desc>
-            <preferred_name>STATE</preferred_name>
-            <preferred_name>ST_ABBR</preferred_name>
+            <desc>Region or Mailtown</desc>
+            <preferred_name>REGION</preferred_name>
+            <preferred_name>TOWN_CITY_MAILTOWN</preferred_name>
+			<preferred_name>MAJOR_NAME</preferred_name>
           </field>
           <field name="Rank" required="false">
             <desc>Specifies rank (primary or secondary) for alternate records of the same geometry</desc>
@@ -30500,7 +30518,10 @@
             <desc>Street ID</desc>
           </field>
           <field name="Meshblock" required="false">
-            <desc>Additional field</desc>
+            <desc>Meshblock</desc>
+			<preferred_name>MESHBLOCK</preferred_name>
+			<preferred_name>MB</preferred_name>
+			<preferred_name>MMESHBLOCK_ID</preferred_name>
           </field>
         </fields>
         <selection_clause dbms="default">
@@ -30599,16 +30620,16 @@
           <prop name="StorageSegmentSizeKB" type="Int">128</prop>
           <prop name="supportsEmptyHouseNumber" type="Boolean">false</prop>
           <prop name="supportsWeightedHouseNumber" type="Boolean">true</prop>
-          <prop name="supportsSubAddress" type="Boolean">false</prop>
+          <prop name="supportsSubAddress" type="Boolean">true</prop>
           <prop name="supportsHouseNoUnit" type="Boolean">true</prop>
           <prop name="supportsIntersections">false</prop>
-          <prop name="supportsOptionalZone" type="Boolean">false</prop>
+          <prop name="supportsOptionalZone" type="Boolean">true</prop>
           <prop name="StoreStandardizedRefData">true</prop>
           <prop name="RuntimeMemoryLimit" type="Int">512000000</prop>
           <prop_list name="BatchPresortInputs">
             <value>State</value>
-            <value>ZIP</value>
             <value>City</value>
+			<value>ZIP</value>
           </prop_list>
         </properties>
         <outputs>
@@ -30906,8 +30927,8 @@
           <prop name="RuntimeMemoryLimit" type="Int">512000000</prop>
           <prop_list name="BatchPresortInputs">
             <value>State</value>
-            <value>ZIP</value>
             <value>City</value>
+			<value>ZIP</value>
           </prop_list>
         </properties>
         <outputs>
