@@ -3,7 +3,7 @@
 <locators xsi:noNamespaceSchemaLocation="LocatorStyle.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <locator>
     <name>NZ Address</name>
-    <desc>Locator style for NZ addresses D</desc>
+    <desc>Locator style for NZ addresses E</desc>
     <version>10.3</version>
     <revision>$Revision$</revision>
     <revision_date>$Date$</revision_date>
@@ -30,7 +30,7 @@
         <recognized_name>Customer_Address</recognized_name>
       </default_input>
       <input name="Street" length="100" required="true">
-        <caption xml:lang="en">Street or Intersection</caption>
+        <caption xml:lang="en">House and Street or Intersection</caption>
         <recognized_name>Address</recognized_name>
         <recognized_name>Street</recognized_name>
         <recognized_name>Streets</recognized_name>
@@ -45,27 +45,23 @@
         <recognized_name>Customer_Address</recognized_name>
       </input>
       <input name="City" length="40" required="false">
-        <caption xml:lang="en">City or Placename</caption>
-        <recognized_name>City</recognized_name>
-        <recognized_name>Cityname</recognized_name>
-        <recognized_name>City_name</recognized_name>
-        <recognized_name>City_nm</recognized_name>
+        <caption xml:lang="en">Suburb or Placename</caption>
+        <recognized_name>Suburb</recognized_name>
+        <recognized_name>Locality</recognized_name>
+        <recognized_name>Suburb_name</recognized_name>
         <recognized_name>Place_nm</recognized_name>
         <recognized_name>Placename</recognized_name>
-        <recognized_name>City16</recognized_name>
+        <recognized_name>Suburb</recognized_name>
       </input>
       <input name="State" length="20" required="false">
-        <caption xml:lang="en">State</caption>
-        <recognized_name>State</recognized_name>
-        <recognized_name>State_Abbr</recognized_name>
-        <recognized_name>State_nm</recognized_name>
-        <recognized_name>State_name</recognized_name>
+        <caption xml:lang="en">Region</caption>
+        <recognized_name>Region</recognized_name>
+        <recognized_name>Mailtown</recognized_name>
+        <recognized_name>City</recognized_name>
+        <recognized_name>Region_name</recognized_name>
       </input>
       <input name="ZIP" length="10" required="false">
-        <caption xml:lang="en">ZIP Code</caption>
-        <recognized_name>ZIP</recognized_name>
-        <recognized_name>ZIPCode</recognized_name>
-        <recognized_name>ZIP5</recognized_name>
+        <caption xml:lang="en">Postcode</caption>
         <recognized_name>Postcode</recognized_name>
         <recognized_name>Code</recognized_name>
         <recognized_name>PC</recognized_name>
@@ -73,7 +69,7 @@
         <recognized_name>Postalcode</recognized_name>
         <recognized_name>Postal code</recognized_name>
         <recognized_name>Postal_code</recognized_name>
-        <recognized_name>Postal_cod</recognized_name>
+        <recognized_name>Postcode</recognized_name>
       </input>
     </inputs>
     <grammar>
@@ -5696,1583 +5692,5374 @@
             <alt>999TH</alt>
           </alias_def>
         </alias_list>
-        <alias_list name="CityAliases">
-          <alias_def>
-            <alt ref="west"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="east"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="north"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="south"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ak"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_al"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ar"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_az"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ca"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_co"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ct"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_dc"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_de"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_fl"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ga"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_hi"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ia"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_id"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_il"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_in"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ks"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ky"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_la"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ma"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_md"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_me"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_mi"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_mn"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_mo"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ms"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_mt"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nc"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nd"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ne"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nh"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nj"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nm"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_nv"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ny"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_oh"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ok"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_or"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_pa"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ri"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_sc"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_sd"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_tn"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_tx"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_ut"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_va"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_vt"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_wa"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_wi"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_wv"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="st_wy"/>
-          </alias_def>
-          <alias_def>
-            <alt>achash</alt>
-            <alt>achsah</alt>
-          </alias_def>
-          <alias_def>
-            <alt>acres</alt>
-            <alt>acr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>air force base</alt>
-            <alt>afb</alt>
-            <alt>arb</alt>
-            <alt>afs</alt>
-            <alt>afa</alt>
-            <alt>a f b</alt>
-            <alt>a r b</alt>
-            <alt>a f s</alt>
-            <alt>a f a</alt>
-            <alt>air reserve base</alt>
-            <alt>air force station</alt>
-            <alt>air force academy</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Albuquerque</alt>
-            <alt>Albu</alt>
-          </alias_def>
-          <alias_def>
-            <alt>alexander</alt>
-            <alt>alex</alt>
-          </alias_def>
-          <alias_def>
-            <!-- T110 -->
-            <alt>alexandria bay</alt>
-            <alt>alex bay</alt>
-          </alias_def>
-          <alias_def>
-            <alt>annex</alt>
-            <alt>annx</alt>
-          </alias_def>
-          <alias_def>
-            <alt>austin</alt>
-            <alt>atx</alt>
-          </alias_def>
-          <alias_def>
-            <alt>atlanta</alt>
-            <alt>atl</alt>
-            <!--<alt>hotlanta</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>Atlantic</alt>
-            <alt>AC</alt>
-            <alt>A C</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Bay Lake</alt>
-            <alt>Lake Buena Vista</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_bch"/>
-          </alias_def>
-          <alias_def>
-            <alt>bench</alt>
-            <alt>bnch</alt>
-          </alias_def>
-          <alias_def>
-            <alt>biddeford</alt>
-            <alt>biddeford pl</alt>
-            <alt>biddeford pool</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_brg"/>
-          </alias_def>
-          <alias_def>
-            <alt>blooming</alt>
-            <alt>blmng</alt>
-          </alias_def>
-          <alias_def>
-            <alt>boston</alt>
-            <alt>beantown</alt>
-          </alias_def>
-          <alias_def>
-            <alt>bayoo</alt>
-            <alt>byu</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_bnd"/>
-          </alias_def>
-          <alias_def>
-            <alt>bluff</alt>
-            <alt>blf</alt>
-          </alias_def>
-          <alias_def>
-            <alt>boisie</alt>
-            <alt>bosie</alt>
-          </alias_def>
-          <alias_def>
-            <alt>branch</alt>
-            <alt>br</alt>
-          </alias_def>
-          <alias_def>
-            <alt>brook</alt>
-            <alt>brk</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Cazenovia</alt>
-            <alt>Caz</alt>
-          </alias_def>
-          <alias_def>
-            <alt>cp</alt>
-            <alt>camp</alt>
-            <alt>cmp</alt>
-          </alias_def>
-          <alias_def>
-            <alt>census designated place</alt>
-            <alt>cdp</alt>
-          </alias_def>
-          <alias_def>
-            <alt>chignik lagoon</alt>
-            <alt>chignik</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_cpe"/>
-          </alias_def>
-          <alias_def>
-            <alt>cemetery</alt>
-            <alt>cmtry</alt>
-            <alt>cmtery</alt>
-          </alias_def>
-          <alias_def>
-            <alt>channel</alt>
-            <alt>chnnel</alt>
-          </alias_def>
-          <alias_def>
-            <alt>chicago</alt>
-            <alt>chgo</alt>
-            <!--<alt>chi town</alt>
-            <alt>chi-town</alt>
-            <alt>chitown</alt>
-            <alt>windy city</alt>
-            <alt>second city</alt>
-            <alt>the windy city</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt ref="_church"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_ctr"/>
-          </alias_def>
-          <alias_def>
-            <alt>cliff</alt>
-            <alt>clf</alt>
-          </alias_def>
-          <alias_def>
-            <alt>cliffs</alt>
-            <alt>clfs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>complex</alt>
-            <alt>cmplex</alt>
-          </alias_def>
-          <alias_def>
-            <alt>corner</alt>
-            <alt>cor</alt>
-          </alias_def>
-          <alias_def>
-            <alt>corners</alt>
-            <alt>cors</alt>
-          </alias_def>
-          <alias_def>
-            <alt>cottonwood</alt>
-            <alt>cottonwd</alt>
-          </alias_def>
-          <alias_def>
-            <alt>cove</alt>
-            <alt>cv</alt>
-          </alias_def>
-          <alias_def>
-            <alt>coves</alt>
-            <alt>cvs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>country</alt>
-            <alt>cntry</alt>
-          </alias_def>
-          <alias_def>
-            <alt>creek</alt>
-            <alt>ck</alt>
-            <alt>cr</alt>
-            <alt>crk</alt>
-          </alias_def>
-          <alias_def>
-            <alt>cross roads</alt>
-            <alt>crs rds</alt>
-            <alt>crossrds</alt>
-            <alt>crossroads</alt>
-          </alias_def>
-          <alias_def>
-            <alt>crossing</alt>
-            <alt>xing</alt>
-            <alt>crsing</alt>
-            <alt>crssng</alt>
-            <alt>crssing</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_cyn"/>
-          </alias_def>
-          <alias_def>
-            <alt>carmel by the sea</alt>
-            <alt>carmel</alt>
-            <alt>carmel by the</alt>
-            <alt>carmel by sea</alt>
-            <alt>carmel-by-the-sea</alt>
-          </alias_def>
-          <alias_def>
-            <alt>central</alt>
-            <alt>cntrl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Cleveland</alt>
-            <alt>Cleve</alt>
-          </alias_def>
-          <alias_def>
-            <alt>community</alt>
-            <alt>comm</alt>
-          </alias_def>
-          <alias_def>
-            <alt>colonel</alt>
-            <alt>col</alt>
-          </alias_def>
-          <alias_def>
-            <alt>court</alt>
-            <alt>ct</alt>
-            <alt>crt</alt>
-          </alias_def>
-          <alias_def>
-            <!-- T111 -->
-            <alt>croton-on-hudson</alt>
-            <alt>croton on hudson</alt>
-            <alt>croton hudson</alt>
-          </alias_def>
-          <alias_def>
-            <alt>croix</alt>
-            <alt>crx</alt>
-          </alias_def>
-          <alias_def>
-            <alt>dallas fort worth</alt>
-            <alt>dfw</alt>
-          </alias_def>
-          <alias_def>
-            <alt>denver</alt>
-            <!--<alt>mile high city</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>depot</alt>
-            <alt>dep</alt>
-            <alt>dept</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Des Moines</alt>
-            <alt>Damoyn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>detroit</alt>
-            <!--<alt>motown</alt>
-           <alt>motor city</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>divide</alt>
-            <alt>div</alt>
-          </alias_def>
-          <alias_def>
-            <alt>dominguez</alt>
-            <alt>dmngz</alt>
-          </alias_def>
-          <alias_def>
-            <alt>estates</alt>
-            <alt>est</alt>
-            <alt>ests</alt>
-            <alt>estate</alt>
-          </alias_def>
-          <alias_def>
-            <alt>executive</alt>
-            <alt>exec</alt>
-          </alias_def>
-          <alias_def>
-            <alt>fairview</alt>
-            <alt>fairvw</alt>
-          </alias_def>
-          <alias_def>
-            <alt>felipe</alt>
-            <alt>felpe</alt>
-          </alias_def>
-          <alias_def>
-            <alt>flagstone</alt>
-            <alt>flagstn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>farm</alt>
-            <alt>fm</alt>
-          </alias_def>
-          <alias_def>
-            <alt>falls</alt>
-            <alt>fls</alt>
-          </alias_def>
-          <alias_def>
-            <alt>feasterville</alt>
-            <alt>feastervl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>ferry</alt>
-            <alt>fry</alt>
-            <alt>frry</alt>
-          </alias_def>
-          <alias_def>
-            <alt>flat</alt>
-            <alt>flt</alt>
-          </alias_def>
-          <alias_def>
-            <alt>flats</alt>
-            <alt>flts</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_frst"/>
-          </alias_def>
-          <alias_def>
-            <alt>forge</alt>
-            <alt>frg</alt>
-            <alt>forg</alt>
-          </alias_def>
-          <alias_def>
-            <alt>fork</alt>
-            <alt>frk</alt>
-          </alias_def>
-          <alias_def>
-            <alt>forks</alt>
-            <alt>frks</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_ft"/>
-          </alias_def>
-          <alias_def>
-            <alt>Fort Lauderdale</alt>
-            <alt>FL</alt>
-          </alias_def>
-          <alias_def>
-            <alt>fox</alt>
-            <alt>fx</alt>
-          </alias_def>
-          <alias_def>
-            <alt>great</alt>
-            <alt>gt</alt>
-          </alias_def>
-          <alias_def>
-            <alt>garden</alt>
-            <alt>gdn</alt>
-            <alt>grdn</alt>
-            <alt>grden</alt>
-          </alias_def>
-          <alias_def>
-            <alt>gardens</alt>
-            <alt>gdns</alt>
-            <alt>grdns</alt>
-          </alias_def>
-          <alias_def>
-            <alt>george bush</alt>
-            <alt>bush</alt>
-            <alt>geo bush</alt>
-          </alias_def>
-          <alias_def>
-            <alt>george washington</alt>
-            <alt>washington</alt>
-            <alt>g washington</alt>
-            <alt>geo washington</alt>
-          </alias_def>
-          <alias_def>
-            <alt>golden</alt>
-            <alt>gldn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>glen</alt>
-            <alt>gln</alt>
-          </alias_def>
-          <alias_def>
-            <alt>glens</alt>
-            <alt>glns</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_grn"/>
-          </alias_def>
-          <alias_def>
-            <alt>greens</alt>
-            <alt>grns</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_grv"/>
-          </alias_def>
-          <alias_def>
-            <alt>groves</alt>
-            <alt>grvs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>gap</alt>
-            <alt>gp</alt>
-          </alias_def>
-          <alias_def>
-            <alt>glacier</alt>
-            <alt>glcr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>golf course</alt>
-            <alt>glf crse</alt>
-          </alias_def>
-          <alias_def>
-            <alt>hache</alt>
-            <alt>hch</alt>
-          </alias_def>
-          <alias_def>
-            <alt>highland</alt>
-            <alt>hl</alt>
-            <alt>hghlnds</alt>
-            <alt>highlands</alt>
-          </alias_def>
-          <alias_def>
-            <alt>hallandale beach</alt>
-            <alt>hallandale</alt>
-          </alias_def>
-          <alias_def>
-            <alt>harbor</alt>
-            <alt>hbr</alt>
-            <alt>hbrs</alt>
-            <alt>harbs</alt>
-            <alt>harb</alt>
-            <alt>hrbr</alt>
-            <alt>harbr</alt>
-            <alt>hrbor</alt>
-            <alt>harbrs</alt>
-            <alt>hrbors</alt>
-            <alt>harbour</alt>
-            <alt>harbors</alt>
-            <alt>harbours</alt>
-          </alias_def>
-          <alias_def>
-            <alt>haven</alt>
-            <alt>hvn</alt>
-            <alt>havn</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_hts"/>
-          </alias_def>
-          <alias_def>
-            <alt>high</alt>
-            <alt>hi</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_hl"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_hls"/>
-          </alias_def>
-          <alias_def>
-            <alt>hollow</alt>
-            <alt>hllw</alt>
-            <alt>holw</alt>
-            <alt>holws</alt>
-            <alt>hollows</alt>
-          </alias_def>
-          <alias_def>
-            <alt>house</alt>
-            <alt>hs</alt>
-            <alt>hse</alt>
-          </alias_def>
-          <alias_def>
-            <alt>houston</alt>
-            <alt>hou</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Independence</alt>
-            <alt>Indep</alt>
-          </alias_def>
-          <alias_def>
-            <alt>industrial</alt>
-            <alt>ind</alt>
-            <alt>industrl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>indianapolis</alt>
-            <alt>indpls</alt>
-            <alt>indpolis</alt>
-            <alt>indianapoils</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_inlt"/>
-          </alias_def>
-          <alias_def>
-            <alt>international</alt>
-            <alt>int</alt>
-            <alt>intl</alt>
-            <alt>internatl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>institute</alt>
-            <alt>ins</alt>
-            <alt>inst</alt>
-          </alias_def>
-          <alias_def>
-            <alt>inver grove heights</alt>
-            <alt>inver grove</alt>
-          </alias_def>
-          <alias_def>
-            <alt>island</alt>
-            <alt>is</alt>
-            <alt>isle</alt>
-            <alt>islnd</alt>
-          </alias_def>
-          <alias_def>
-            <alt>islands</alt>
-            <alt>islnds</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_jct"/>
-          </alias_def>
-          <alias_def>
-            <alt>junctions</alt>
-            <alt>jcts</alt>
-            <alt>jctns</alt>
-          </alias_def>
-          <alias_def>
-            <alt>juan</alt>
-            <alt>jn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Kansas</alt>
-            <alt>KC</alt>
-            <alt>K C</alt>
-          </alias_def>
-          <alias_def>
-            <alt>key</alt>
-            <alt>ky</alt>
-          </alias_def>
-          <alias_def>
-            <alt>keys</alt>
-            <alt>kys</alt>
-          </alias_def>
-          <alias_def>
-            <alt>kingfish</alt>
-            <alt>kngfsh</alt>
-          </alias_def>
-          <alias_def>
-            <alt>knoll</alt>
-            <alt>knl</alt>
-            <alt>knol</alt>
-          </alias_def>
-          <alias_def>
-            <alt>knolls</alt>
-            <alt>knls</alt>
-          </alias_def>
-          <alias_def>
-            <alt>canada flintridge</alt>
-            <alt>canada</alt>
-          </alias_def>
-          <alias_def>
-            <alt>levee</alt>
-            <alt>lvee</alt>
-          </alias_def>
-          <alias_def>
-            <alt>library</alt>
-            <alt>lib</alt>
-          </alias_def>
-          <alias_def>
-            <alt>locality</alt>
-            <alt>loc</alt>
-          </alias_def>
-          <alias_def>
-            <alt>los angeles</alt>
-            <alt>la</alt>
-            <alt>l a</alt>
-            <alt>ls angls</alt>
-          </alias_def>
-          <alias_def>
-            <alt>laguna</alt>
-            <alt>laguana</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_lk"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_lks"/>
-          </alias_def>
-          <alias_def>
-            <alt>landing</alt>
-            <alt>lndg</alt>
-            <alt>lndng</alt>
-          </alias_def>
-          <alias_def>
-            <alt>las vegas</alt>
-            <alt>lv</alt>
-            <alt>nlv</alt>
-            <alt>vegas</alt>
-            <!--<alt>sin city</alt>
-            <alt>lost wages</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>ls</alt>
-            <alt>los</alt>
-            <alt>las</alt>
-          </alias_def>
-          <alias_def>
-            <alt>location</alt>
-            <alt>loctn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>abraham lincoln</alt>
-            <alt>lincoln</alt>
-            <alt>abe lincoln</alt>
-            <alt>a lincoln</alt>
-          </alias_def>
-          <alias_def>
-            <alt>lodge</alt>
-            <alt>ldg</alt>
-            <alt>ldge</alt>
-            <alt>lodg</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_loop"/>
-          </alias_def>
-          <alias_def>
-            <alt>lower</alt>
-            <alt>lwr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>glendale luke</alt>
-            <alt>luke</alt>
-          </alias_def>
-          <alias_def>
-            <alt>mac</alt>
-            <alt>mc</alt>
-          </alias_def>
-          <alias_def>
-            <alt>margarita</alt>
-            <alt>marg</alt>
-          </alias_def>
-          <alias_def>
-            <alt>mariottsville</alt>
-            <alt>mac</alt>
-            <alt>mariottsvl</alt>
-            <alt>mariotts ville</alt>
-          </alias_def>
-          <alias_def>
-            <alt>george meade</alt>
-            <alt>meade</alt>
-          </alias_def>
-          <alias_def>
-            <alt>meadow</alt>
-            <alt>mdw</alt>
-          </alias_def>
-          <alias_def>
-            <alt>meadows</alt>
-            <alt>mdws</alt>
-            <alt>medows</alt>
-          </alias_def>
-          <alias_def>
-            <alt>medical</alt>
-            <alt>medcl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>mile</alt>
-            <alt>mi</alt>
-            <alt>mil</alt>
-          </alias_def>
-          <alias_def>
-            <alt>miami</alt>
-            <!--<alt>magic city</alt>
-            <alt>the magic city</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>Minneapolis</alt>
-            <alt>Mpls</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_msn"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_mls"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_mnr"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_mt"/>
-            <alt ref="_mtn"/>
-            <alt ref="_mtns"/>
-          </alias_def>
-          <alias_def>
-            <alt>morningside</alt>
-            <alt>mrngside</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_natl"/>
-          </alias_def>
-          <alias_def>
-            <alt>new orleans</alt>
-            <alt>no</alt>
-            <alt>n o</alt>
-            <alt>nawlins</alt>
-            <!--<alt>big easy</alt>
-            <alt>the big easy</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>new york city</alt>
-            <alt>new york</alt>
-            <alt>ny</alt>
-            <alt>nyc</alt>
-            <!--<alt>big apple</alt>-->
-          </alias_def>
-          <alias_def>
-            <alt>norwood young america</alt>
-            <alt>nya</alt>
-          </alias_def>
-          <alias_def>
-            <alt>newport</alt>
-            <alt>new prt</alt>
-          </alias_def>
-          <alias_def>
-            <alt>noridge</alt>
-            <alt>norridge</alt>
-          </alias_def>
-          <alias_def>
-            <alt>obispo</alt>
-            <alt>obspo</alt>
-          </alias_def>
-          <alias_def>
-            <alt>of</alt>
-            <alt>de</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Oklahoma</alt>
-            <alt>Okla</alt>
-            <alt>Okc</alt>
-            <alt>OK</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Ontario</alt>
-            <alt>ONT</alt>
-          </alias_def>
-          <alias_def>
-            <alt>orchard</alt>
-            <alt>orch</alt>
-            <alt>orchrd</alt>
-          </alias_def>
-          <alias_def>
-            <alt>oilfield</alt>
-            <alt>oil fld</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pacific</alt>
-            <alt>pcfic</alt>
-          </alias_def>
-          <alias_def>
-            <alt>padre island</alt>
-            <alt>pid</alt>
-          </alias_def>
-          <alias_def>
-            <alt>palisades</alt>
-            <alt>palads</alt>
-            <alt>plsds</alt>
-          </alias_def>
-          <alias_def>
-            <alt>palm</alt>
-            <alt>plms</alt>
-            <alt>palms</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Palm Springs</alt>
-            <alt>PS</alt>
-          </alias_def>
-          <alias_def>
-            <alt>palos</alt>
-            <alt>pls</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_park"/>
-          </alias_def>
-          <alias_def>
-            <alt>parker</alt>
-            <alt>prkr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>peninsula</alt>
-            <alt>pnsla</alt>
-          </alias_def>
-          <alias_def>
-            <alt>petersburg</alt>
-            <alt>pete</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Philadelphia</alt>
-            <alt>Phil</alt>
-            <alt>Phila</alt>
-            <alt>Philly</alt>
-          </alias_def>
-          <alias_def>
-            <alt>phoenix</alt>
-            <alt>phx</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pines</alt>
-            <alt>pnes</alt>
-          </alias_def>
-          <alias_def>
-            <alt>place</alt>
-            <alt>pl</alt>
-            <alt>palos</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_plnt"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_pln"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_plns"/>
-          </alias_def>
-          <alias_def>
-            <alt>pleasant</alt>
-            <alt>pleas</alt>
-            <alt>plsnt</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pleasantview</alt>
-            <alt>pleasntvw</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pompano</alt>
-            <alt>pmpno</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_pt"/>
-          </alias_def>
-          <alias_def>
-            <alt>pointe</alt>
-            <alt>pte</alt>
-          </alias_def>
-          <alias_def>
-            <alt>points</alt>
-            <alt>pts</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_prt"/>
-          </alias_def>
-          <alias_def>
-            <alt>prarie</alt>
-            <alt>pr</alt>
-            <alt>prr</alt>
-            <alt>prairie</alt>
-          </alias_def>
-          <alias_def>
-            <alt>preserve</alt>
-            <alt>presrv</alt>
-          </alias_def>
-          <alias_def>
-            <alt>prince</alt>
-            <alt>prnc</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pueblo</alt>
-            <alt>pblo</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_rch"/>
-          </alias_def>
-          <alias_def>
-            <alt>Rancho Cucamonga</alt>
-            <alt>Rancho</alt>
-            <alt>RC</alt>
-            <alt>Cucamonga</alt>
-            <alt>Alta Loma</alt>
-            <alt>Etiwanda</alt>
-          </alias_def>
-          <alias_def>
-            <alt>reservation</alt>
-            <alt>res</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_rdg"/>
-          </alias_def>
-          <alias_def>
-            <alt>ridges</alt>
-            <alt>rdgs</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_riv"/>
-          </alias_def>
-          <alias_def>
-            <alt>rogers</alt>
-            <alt>rodgers</alt>
-          </alias_def>
-          <alias_def>
-            <alt>rolls</alt>
-            <alt>rls</alt>
-          </alias_def>
-          <alias_def>
-            <alt>range</alt>
-            <alt>rnge</alt>
-          </alias_def>
-          <alias_def>
-            <alt>research</alt>
-            <alt>resrch</alt>
-          </alias_def>
-          <alias_def>
-            <alt>reservoir</alt>
-            <alt>resvr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>roads</alt>
-            <alt>rds</alt>
-          </alias_def>
-          <alias_def>
-            <alt>san</alt>
-            <alt>sn</alt>
-            <alt>sta</alt>
-            <alt>santo</alt>
-            <alt>santa</alt>
-          </alias_def>
-          <alias_def>
-            <alt>sawmill</alt>
-            <alt>sawml</alt>
-          </alias_def>
-          <alias_def>
-            <alt>shoal</alt>
-            <alt>shl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>shawnee mission</alt>
-            <alt>shawnee</alt>
-          </alias_def>
-          <alias_def>
-            <alt>shoals</alt>
-            <alt>shls</alt>
-          </alias_def>
-          <alias_def>
-            <alt>shore</alt>
-            <alt>shr</alt>
-            <alt>shoar</alt>
-          </alias_def>
-          <alias_def>
-            <alt>shores</alt>
-            <alt>shrs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>salt lake city</alt>
-            <alt>slc</alt>
-            <alt>salt lake</alt>
-          </alias_def>
-          <alias_def>
-            <alt>springfield</alt>
-            <alt>springfld</alt>
-          </alias_def>
-          <alias_def>
-            <alt>speedway</alt>
-            <alt>spdwy</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_spg"/>
-            <alt ref="_spgs"/>
-          </alias_def>
-          <alias_def>
-            <alt>st</alt>
-            <alt>saint</alt>
-            <alt>snt</alt>
-            <alt>sainte</alt>
-          </alias_def>
-          <alias_def>
-            <alt>san francisco</alt>
-            <alt>san fran</alt>
-            <alt>sf</alt>
-            <alt>s f</alt>
-            <alt>frisco</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_sta"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_stt"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_smt"/>
-          </alias_def>
-          <alias_def>
-            <alt>scenic</alt>
-            <alt>scnic</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Schenectady</alt>
-            <alt>Schen</alt>
-          </alias_def>
-          <alias_def>
-            <alt>stuart</alt>
-            <alt>stewart</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Syracuse</alt>
-            <alt>Syr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>temple</alt>
-            <alt>templ</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_ter"/>
-          </alias_def>
-          <alias_def>
-            <!-- T112 -->
-            <alt>thousand</alt>
-            <alt>1000</alt>
-          </alias_def>
-          <alias_def>
-            <alt>tierra</alt>
-            <alt>tira</alt>
-          </alias_def>
-          <alias_def>
-            <alt>townhouse</alt>
-            <alt>twnhse</alt>
-            <alt>twnhouse</alt>
-          </alias_def>
-          <alias_def>
-            <alt>triangle</alt>
-            <alt>trngle</alt>
-          </alias_def>
-          <alias_def>
-            <alt>trevose</alt>
-            <alt>trvs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>tucson</alt>
-            <alt>tsn</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_twp"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_tower"/>
-          </alias_def>
-          <alias_def>
-            <alt ref="_univ"/>
-          </alias_def>
-          <alias_def>
-            <alt>upper</alt>
-            <alt>up</alt>
-          </alias_def>
-          <alias_def>
-            <alt>urbana</alt>
-            <alt>urb</alt>
-          </alias_def>
-          <alias_def>
-            <alt>united states</alt>
-            <alt>us</alt>
-          </alias_def>
-          <alias_def>
-            <alt>united states air force</alt>
-            <alt>usaf</alt>
-            <alt>air force</alt>
-            <alt>us air force</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_vly"/>
-          </alias_def>
-          <alias_def>
-            <alt>verde</alt>
-            <alt>verdes</alt>
-            <alt>vrds</alt>
-          </alias_def>
-          <alias_def>
-            <alt>villa</alt>
-            <alt>vla</alt>
-            <alt>vil</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_vlg"/>
-          </alias_def>
-          <alias_def>
-            <alt>villages</alt>
-            <alt>vlgs</alt>
-          </alias_def>
-          <alias_def>
-            <alt>ville</alt>
-            <alt>vl</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Virginia</alt>
-            <alt>VB</alt>
-          </alias_def>
-          <alias_def>
-            <alt ref="_vis"/>
-          </alias_def>
-          <alias_def>
-            <!--<alt>washington</alt>-->
-            <alt>washington dc</alt>
-            <alt>DC</alt>
-          </alias_def>
-          <alias_def>
-            <alt>winnebago</alt>
-            <alt>winebego</alt>
-          </alias_def>
-          <alias_def>
-            <alt>willow</alt>
-            <alt>wlw</alt>
-          </alias_def>
-          <alias_def>
-            <alt>wood</alt>
-            <alt>wd</alt>
-            <alt>wds</alt>
-            <alt>woods</alt>
-          </alias_def>
-          <alias_def>
-            <alt>yuma proving ground</alt>
-            <alt>laguna afb</alt>
-          </alias_def>
-          <alias_def>
-            <alt>Yucaipa</alt>
-            <alt>Oak Glen</alt>
-          </alias_def>
-        </alias_list>
-        <alias_list name="StateAliases">
-          <alias_def>
-            <alt>alaska</alt>
-            <alt>ak</alt>
-            <alt>alas</alt>
-          </alias_def>
-          <alias_def>
-            <alt>alabama</alt>
-            <alt>al</alt>
-            <alt>ala</alt>
-          </alias_def>
-          <alias_def>
-            <alt>arkansas</alt>
-            <alt>ar</alt>
-            <alt>ark</alt>
-          </alias_def>
-          <alias_def>
-            <alt>arizona</alt>
-            <alt>az</alt>
-            <alt>ariz</alt>
-          </alias_def>
-          <alias_def>
-            <alt>california</alt>
-            <alt>ca</alt>
-            <alt>cal</alt>
-            <alt>calif</alt>
-            <alt>calfornia</alt>
-          </alias_def>
-          <alias_def>
-            <alt>colorado</alt>
-            <alt>co</alt>
-            <alt>col</alt>
-            <alt>colo</alt>
-          </alias_def>
-          <alias_def>
-            <alt>connecticut</alt>
-            <alt>ct</alt>
-            <alt>conn</alt>
-            <alt>conneticut</alt>
-          </alias_def>
-          <alias_def>
-            <alt>district of columbia</alt>
-            <alt>dc</alt>
-          </alias_def>
-          <alias_def>
-            <alt>delaware</alt>
-            <alt>de</alt>
-            <alt>del</alt>
-          </alias_def>
-          <alias_def>
-            <alt>florida</alt>
-            <alt>fl</alt>
-            <alt>fla</alt>
-            <alt>flor</alt>
-          </alias_def>
-          <alias_def>
-            <alt>georgia</alt>
-            <alt>ga</alt>
-          </alias_def>
-          <alias_def>
-            <alt>hawaii</alt>
-            <alt>hi</alt>
-          </alias_def>
-          <alias_def>
-            <alt>iowa</alt>
-            <alt>ia</alt>
-          </alias_def>
-          <alias_def>
-            <alt>idaho</alt>
-            <alt>id</alt>
-            <alt>ida</alt>
-          </alias_def>
-          <alias_def>
-            <alt>illinois</alt>
-            <alt>il</alt>
-            <alt>ill</alt>
-            <alt>ills</alt>
-          </alias_def>
-          <alias_def>
-            <alt>indiana</alt>
-            <alt>in</alt>
-            <alt>ind</alt>
-          </alias_def>
-          <alias_def>
-            <alt>kansas</alt>
-            <alt>ks</alt>
-            <alt>kan</alt>
-            <alt>kans</alt>
-          </alias_def>
-          <alias_def>
-            <alt>kentucky</alt>
-            <alt>ky</alt>
-            <alt>ken</alt>
-            <alt>kent</alt>
-          </alias_def>
-          <alias_def>
-            <alt>louisiana</alt>
-            <alt>la</alt>
-          </alias_def>
-          <alias_def>
-            <alt>massachusetts</alt>
-            <alt>ma</alt>
-            <alt>mass</alt>
-          </alias_def>
-          <alias_def>
-            <alt>maryland</alt>
-            <alt>md</alt>
-          </alias_def>
-          <alias_def>
-            <alt>maine</alt>
-            <alt>me</alt>
-          </alias_def>
-          <alias_def>
-            <alt>mi</alt>
-            <alt>mich</alt>
-            <alt>michigan</alt>
-          </alias_def>
-          <alias_def>
-            <alt>minnesota</alt>
-            <alt>mn</alt>
-            <alt>minn</alt>
-          </alias_def>
-          <alias_def>
-            <alt>missouri</alt>
-            <alt>mo</alt>
-          </alias_def>
-          <alias_def>
-            <alt>mississippi</alt>
-            <alt>ms</alt>
-            <alt>miss</alt>
-          </alias_def>
-          <alias_def>
-            <alt>montana</alt>
-            <alt>mt</alt>
-            <alt>mont</alt>
-          </alias_def>
-          <alias_def>
-            <alt>north carolina</alt>
-            <alt>nc</alt>
-            <alt>n.c</alt>
-            <alt>n.c</alt>
-            <alt>n car</alt>
-            <alt>n carolina</alt>
-            <alt>no carolina</alt>
-          </alias_def>
-          <alias_def>
-            <alt>north dakota</alt>
-            <alt>nd</alt>
-            <alt>n.d</alt>
-            <alt>n.d.</alt>
-            <alt>n dak</alt>
-            <alt>n dakota</alt>
-            <alt>no dakota</alt>
-          </alias_def>
-          <alias_def>
-            <alt>nebraska</alt>
-            <alt>ne</alt>
-            <alt>neb</alt>
-            <alt>nebr</alt>
-          </alias_def>
-          <alias_def>
-            <alt>new hampshire</alt>
-            <alt>nh</alt>
-            <alt>n.h</alt>
-            <alt>n.h.</alt>
-          </alias_def>
-          <alias_def>
-            <alt>new jersey</alt>
-            <alt>nj</alt>
-          </alias_def>
-          <alias_def>
-            <alt>new mexico</alt>
-            <alt>nm</alt>
-            <alt>n.m</alt>
-            <alt>n.m.</alt>
-            <alt>nmex</alt>
-            <alt>new m</alt>
-          </alias_def>
-          <alias_def>
-            <alt>nevada</alt>
-            <alt>nv</alt>
-            <alt>nev</alt>
-          </alias_def>
-          <alias_def>
-            <alt>new york</alt>
-            <alt>ny</alt>
-            <alt>n.y</alt>
-            <alt>n.y.</alt>
-            <alt>nyork</alt>
-          </alias_def>
-          <alias_def>
-            <alt>ohio</alt>
-            <alt>oh</alt>
-            <alt>o</alt>
-          </alias_def>
-          <alias_def>
-            <alt>oklahoma</alt>
-            <alt>ok</alt>
-            <alt>okla</alt>
-          </alias_def>
-          <alias_def>
-            <alt>oregon</alt>
-            <alt>or</alt>
-            <alt>ore</alt>
-            <alt>oreg</alt>
-          </alias_def>
-          <alias_def>
-            <alt>pennsylvania</alt>
-            <alt>pa</alt>
-            <alt>pen</alt>
-            <alt>penn</alt>
-            <alt>penna</alt>
-          </alias_def>
-          <alias_def>
-            <alt>puerto rico</alt>
-            <alt>pr</alt>
-            <alt>puerto</alt>
-          </alias_def>
-          <alias_def>
-            <alt>rhode island</alt>
-            <alt>ri</alt>
-          </alias_def>
-          <alias_def>
-            <alt>south carolina</alt>
-            <alt>sc</alt>
-            <alt>s.c</alt>
-            <alt>s.c.</alt>
-            <alt>s car</alt>
-            <alt>s carolina</alt>
-            <alt>so carolina</alt>
-          </alias_def>
-          <alias_def>
-            <alt>south dakota</alt>
-            <alt>sd</alt>
-            <alt>s.d</alt>
-            <alt>s.d.</alt>
-            <alt>s dak</alt>
-            <alt>s dakota</alt>
-            <alt>so dakota</alt>
-          </alias_def>
-          <alias_def>
-            <alt>tennessee</alt>
-            <alt>tn</alt>
-            <alt>tenn</alt>
-            <alt>tennesee</alt>
-          </alias_def>
-          <alias_def>
-            <alt>texas</alt>
-            <alt>tx</alt>
-            <alt>tex</alt>
-          </alias_def>
-          <alias_def>
-            <alt>utah</alt>
-            <alt>ut</alt>
-          </alias_def>
-          <alias_def>
-            <alt>virginia</alt>
-            <alt>va</alt>
-          </alias_def>
-          <alias_def>
-            <alt>vermont</alt>
-            <alt>vt</alt>
-          </alias_def>
-          <alias_def>
-            <alt>washington</alt>
-            <alt>wa</alt>
-            <alt>wash</alt>
-          </alias_def>
-          <alias_def>
-            <alt>wisconsin</alt>
-            <alt>wi</alt>
-            <alt>wis</alt>
-            <alt>wisc</alt>
-          </alias_def>
-          <alias_def>
-            <alt>west virginia</alt>
-            <alt>wv</alt>
-            <alt>w.v</alt>
-            <alt>w.v.</alt>
-            <alt>w va</alt>
-            <alt>w virginia</alt>
-          </alias_def>
-          <alias_def>
-            <alt>wyoming</alt>
-            <alt>wy</alt>
-            <alt>wyo</alt>
-          </alias_def>
-        </alias_list>
-        <alias_list name="ZIPAliases">
+ <!-- September 2014 -->
+<alias_list name="CityAliases">
+ <alias_def loc_id="100001">
+  <alt>Alexandra</alt>
+  <alt>Bruces Hill</alt>
+  <alt>Chatto Creek</alt>
+  <alt>Clyde</alt>
+  <alt>Dry Gully</alt>
+  <alt>Earnscleugh</alt>
+  <alt>Fruitlands</alt>
+  <alt>Galloway</alt>
+  <alt>Letts Gully</alt>
+  <alt>Little Valley</alt>
+  <alt>Springvale</alt>
+ </alias_def>
+ <alias_def loc_id="100003">
+  <alt>Ashburton</alt>
+  <alt>Alford Forest</alt>
+  <alt>Anama</alt>
+  <alt>Ashburton Forks</alt>
+  <alt>Ashton</alt>
+  <alt>Broadfield</alt>
+  <alt>Buccleugh</alt>
+  <alt>Bushside</alt>
+  <alt>Carew</alt>
+  <alt>Chertsey</alt>
+  <alt>Coldstream</alt>
+  <alt>Dromore</alt>
+  <alt>Ealing</alt>
+  <alt>Eiffelton</alt>
+  <alt>Elgin</alt>
+  <alt>Fairfield</alt>
+  <alt>Fairton</alt>
+  <alt>Flemington</alt>
+  <alt>Greenstreet</alt>
+  <alt>Hakatere</alt>
+  <alt>Hinds</alt>
+  <alt>Huntingdon</alt>
+  <alt>Kyle</alt>
+  <alt>Laghmor</alt>
+  <alt>Lake Hood</alt>
+  <alt>Lauriston</alt>
+  <alt>Lismore</alt>
+  <alt>Lowcliffe</alt>
+  <alt>Lyndhurst</alt>
+  <alt>Lynnford</alt>
+  <alt>Maronan</alt>
+  <alt>Mayfield</alt>
+  <alt>Methven</alt>
+  <alt>Mitcham</alt>
+  <alt>Montalto</alt>
+  <alt>Mt Somers</alt>
+  <alt>Netherby</alt>
+  <alt>Newlands</alt>
+  <alt>Pendarves</alt>
+  <alt>Rangataua</alt>
+  <alt>Riverside</alt>
+  <alt>Ruapuna</alt>
+  <alt>Seafield</alt>
+  <alt>Sherwood</alt>
+  <alt>Smithfield</alt>
+  <alt>Springburn</alt>
+  <alt>Staveley</alt>
+  <alt>Tinwald</alt>
+  <alt>Valetta</alt>
+  <alt>Wakanui</alt>
+  <alt>Waterton</alt>
+  <alt>Westerfield</alt>
+  <alt>Wheatstone</alt>
+  <alt>Willowby</alt>
+  <alt>Winchmore</alt>
+  <alt>Windermere</alt>
+  <alt>Winslow</alt>
+ </alias_def>
+ <alias_def loc_id="100005">
+  <alt>Balclutha</alt>
+  <alt>Awamangu</alt>
+  <alt>Barnego</alt>
+  <alt>Benhar</alt>
+  <alt>Clifton</alt>
+  <alt>Clydevale</alt>
+  <alt>Glenomaru</alt>
+  <alt>Greenfield</alt>
+  <alt>Hillend</alt>
+  <alt>Kaihiku</alt>
+  <alt>Kaka Point</alt>
+  <alt>Kakapuaka</alt>
+  <alt>Otanomomo</alt>
+  <alt>Otekura</alt>
+  <alt>Paretai</alt>
+  <alt>Port Molyneux</alt>
+  <alt>Puerua</alt>
+  <alt>Pukeawa</alt>
+  <alt>Pukepito</alt>
+  <alt>Puketi</alt>
+  <alt>Romahapa</alt>
+  <alt>Rongahere</alt>
+  <alt>Stony Creek</alt>
+  <alt>Te Houka</alt>
+  <alt>Toiro</alt>
+  <alt>Tuapeka Mouth</alt>
+  <alt>Waitepeka</alt>
+  <alt>Warepa</alt>
+  <alt>Wharetoa</alt>
+ </alias_def>
+ <alias_def loc_id="100006">
+  <alt>Blenheim</alt>
+  <alt>Awatere Valley</alt>
+  <alt>Benhopai</alt>
+  <alt>Brancott</alt>
+  <alt>Cowslip Valley</alt>
+  <alt>Dashwood</alt>
+  <alt>Dillons Point</alt>
+  <alt>Eversley</alt>
+  <alt>Fairhall</alt>
+  <alt>Grovetown</alt>
+  <alt>Hillersden</alt>
+  <alt>Kaituna</alt>
+  <alt>Koromiko</alt>
+  <alt>Lower Awatere</alt>
+  <alt>Lower Dashwood</alt>
+  <alt>Marlborough Ridge</alt>
+  <alt>Marshlands</alt>
+  <alt>Mt Pleasant</alt>
+  <alt>Northbank</alt>
+  <alt>Omaka</alt>
+  <alt>Omaka Valley</alt>
+  <alt>Onamalutu</alt>
+  <alt>Rapaura</alt>
+  <alt>Rarangi</alt>
+  <alt>Redwood Pass</alt>
+  <alt>Renwick</alt>
+  <alt>Riverlands</alt>
+  <alt>Seddon</alt>
+  <alt>Spring Creek</alt>
+  <alt>Springlands</alt>
+  <alt>St Andrews</alt>
+  <alt>Tuamarina</alt>
+  <alt>Waihopai Terraces</alt>
+  <alt>Waihopai Valley</alt>
+  <alt>Wairau Valley</alt>
+  <alt>Wharehine</alt>
+  <alt>Woodbourne</alt>
+ </alias_def>
+ <alias_def loc_id="100008">
+  <alt>Brightwater</alt>
+  <alt>Hope</alt>
+  <alt>Waimea West</alt>
+  <alt>Wairoa Gorge</alt>
+ </alias_def>
+ <alias_def loc_id="100009">
+  <alt>Bulls</alt>
+  <alt>Flock House</alt>
+  <alt>Scotts Ferry</alt>
+ </alias_def>
+ <alias_def loc_id="100010">
+  <alt>Cambridge</alt>
+  <alt>Bruntwood</alt>
+  <alt>Fencourt</alt>
+  <alt>French Pass</alt>
+  <alt>Hairini</alt>
+  <alt>Hautapu</alt>
+  <alt>Horahora</alt>
+  <alt>Kairangi</alt>
+  <alt>Karapiro</alt>
+  <alt>Matangi</alt>
+  <alt>Maungatautari</alt>
+  <alt>Monavale</alt>
+  <alt>Pukekura</alt>
+  <alt>Pukerimu</alt>
+  <alt>Roto-o-rangi</alt>
+  <alt>Tamahere</alt>
+  <alt>Taotaoroa</alt>
+  <alt>Te Miro</alt>
+  <alt>Whitehall</alt>
+ </alias_def>
+ <alias_def loc_id="100011">
+  <alt>Carterton</alt>
+  <alt>Ahiaruhe</alt>
+  <alt>Belvedere</alt>
+  <alt>Carrington</alt>
+  <alt>Clareville</alt>
+  <alt>Dalefield</alt>
+  <alt>Gladstone</alt>
+  <alt>Kokotau</alt>
+  <alt>Matarawa</alt>
+  <alt>Parkvale</alt>
+  <alt>Ponatahi</alt>
+  <alt>Taratahi</alt>
+  <alt>Waihakeke</alt>
+  <alt>Waingawa</alt>
+ </alias_def>
+ <alias_def loc_id="100012">
+  <alt>Christchurch</alt>
+  <alt>Greenpark Huts</alt>
+  <alt>Halswell</alt>
+  <alt>Lansdowne</alt>
+  <alt>Lincoln</alt>
+  <alt>Melton Park</alt>
+  <alt>Rolleston</alt>
+  <alt>Russley</alt>
+  <alt>Selwyn Huts</alt>
+  <alt>Templeton</alt>
+  <alt>Yaldhurst</alt>
+ </alias_def>
+ <alias_def loc_id="100013">
+  <alt>Coromandel</alt>
+  <alt>Amodeo Bay</alt>
+  <alt>Colville</alt>
+  <alt>Kennedy Bay</alt>
+  <alt>Kikowhakarere Bay</alt>
+  <alt>Koputauaki Bay</alt>
+  <alt>Little Bay</alt>
+  <alt>Little Sandy Bay</alt>
+  <alt>Long Bay</alt>
+  <alt>Manaia</alt>
+  <alt>Oamaru Bay</alt>
+  <alt>Papaaroha</alt>
+  <alt>Port Charles</alt>
+  <alt>Port Jackson</alt>
+  <alt>Sandy Bay</alt>
+  <alt>Stony Bay</alt>
+  <alt>Te Kouma</alt>
+  <alt>Te Rerenga</alt>
+  <alt>Tuateawa</alt>
+  <alt>Waikawau</alt>
+  <alt>Waitete Bay</alt>
+  <alt>Whangapoua</alt>
+  <alt>Wyuna Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100014">
+  <alt>Cromwell</alt>
+  <alt>Bannockburn</alt>
+  <alt>Bendigo</alt>
+  <alt>Lowburn</alt>
+  <alt>Luggate</alt>
+  <alt>Pisa Mooring</alt>
+  <alt>Queensberry</alt>
+  <alt>Ripponvale</alt>
+  <alt>Tarras</alt>
+ </alias_def>
+ <alias_def loc_id="100015">
+  <alt>Dannevirke</alt>
+  <alt>Awariki</alt>
+  <alt>Awatoto</alt>
+  <alt>Coonoor</alt>
+  <alt>Glengarry</alt>
+  <alt>Herbertville</alt>
+  <alt>Horoeka</alt>
+  <alt>Kaitoke</alt>
+  <alt>Kiritaki</alt>
+  <alt>Kokopu</alt>
+  <alt>Maharahara</alt>
+  <alt>Makotuku</alt>
+  <alt>Mangahei</alt>
+  <alt>Mangatoro</alt>
+  <alt>Matamau</alt>
+  <alt>Motea</alt>
+  <alt>Ngapaeruru</alt>
+  <alt>Oringi</alt>
+  <alt>Ormondville</alt>
+  <alt>Otope</alt>
+  <alt>Piripiri</alt>
+  <alt>Pukehinau</alt>
+  <alt>Raumati</alt>
+  <alt>Ruaroa</alt>
+  <alt>Tahoraiti</alt>
+  <alt>Tataramoa</alt>
+  <alt>Te Rehunga</alt>
+  <alt>Te Uri</alt>
+  <alt>Ti Tree Point</alt>
+  <alt>Timber Bay</alt>
+  <alt>Tiratu</alt>
+  <alt>Toi Flat</alt>
+  <alt>Umutaoroa</alt>
+  <alt>Waiaruhe</alt>
+  <alt>Waitahora</alt>
+  <alt>Weber</alt>
+  <alt>Whetukura</alt>
+  <alt>Wimbledon</alt>
+ </alias_def>
+ <alias_def loc_id="100016">
+  <alt>Darfield</alt>
+  <alt>Charing Cross</alt>
+  <alt>Glenroy</alt>
+  <alt>Homebush</alt>
+  <alt>Hororata</alt>
+  <alt>Kimberley</alt>
+  <alt>Kirwee</alt>
+  <alt>Lake Coleridge</alt>
+  <alt>Racecourse Hill</alt>
+  <alt>Sheffield</alt>
+  <alt>Windwhistle</alt>
+ </alias_def>
+ <alias_def loc_id="100017">
+  <alt>Dargaville</alt>
+  <alt>Baylys Beach</alt>
+  <alt>Donnellys Crossing</alt>
+  <alt>Glinks Gully</alt>
+  <alt>Mamaranui</alt>
+ </alias_def>
+ <alias_def loc_id="100018">
+  <alt>Dunedin</alt>
+  <alt>Blackhead</alt>
+  <alt>Burnside</alt>
+  <alt>Cape Saunders</alt>
+  <alt>Company Bay</alt>
+  <alt>Halfway Bush</alt>
+  <alt>Harington Point</alt>
+  <alt>Harwood</alt>
+  <alt>Highcliff</alt>
+  <alt>Hoopers Inlet</alt>
+  <alt>Lower Portobello</alt>
+  <alt>Mt Grand</alt>
+  <alt>Ocean Grove</alt>
+  <alt>Otakou</alt>
+  <alt>Portobello</alt>
+  <alt>Pukehiki</alt>
+  <alt>Saddle Hill</alt>
+  <alt>Sandymount</alt>
+  <alt>Smaills Beach</alt>
+  <alt>The Cove</alt>
+  <alt>Tomahawk</alt>
+  <alt>Vauxhall</alt>
+ </alias_def>
+ <alias_def loc_id="100020">
+  <alt>Eltham</alt>
+  <alt>Maata</alt>
+  <alt>Mangamingi</alt>
+  <alt>Omoana</alt>
+  <alt>Rawhitiroa</alt>
+  <alt>Te Roti</alt>
+ </alias_def>
+ <alias_def loc_id="100021">
+  <alt>Featherston</alt>
+  <alt>Dyerville</alt>
+  <alt>Kahutara</alt>
+  <alt>Kaiwaiwai</alt>
+  <alt>Lake Ferry</alt>
+  <alt>Ngawi</alt>
+  <alt>Palliser Bay</alt>
+  <alt>Pirinoa</alt>
+  <alt>Tauherenikau</alt>
+  <alt>Whangaimoana</alt>
+  <alt>Whatarangi</alt>
+ </alias_def>
+ <alias_def loc_id="100022">
+  <alt>Feilding</alt>
+  <alt>Aorangi</alt>
+  <alt>Apiti</alt>
+  <alt>Beaconsfield</alt>
+  <alt>Cheltenham</alt>
+  <alt>Colyton</alt>
+  <alt>Halcombe</alt>
+  <alt>Kakariki</alt>
+  <alt>Kimbolton</alt>
+  <alt>Kiwitea</alt>
+  <alt>Makino</alt>
+  <alt>Mt Biggs</alt>
+  <alt>Mt Stewart</alt>
+  <alt>Stanway</alt>
+  <alt>Taonui</alt>
+  <alt>Te Arakura</alt>
+  <alt>Tokorangi</alt>
+  <alt>Waiata</alt>
+  <alt>Waituna West</alt>
+ </alias_def>
+ <alias_def loc_id="100023">
+  <alt>Foxton</alt>
+  <alt>Foxton Beach</alt>
+  <alt>Himatangi</alt>
+  <alt>Himatangi Beach</alt>
+  <alt>Moutoa</alt>
+  <alt>Oroua Downs</alt>
+ </alias_def>
+ <alias_def loc_id="100025">
+  <alt>Geraldine</alt>
+  <alt>Arundel</alt>
+  <alt>Beautiful Valley</alt>
+  <alt>Belfield</alt>
+  <alt>Four Peaks</alt>
+  <alt>Gapes Valley</alt>
+  <alt>Geraldine Downs</alt>
+  <alt>Geraldine Flat</alt>
+  <alt>Hilton</alt>
+  <alt>Kakahu</alt>
+  <alt>Kakahu Bush</alt>
+  <alt>Orari</alt>
+  <alt>Orari Bridge</alt>
+  <alt>Peel Forest</alt>
+  <alt>Pleasant Valley</alt>
+  <alt>Rangitata</alt>
+  <alt>Speechlys Bridge</alt>
+  <alt>Te Moana</alt>
+  <alt>The Downs</alt>
+  <alt>Tripp Settlement</alt>
+  <alt>Woodbury</alt>
+ </alias_def>
+ <alias_def loc_id="100026">
+  <alt>Gisborne</alt>
+  <alt>Aberfeldy</alt>
+  <alt>Bushmere</alt>
+  <alt>Hexton</alt>
+  <alt>Hicks Bay</alt>
+  <alt>Kaiteratahi</alt>
+  <alt>Kauri</alt>
+  <alt>Makaraka</alt>
+  <alt>Makauri</alt>
+  <alt>Mangapapa</alt>
+  <alt>Manutuke</alt>
+  <alt>Matawhero</alt>
+  <alt>Morere</alt>
+  <alt>Muriwai</alt>
+  <alt>Ngatapa</alt>
+  <alt>Ormond</alt>
+  <alt>Patutahi</alt>
+  <alt>Pouawa</alt>
+  <alt>Taruheru</alt>
+  <alt>Te Araroa</alt>
+  <alt>Tiniroto</alt>
+  <alt>Tokomaru Bay</alt>
+  <alt>Waerengaahika</alt>
+  <alt>Waerengaokuri</alt>
+  <alt>Waiherere</alt>
+  <alt>Waimata</alt>
+  <alt>Waipaoa</alt>
+  <alt>Wensleydale</alt>
+  <alt>Wharekopae</alt>
+ </alias_def>
+ <alias_def loc_id="100027">
+  <alt>Gore</alt>
+  <alt>Balfour</alt>
+  <alt>Greenvale</alt>
+  <alt>Mataura</alt>
+  <alt>Otaraia</alt>
+  <alt>Pomahaka</alt>
+  <alt>Riversdale</alt>
+  <alt>Waikaka</alt>
+ </alias_def>
+ <alias_def loc_id="100029">
+  <alt>Greytown</alt>
+  <alt>Ahikouka</alt>
+  <alt>Battersea</alt>
+  <alt>Morrisons Bush</alt>
+  <alt>Papawai</alt>
+  <alt>Woodside</alt>
+ </alias_def>
+ <alias_def loc_id="100030">
+  <alt>Hamilton</alt>
+  <alt>Caversham</alt>
+  <alt>Chartwell</alt>
+  <alt>Dinsdale</alt>
+  <alt>Eureka</alt>
+  <alt>Flagstaff</alt>
+  <alt>Frankton</alt>
+  <alt>Glenview</alt>
+  <alt>Gordonton</alt>
+  <alt>Horotiu</alt>
+  <alt>Horsham Downs</alt>
+  <alt>Karakariki</alt>
+  <alt>Karamu</alt>
+  <alt>Koromatua</alt>
+  <alt>Matangi</alt>
+  <alt>Matarangi</alt>
+  <alt>Melville</alt>
+  <alt>Newstead</alt>
+  <alt>Ngahinapouri</alt>
+  <alt>Pukeatua</alt>
+  <alt>Pukeroro</alt>
+  <alt>Puketaha</alt>
+  <alt>Ridge Park</alt>
+  <alt>Rotokauri</alt>
+  <alt>Rototuna</alt>
+  <alt>Ruakura</alt>
+  <alt>Rukuhia</alt>
+  <alt>Tamahere</alt>
+  <alt>Tauwhare</alt>
+  <alt>Tauwhare Pa</alt>
+  <alt>Te Kowhai</alt>
+  <alt>Te Pahu</alt>
+  <alt>Te Rapa</alt>
+  <alt>Temple View</alt>
+  <alt>Tuhikaramea</alt>
+  <alt>Whatawhata</alt>
+ </alias_def>
+ <alias_def loc_id="100032">
+  <alt>Hastings</alt>
+  <alt>Bridge Pa</alt>
+  <alt>Clive</alt>
+  <alt>Crownthorpe</alt>
+  <alt>Fernhill</alt>
+  <alt>Flaxmere</alt>
+  <alt>Glenross</alt>
+  <alt>Haumoana</alt>
+  <alt>Havelock North</alt>
+  <alt>Karamu</alt>
+  <alt>Kereru</alt>
+  <alt>Longlands</alt>
+  <alt>Mangatahi</alt>
+  <alt>Mangateretere</alt>
+  <alt>Maraekakaho</alt>
+  <alt>Matapiro</alt>
+  <alt>Ngatarawa</alt>
+  <alt>Okawa</alt>
+  <alt>Otamauri</alt>
+  <alt>Pakipaki</alt>
+  <alt>Pakowhai</alt>
+  <alt>Poukawa</alt>
+  <alt>Pukahu</alt>
+  <alt>Pukehamoamoa</alt>
+  <alt>Pukehou</alt>
+  <alt>Raukawa</alt>
+  <alt>Raupare</alt>
+  <alt>Roys Hill</alt>
+  <alt>Sherenden</alt>
+  <alt>Taheke</alt>
+  <alt>Te Aute</alt>
+  <alt>Te Awanga</alt>
+  <alt>Te Hauke</alt>
+  <alt>Te Onepu</alt>
+  <alt>Twyford</alt>
+  <alt>Waipatu</alt>
+  <alt>Waiwhare</alt>
+  <alt>Whakatu</alt>
+  <alt>Whanawhana</alt>
+  <alt>Willowford</alt>
+ </alias_def>
+ <alias_def loc_id="100033">
+  <alt>Hawera</alt>
+  <alt>Ararata</alt>
+  <alt>Auroa</alt>
+  <alt>Awatuna</alt>
+  <alt>Dunsdale</alt>
+  <alt>Eltham</alt>
+  <alt>Inaha</alt>
+  <alt>Kaponga</alt>
+  <alt>Kapuni</alt>
+  <alt>Manaia</alt>
+  <alt>Matapu</alt>
+  <alt>Meremere</alt>
+  <alt>Mokoia</alt>
+  <alt>Normanby</alt>
+  <alt>Oeo</alt>
+  <alt>Ohangai</alt>
+  <alt>Ohawe Beach</alt>
+  <alt>Okaiawa</alt>
+  <alt>Otakeho</alt>
+  <alt>Riverlea</alt>
+  <alt>Te Kiri</alt>
+  <alt>Te Roti</alt>
+  <alt>Tokaora</alt>
+  <alt>Whakamara</alt>
+ </alias_def>
+ <alias_def loc_id="100034">
+  <alt>Helensville</alt>
+  <alt>Kaipara Flats</alt>
+  <alt>Loch Norrie</alt>
+  <alt>Parakai</alt>
+  <alt>Parkhurst</alt>
+  <alt>Punganui</alt>
+  <alt>Shelly Beach</alt>
+  <alt>South Head</alt>
+  <alt>Te Pua</alt>
+  <alt>Waioneke</alt>
+ </alias_def>
+ <alias_def loc_id="100035">
+  <alt>Hokitika</alt>
+  <alt>Arahura</alt>
+  <alt>Arthurstown</alt>
+  <alt>Awatuna</alt>
+  <alt>Blue Spur</alt>
+  <alt>Kaihinu</alt>
+  <alt>Kokatahi</alt>
+  <alt>Kowhitirangi</alt>
+  <alt>Kumara Junction</alt>
+  <alt>Mananui</alt>
+  <alt>Rimu</alt>
+  <alt>Ruatapu</alt>
+  <alt>Seaview</alt>
+  <alt>Southside</alt>
+  <alt>Stafford</alt>
+  <alt>Takutai</alt>
+  <alt>Three Mile</alt>
+  <alt>Woodstock</alt>
+ </alias_def>
+ <alias_def loc_id="100036">
+  <alt>Huntly</alt>
+  <alt>Glen Afton</alt>
+  <alt>Glen Murray</alt>
+  <alt>Huntly West</alt>
+  <alt>Kimihia</alt>
+  <alt>Ohinewai</alt>
+  <alt>Rakaumanga</alt>
+  <alt>Rangiriri</alt>
+  <alt>Renown</alt>
+  <alt>Rotongaro</alt>
+  <alt>Rotowaro</alt>
+  <alt>Ruawaro</alt>
+  <alt>Te Kauri</alt>
+  <alt>Waikokowai</alt>
+  <alt>Weavers Crossing</alt>
+ </alias_def>
+ <alias_def loc_id="100037">
+  <alt>Inglewood</alt>
+  <alt>Egmont Village</alt>
+  <alt>Kaimata</alt>
+  <alt>Kaimiro</alt>
+  <alt>Norfolk</alt>
+  <alt>Purangi</alt>
+  <alt>Ratapiko</alt>
+  <alt>Tarata</alt>
+  <alt>Tariki</alt>
+  <alt>Waitoriki</alt>
+  <alt>Waitui</alt>
+ </alias_def>
+ <alias_def loc_id="100038">
+  <alt>Invercargill</alt>
+  <alt>Ashers</alt>
+  <alt>Awarua</alt>
+  <alt>Awarua Bay</alt>
+  <alt>Awarua Plains</alt>
+  <alt>Branxholme</alt>
+  <alt>Bush Siding</alt>
+  <alt>Clifton</alt>
+  <alt>Dacre</alt>
+  <alt>Dunsdale</alt>
+  <alt>Fortrose</alt>
+  <alt>Glencoe</alt>
+  <alt>Greenhills</alt>
+  <alt>Greenpoint</alt>
+  <alt>Grove Bush</alt>
+  <alt>Hedgehope</alt>
+  <alt>Kapuka</alt>
+  <alt>Kapuka South</alt>
+  <alt>Kennington</alt>
+  <alt>Lorneville</alt>
+  <alt>Mabel Bush</alt>
+  <alt>Makarewa</alt>
+  <alt>Morton Mains</alt>
+  <alt>Motu Rimu</alt>
+  <alt>Myross Bush</alt>
+  <alt>New River Ferry</alt>
+  <alt>Northope</alt>
+  <alt>Omaui</alt>
+  <alt>Oporo</alt>
+  <alt>Oreti Beach</alt>
+  <alt>Otahuti</alt>
+  <alt>Otara</alt>
+  <alt>Otatara</alt>
+  <alt>Oteramika</alt>
+  <alt>Rakahouka</alt>
+  <alt>Rimu</alt>
+  <alt>Roslyn Bush</alt>
+  <alt>Ryal Bush</alt>
+  <alt>Southdown</alt>
+  <alt>Spar Bush</alt>
+  <alt>Taramoa</alt>
+  <alt>Timpanys</alt>
+  <alt>Tisbury</alt>
+  <alt>Titiroa</alt>
+  <alt>Tokanui</alt>
+  <alt>Tussock Creek</alt>
+  <alt>Underwood</alt>
+  <alt>Waianiwa</alt>
+  <alt>Waikiwi</alt>
+  <alt>Waimahaka</alt>
+  <alt>Waimatua</alt>
+  <alt>Waituna</alt>
+  <alt>Wallacetown</alt>
+  <alt>West Plains</alt>
+  <alt>Woodend</alt>
+  <alt>Woodlands</alt>
+  <alt>Wrights Bush</alt>
+ </alias_def>
+ <alias_def loc_id="100039">
+  <alt>Kaikohe</alt>
+  <alt>Hokianga</alt>
+  <alt>Ngawha</alt>
+  <alt>Ngawha Springs</alt>
+  <alt>Ohaeawai</alt>
+  <alt>Omapere</alt>
+  <alt>Opononi</alt>
+  <alt>Oue</alt>
+  <alt>Rawene</alt>
+  <alt>Taheke</alt>
+  <alt>Twin Bridges</alt>
+  <alt>Waima</alt>
+  <alt>Waima Valley</alt>
+  <alt>Waimamaku</alt>
+  <alt>Waimate North</alt>
+  <alt>Whirinaki</alt>
+ </alias_def>
+ <alias_def loc_id="100040">
+  <alt>Kaikoura</alt>
+  <alt>Clarence</alt>
+  <alt>Cloudy Range</alt>
+  <alt>Goose Bay</alt>
+  <alt>Hapuku</alt>
+  <alt>Kekerengu</alt>
+  <alt>Kincaid</alt>
+  <alt>Mangamaunu</alt>
+  <alt>Oaro</alt>
+  <alt>Peketa</alt>
+  <alt>Puhi Puhi</alt>
+  <alt>Rakautara</alt>
+ </alias_def>
+ <alias_def loc_id="100041">
+  <alt>Kaitaia</alt>
+  <alt>Ahipara</alt>
+  <alt>Cable Bay</alt>
+  <alt>Doubtless Bay</alt>
+  <alt>Herekino</alt>
+  <alt>Houhora</alt>
+  <alt>Kaingaroa</alt>
+  <alt>Manukau</alt>
+  <alt>Peria</alt>
+  <alt>Pukenui</alt>
+  <alt>Te Hapua</alt>
+  <alt>Te Kao</alt>
+  <alt>Tokerau Beach</alt>
+  <alt>Whatuwhiwhi</alt>
+ </alias_def>
+ <alias_def loc_id="100043">
+  <alt>Katikati</alt>
+  <alt>Aongatete</alt>
+  <alt>Apata</alt>
+  <alt>Athenree</alt>
+  <alt>Bowentown</alt>
+  <alt>Kauri Point</alt>
+  <alt>Ongare Point</alt>
+  <alt>Pio Shores</alt>
+  <alt>Tahawai</alt>
+  <alt>Tanners Point</alt>
+  <alt>Te Kauri Village</alt>
+  <alt>Waihi Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100044">
+  <alt>Kawakawa</alt>
+  <alt>Karetu</alt>
+  <alt>Maromaku</alt>
+  <alt>Moerewa</alt>
+  <alt>Motatau</alt>
+  <alt>Taumarere</alt>
+ </alias_def>
+ <alias_def loc_id="100046">
+  <alt>Kerikeri</alt>
+  <alt>Kerikeri Inlet</alt>
+  <alt>Puketona</alt>
+  <alt>Skudders Beach</alt>
+  <alt>Takou Bay</alt>
+  <alt>Waimate North</alt>
+  <alt>Waipapa</alt>
+ </alias_def>
+ <alias_def loc_id="100047">
+  <alt>Leeston</alt>
+  <alt>Brookside</alt>
+  <alt>Doyleston</alt>
+  <alt>Dunsandel</alt>
+  <alt>Irwell</alt>
+  <alt>Killinchy</alt>
+  <alt>Lakeside</alt>
+  <alt>Little Rakaia</alt>
+  <alt>Milltown</alt>
+  <alt>Rakaia Huts</alt>
+  <alt>Sedgemere</alt>
+  <alt>Selwyn</alt>
+  <alt>Southbridge</alt>
+  <alt>Taumutu</alt>
+ </alias_def>
+ <alias_def loc_id="100048">
+  <alt>Levin</alt>
+  <alt>Heatherlea</alt>
+  <alt>Hokio Beach</alt>
+  <alt>Ihakara</alt>
+  <alt>Koputaroa</alt>
+  <alt>Kuku</alt>
+  <alt>Manakau</alt>
+  <alt>Ohau</alt>
+  <alt>Poroutawhao</alt>
+  <alt>Waikawa Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100052">
+  <alt>Mangakino</alt>
+  <alt>Marotiri</alt>
+  <alt>Tihoi</alt>
+  <alt>Whakamaru</alt>
+ </alias_def>
+ <alias_def loc_id="100054">
+  <alt>Martinborough</alt>
+  <alt>Hautotara</alt>
+  <alt>Hinakura</alt>
+  <alt>Ruakokoputuna</alt>
+  <alt>Tawaha</alt>
+  <alt>Tuturumuri</alt>
+ </alias_def>
+ <alias_def loc_id="100055">
+  <alt>Marton</alt>
+  <alt>Bonny Glen</alt>
+  <alt>Crofton</alt>
+  <alt>Greatford</alt>
+  <alt>Pukepapa</alt>
+  <alt>Rata</alt>
+  <alt>Turakina</alt>
+  <alt>Tutaenui</alt>
+ </alias_def>
+ <alias_def loc_id="100056">
+  <alt>Masterton</alt>
+  <alt>Bideford</alt>
+  <alt>Blairlogie</alt>
+  <alt>Castlepoint</alt>
+  <alt>Fernridge</alt>
+  <alt>Gladstone</alt>
+  <alt>Homebush</alt>
+  <alt>Ihuraua</alt>
+  <alt>Kaituna</alt>
+  <alt>Kopuaranga</alt>
+  <alt>Matahiwi</alt>
+  <alt>Mataikona</alt>
+  <alt>Mauriceville</alt>
+  <alt>Mauriceville West</alt>
+  <alt>Mount Bruce</alt>
+  <alt>Otahuao</alt>
+  <alt>Rangitumau</alt>
+  <alt>Riversdale Beach</alt>
+  <alt>Solway</alt>
+  <alt>Taueru</alt>
+  <alt>Te Ore Ore</alt>
+  <alt>Te Wharau</alt>
+  <alt>Te Whiti</alt>
+  <alt>Tinui</alt>
+  <alt>Wainuioru</alt>
+  <alt>Whakataki</alt>
+  <alt>Whareama</alt>
+ </alias_def>
+ <alias_def loc_id="100057">
+  <alt>Matamata</alt>
+  <alt>Hinuera</alt>
+  <alt>Okauia</alt>
+  <alt>Peria</alt>
+  <alt>Taihoa</alt>
+  <alt>Te Poi</alt>
+  <alt>Turangaomoana</alt>
+  <alt>Waharoa</alt>
+ </alias_def>
+ <alias_def loc_id="100058">
+  <alt>Milton</alt>
+  <alt>Adams Flat</alt>
+  <alt>Brooklands</alt>
+  <alt>Bull Creek</alt>
+  <alt>Chrystalls Beach</alt>
+  <alt>Circle Hill</alt>
+  <alt>Clarksville</alt>
+  <alt>Crichton</alt>
+  <alt>Glenledi</alt>
+  <alt>Glenore</alt>
+  <alt>Helensbrook</alt>
+  <alt>Kiness</alt>
+  <alt>Lovells Flat</alt>
+  <alt>Milburn</alt>
+  <alt>Moneymore</alt>
+  <alt>Toko Mouth</alt>
+  <alt>Tokoiti</alt>
+ </alias_def>
+ <alias_def loc_id="100060">
+  <alt>Morrinsville</alt>
+  <alt>Gordonton</alt>
+  <alt>Hoe-O-Tainui</alt>
+  <alt>Kereone</alt>
+  <alt>Kiwitahi</alt>
+  <alt>Mangateparu</alt>
+  <alt>Motumaoho</alt>
+  <alt>Patetonga</alt>
+  <alt>Puninga</alt>
+  <alt>Scotsman Valley</alt>
+  <alt>Tahuna</alt>
+  <alt>Tatuanui</alt>
+  <alt>Tauhei</alt>
+  <alt>Tauwhare</alt>
+  <alt>Te Puninga</alt>
+ </alias_def>
+ <alias_def loc_id="100061">
+  <alt>Motueka</alt>
+  <alt>Brooklyn</alt>
+  <alt>Kaiteriteri</alt>
+  <alt>Little Kaiteriteri</alt>
+  <alt>Little Sydney Valley</alt>
+  <alt>Marahau</alt>
+  <alt>Ngatimoti</alt>
+  <alt>Orinoco</alt>
+  <alt>Pangatotara</alt>
+  <alt>Peach Island</alt>
+  <alt>Pokororo</alt>
+  <alt>Riwaka</alt>
+  <alt>Split Apple Rock</alt>
+  <alt>Stephens Bay</alt>
+  <alt>Tapu Bay</alt>
+  <alt>Waiwhero</alt>
+  <alt>Woodstock</alt>
+ </alias_def>
+ <alias_def loc_id="100062">
+  <alt>Murupara</alt>
+  <alt>Galatea</alt>
+  <alt>Minginui</alt>
+  <alt>Te Whaiti</alt>
+ </alias_def>
+ <alias_def loc_id="100063">
+  <alt>Napier</alt>
+  <alt>Bay View</alt>
+  <alt>Eskdale</alt>
+  <alt>Fernhill</alt>
+  <alt>Kaiwaka</alt>
+  <alt>Korokipo</alt>
+  <alt>Meeanee</alt>
+  <alt>Moteo</alt>
+  <alt>Omaranui</alt>
+  <alt>Omarunui</alt>
+  <alt>Pakowhai</alt>
+  <alt>Patoka</alt>
+  <alt>Poraiti</alt>
+  <alt>Puketapu</alt>
+  <alt>Puketitiri</alt>
+  <alt>Rissington</alt>
+  <alt>Tamatea</alt>
+  <alt>Tangoio</alt>
+  <alt>Taradale</alt>
+  <alt>Te Pohue</alt>
+  <alt>Tutira</alt>
+  <alt>Waihau</alt>
+  <alt>Waikoau</alt>
+  <alt>Waiohiki</alt>
+  <alt>Waipatiki Beach</alt>
+  <alt>Wharerangi</alt>
+  <alt>Whirinaki</alt>
+ </alias_def>
+ <alias_def loc_id="100064">
+  <alt>Nelson</alt>
+  <alt>Atawhai</alt>
+  <alt>Cable Bay</alt>
+  <alt>Delaware Bay</alt>
+  <alt>Glenhope</alt>
+  <alt>Lud Valley</alt>
+  <alt>Motupiko</alt>
+  <alt>Pepin Island</alt>
+  <alt>Saint Arnaud</alt>
+  <alt>Todds Bush Rd</alt>
+  <alt>Todds Valley</alt>
+  <alt>Tophouse</alt>
+  <alt>Wakapuaka</alt>
+ </alias_def>
+ <alias_def loc_id="100065">
+  <alt>New Plymouth</alt>
+  <alt>Bell Block</alt>
+  <alt>Egmont Village</alt>
+  <alt>Fitzroy</alt>
+  <alt>Frankleigh Park</alt>
+  <alt>Hillsborough</alt>
+  <alt>Huirangi</alt>
+  <alt>Hurworth</alt>
+  <alt>Lepperton</alt>
+  <alt>Mangorei</alt>
+  <alt>Oakura</alt>
+  <alt>Okato</alt>
+  <alt>Omata</alt>
+  <alt>Puniho</alt>
+  <alt>Sentry Hill</alt>
+  <alt>Tarurutangi</alt>
+  <alt>Vogeltown</alt>
+  <alt>Warea</alt>
+ </alias_def>
+ <alias_def loc_id="100067">
+  <alt>Oamaru</alt>
+  <alt>Airedale</alt>
+  <alt>All Day Bay</alt>
+  <alt>Alma</alt>
+  <alt>Ardgowan</alt>
+  <alt>Awamoko</alt>
+  <alt>Black Point</alt>
+  <alt>Boundary Creek</alt>
+  <alt>Cormacks</alt>
+  <alt>Corriedale</alt>
+  <alt>Dansey Pass</alt>
+  <alt>Deborah</alt>
+  <alt>Duntroon</alt>
+  <alt>Elderslie</alt>
+  <alt>Enfield</alt>
+  <alt>Five Forks</alt>
+  <alt>Fuchsia Creek</alt>
+  <alt>Georgetown</alt>
+  <alt>Herbert</alt>
+  <alt>Hilderthorpe</alt>
+  <alt>Incholme</alt>
+  <alt>Island Cliff</alt>
+  <alt>Kakanui</alt>
+  <alt>Kauru Hill</alt>
+  <alt>Kia Ora</alt>
+  <alt>Kokoamo</alt>
+  <alt>Livingstone</alt>
+  <alt>Maerewhenua</alt>
+  <alt>Maheno</alt>
+  <alt>Ngapara</alt>
+  <alt>Otekaieke</alt>
+  <alt>Otepopo</alt>
+  <alt>Otiake</alt>
+  <alt>Papakaio</alt>
+  <alt>Peebles</alt>
+  <alt>Pukeuri</alt>
+  <alt>Queens Flat</alt>
+  <alt>Reidston</alt>
+  <alt>Richmond</alt>
+  <alt>Tapui</alt>
+  <alt>Teschemakers</alt>
+  <alt>Tokarahi</alt>
+  <alt>Totara</alt>
+  <alt>Waianakarua</alt>
+  <alt>Waiareka Junction</alt>
+  <alt>Waitaki Bridge</alt>
+  <alt>Weston</alt>
+  <alt>Windsor</alt>
+ </alias_def>
+ <alias_def loc_id="100068">
+  <alt>Ohakune</alt>
+  <alt>Karioi</alt>
+  <alt>Makaranui</alt>
+  <alt>Raetihi</alt>
+  <alt>Rangataua</alt>
+  <alt>Tangiwai</alt>
+ </alias_def>
+ <alias_def loc_id="100069">
+  <alt>Opotiki</alt>
+  <alt>Awanui</alt>
+  <alt>Cape Runaway</alt>
+  <alt>Cheddar Valley</alt>
+  <alt>Gabriels Gully</alt>
+  <alt>Hawai</alt>
+  <alt>Houpoto</alt>
+  <alt>Kukumoa</alt>
+  <alt>Kutarere</alt>
+  <alt>Maraehako</alt>
+  <alt>Maraenui</alt>
+  <alt>Maungaroa</alt>
+  <alt>Morices Bay</alt>
+  <alt>Ohingaiti</alt>
+  <alt>Ohiwa</alt>
+  <alt>Ohope</alt>
+  <alt>Omaio</alt>
+  <alt>Omarumutu</alt>
+  <alt>Opape</alt>
+  <alt>Orete</alt>
+  <alt>Otara</alt>
+  <alt>Paerata Ridge</alt>
+  <alt>Pahaoa</alt>
+  <alt>Potaka</alt>
+  <alt>Rahui</alt>
+  <alt>Raukokore</alt>
+  <alt>Tablelands</alt>
+  <alt>Te Kaha</alt>
+  <alt>Tirohanga</alt>
+  <alt>Torere</alt>
+  <alt>Waiaua</alt>
+  <alt>Waihau</alt>
+  <alt>Waihau Bay</alt>
+  <alt>Waikawa</alt>
+  <alt>Wainui</alt>
+  <alt>Waioeka</alt>
+  <alt>Waiorore</alt>
+  <alt>Waiotahi</alt>
+  <alt>Waiotahi Beach</alt>
+  <alt>Waiotahi Valley</alt>
+  <alt>Whanarua Bay</alt>
+  <alt>Whangaparaoa</alt>
+  <alt>Woodlands</alt>
+ </alias_def>
+ <alias_def loc_id="100070">
+  <alt>Opunake</alt>
+  <alt>Oaonui</alt>
+  <alt>Pihama</alt>
+  <alt>Pungarehu</alt>
+  <alt>Rahotu</alt>
+  <alt>Te Kiri</alt>
+ </alias_def>
+ <alias_def loc_id="100071">
+  <alt>Otaki</alt>
+  <alt>Manakau</alt>
+  <alt>Otaki Forks</alt>
+  <alt>Te Horo</alt>
+  <alt>Te Horo Beach</alt>
+  <alt>Waitohu</alt>
+ </alias_def>
+ <alias_def loc_id="100072">
+  <alt>Otorohanga</alt>
+  <alt>Hangatiki</alt>
+  <alt>Honikiwi</alt>
+  <alt>Kiokio</alt>
+  <alt>Maihiihi</alt>
+  <alt>Otewa</alt>
+  <alt>Rangiatea</alt>
+  <alt>Rewarewa</alt>
+  <alt>Tahaia</alt>
+  <alt>Tihiroa</alt>
+  <alt>Waitomo</alt>
+  <alt>Waitomo Valley</alt>
+  <alt>Whawharua</alt>
+ </alias_def>
+ <alias_def loc_id="100073">
+  <alt>Oxford</alt>
+  <alt>Bennetts</alt>
+  <alt>Bexley</alt>
+  <alt>Burnt Hill</alt>
+  <alt>Carleton</alt>
+  <alt>Coopers Beach</alt>
+  <alt>Coopers Creek</alt>
+  <alt>Gammans Creek</alt>
+  <alt>Glentui</alt>
+  <alt>Loburn</alt>
+  <alt>Rockford</alt>
+  <alt>The Warren</alt>
+  <alt>View Hill</alt>
+ </alias_def>
+ <alias_def loc_id="100074">
+  <alt>Paeroa</alt>
+  <alt>Awaiti</alt>
+  <alt>Hikutaia</alt>
+  <alt>Karangahake</alt>
+  <alt>Kerepehi</alt>
+  <alt>Komata</alt>
+  <alt>Mackaytown</alt>
+  <alt>Netherton</alt>
+  <alt>Omahu</alt>
+  <alt>Tirohia</alt>
+  <alt>Turua</alt>
+  <alt>Wharepoa</alt>
+ </alias_def>
+ <alias_def loc_id="100075">
+  <alt>Pahiatua</alt>
+  <alt>Ballance</alt>
+  <alt>Kaitawa</alt>
+  <alt>Kohinui</alt>
+  <alt>Konini</alt>
+  <alt>Makomako</alt>
+  <alt>Makuri</alt>
+  <alt>Mangahao</alt>
+  <alt>Mangamaire</alt>
+  <alt>Mangamutu</alt>
+  <alt>Mangatainoka</alt>
+  <alt>Marima</alt>
+  <alt>Ngaturi</alt>
+  <alt>Pongaroa</alt>
+  <alt>Ruawhata</alt>
+ </alias_def>
+ <alias_def loc_id="100077">
+  <alt>Palmerston North</alt>
+  <alt>Aokautere</alt>
+  <alt>Ashhurst</alt>
+  <alt>Awahuri</alt>
+  <alt>Awapuni</alt>
+  <alt>Bainesse</alt>
+  <alt>Bunnythorpe</alt>
+  <alt>Carnarvon</alt>
+  <alt>Cloverlea</alt>
+  <alt>Clydesdale</alt>
+  <alt>Fitzherbert West</alt>
+  <alt>Glen Oroua</alt>
+  <alt>Himatangi</alt>
+  <alt>Hiwinui</alt>
+  <alt>Kairanga</alt>
+  <alt>Karere</alt>
+  <alt>Kopane</alt>
+  <alt>Linton</alt>
+  <alt>Longburn</alt>
+  <alt>Makerua</alt>
+  <alt>Mangaore</alt>
+  <alt>Mangawhata</alt>
+  <alt>Milson</alt>
+  <alt>Moonshine Valley</alt>
+  <alt>Mount Stewart</alt>
+  <alt>Mt Biggs</alt>
+  <alt>Mt Stewart</alt>
+  <alt>Newbury</alt>
+  <alt>Ohakea</alt>
+  <alt>Rangiotu</alt>
+  <alt>Roslyn</alt>
+  <alt>Sanson</alt>
+  <alt>Shannon</alt>
+  <alt>Taikorea</alt>
+  <alt>Tangimoana</alt>
+  <alt>Tiakitahuna</alt>
+  <alt>Tokomaru</alt>
+  <alt>Turitea</alt>
+  <alt>Whakarongo</alt>
+ </alias_def>
+ <alias_def loc_id="100078">
+  <alt>Papakura</alt>
+  <alt>Ararimu</alt>
+  <alt>Ardmore</alt>
+  <alt>Clevedon</alt>
+  <alt>Happy Valley</alt>
+  <alt>Hunua</alt>
+  <alt>Karaka</alt>
+  <alt>Kawakawa Bay</alt>
+  <alt>Keri Hill</alt>
+  <alt>Kingseat</alt>
+  <alt>Matingarahi</alt>
+  <alt>Ness Valley</alt>
+  <alt>Opaheke</alt>
+  <alt>Orere</alt>
+  <alt>Orere Point</alt>
+  <alt>Paparimu</alt>
+  <alt>Takanini</alt>
+  <alt>Te Hihi</alt>
+ </alias_def>
+ <alias_def loc_id="100079">
+  <alt>Patea</alt>
+  <alt>Alton</alt>
+  <alt>Hurleyville</alt>
+  <alt>Kakaramea</alt>
+  <alt>Manutahi</alt>
+  <alt>Whenuakura</alt>
+ </alias_def>
+ <alias_def loc_id="100080">
+  <alt>Picton</alt>
+  <alt>Anakiwa</alt>
+  <alt>Belvue Bay</alt>
+  <alt>Bounty Bay</alt>
+  <alt>Broughton Bay</alt>
+  <alt>Clova Bay</alt>
+  <alt>Double Bay</alt>
+  <alt>Glenmore</alt>
+  <alt>Kenepuru Sound</alt>
+  <alt>Linkwater</alt>
+  <alt>Mahakipawa</alt>
+  <alt>Mahakipawa Arm</alt>
+  <alt>Mahau Sound</alt>
+  <alt>Manaroa</alt>
+  <alt>Moenui Bay</alt>
+  <alt>Ngakuta Bay</alt>
+  <alt>Nopera Bay</alt>
+  <alt>Ohingaroa Bay</alt>
+  <alt>Okiwa Bay</alt>
+  <alt>Pelorus Sound</alt>
+  <alt>Portage Bay</alt>
+  <alt>Puramahoi</alt>
+  <alt>Queen Charlotte Sound</alt>
+  <alt>Shakespeare Bay</alt>
+  <alt>Te Mahia</alt>
+  <alt>The Grove</alt>
+  <alt>Tirimoana</alt>
+  <alt>Waitaria Bay</alt>
+  <alt>Willow Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100081">
+  <alt>Pleasant Point</alt>
+  <alt>Hazelburn</alt>
+  <alt>Opihi</alt>
+  <alt>Raincliff</alt>
+  <alt>Sutherlands</alt>
+  <alt>Totara Downs</alt>
+  <alt>Totara Valley</alt>
+ </alias_def>
+ <alias_def loc_id="100082">
+  <alt>Porirua</alt>
+  <alt>Haywards</alt>
+  <alt>Judgeford</alt>
+  <alt>Motukaraka Point</alt>
+  <alt>Pauatahanui</alt>
+  <alt>Plimmerton</alt>
+ </alias_def>
+ <alias_def loc_id="100083">
+  <alt>Pukekohe</alt>
+  <alt>Buckland</alt>
+  <alt>Clarks Beach</alt>
+  <alt>Harrisville</alt>
+  <alt>Helvetia</alt>
+  <alt>Karaka</alt>
+  <alt>Mauku</alt>
+  <alt>Paerata</alt>
+  <alt>Patumahoe</alt>
+  <alt>Pukekohe East</alt>
+  <alt>Puni</alt>
+  <alt>Tuakau</alt>
+  <alt>Waiau Beach</alt>
+  <alt>Waiau Pa</alt>
+ </alias_def>
+ <alias_def loc_id="100084">
+  <alt>Putaruru</alt>
+  <alt>Arapuni</alt>
+  <alt>Hodderville</alt>
+  <alt>Lichfield</alt>
+  <alt>Puketurua</alt>
+  <alt>Waotu</alt>
+  <alt>Wiltsdown</alt>
+ </alias_def>
+ <alias_def loc_id="100085">
+  <alt>Queenstown</alt>
+  <alt>Arrow Junction</alt>
+  <alt>Arrowtown</alt>
+  <alt>Arthurs Point</alt>
+  <alt>Crown Terrace</alt>
+  <alt>Dalefield</alt>
+  <alt>Frankton</alt>
+  <alt>Gibbston</alt>
+  <alt>Lake Hayes</alt>
+  <alt>Lower Shotover</alt>
+  <alt>Quail Rise</alt>
+  <alt>Speargrass Flat</alt>
+  <alt>Wakatipu Basin</alt>
+ </alias_def>
+ <alias_def loc_id="100087">
+  <alt>Raglan</alt>
+  <alt>Manu Bay</alt>
+  <alt>Moonlight Bay</alt>
+  <alt>Ohautira</alt>
+  <alt>Ruapuke</alt>
+  <alt>Te Hutewai</alt>
+  <alt>Te Mata</alt>
+  <alt>Te Uku</alt>
+  <alt>Waitetuna</alt>
+  <alt>Whale Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100088">
+  <alt>Rangiora</alt>
+  <alt>Ashley</alt>
+  <alt>Ashley Downs</alt>
+  <alt>Bennetts</alt>
+  <alt>Claxby</alt>
+  <alt>Cust</alt>
+  <alt>Eyrewell</alt>
+  <alt>Fernside</alt>
+  <alt>Horrellville</alt>
+  <alt>Loburn</alt>
+  <alt>Mandeville</alt>
+  <alt>Mt Grey Downs</alt>
+  <alt>Ohoka</alt>
+  <alt>Okuku</alt>
+  <alt>Saltwater Creek</alt>
+  <alt>Sefton</alt>
+  <alt>Springbank</alt>
+  <alt>Summerhill</alt>
+  <alt>Swannanoa</alt>
+  <alt>Waikuku</alt>
+  <alt>Waikuku Beach</alt>
+  <alt>West Eyreton</alt>
+  <alt>Whiterock</alt>
+ </alias_def>
+ <alias_def loc_id="100089">
+  <alt>Reefton</alt>
+  <alt>Cronadun</alt>
+  <alt>Inangahua</alt>
+  <alt>Larrys Creek</alt>
+  <alt>Maimai</alt>
+  <alt>Maruia</alt>
+  <alt>Oweka</alt>
+  <alt>Rotokohu</alt>
+  <alt>Springs Junction</alt>
+  <alt>Waitahu</alt>
+ </alias_def>
+ <alias_def loc_id="100090">
+  <alt>Riverton</alt>
+  <alt>Colac Bay</alt>
+  <alt>Ermedale</alt>
+  <alt>Gropers Bush</alt>
+  <alt>Gummies Bush</alt>
+  <alt>Longwood</alt>
+  <alt>Orepuki</alt>
+  <alt>Otaitai Bush</alt>
+  <alt>Pahia</alt>
+  <alt>Pourakino Valley</alt>
+  <alt>Round Hill</alt>
+  <alt>Te Tua</alt>
+  <alt>Te Waewae</alt>
+  <alt>Thornbury</alt>
+  <alt>Tihaka</alt>
+  <alt>Waihoaka</alt>
+  <alt>Waimatuku</alt>
+  <alt>Waipango</alt>
+  <alt>Wakapatu</alt>
+  <alt>Wrights Bush</alt>
+ </alias_def>
+ <alias_def loc_id="100093">
+  <alt>Rotorua</alt>
+  <alt>Awahou</alt>
+  <alt>Brunswick Park</alt>
+  <alt>Guthrie</alt>
+  <alt>Hamurana</alt>
+  <alt>Hauparu Bay</alt>
+  <alt>Hinehopu</alt>
+  <alt>Horohoro</alt>
+  <alt>Kaharoa</alt>
+  <alt>Lake Okareka</alt>
+  <alt>Lake Rotoiti</alt>
+  <alt>Lake Rotoma</alt>
+  <alt>Lake Rotorua</alt>
+  <alt>Lake Tarawera</alt>
+  <alt>Ludgate Hill</alt>
+  <alt>Lynmore</alt>
+  <alt>Mamaku</alt>
+  <alt>Mourea</alt>
+  <alt>Ngakuru</alt>
+  <alt>Ngongotaha</alt>
+  <alt>Okawa Bay</alt>
+  <alt>Okere Falls</alt>
+  <alt>Otaramarae</alt>
+  <alt>Otautu Bay</alt>
+  <alt>Paradise Valley</alt>
+  <alt>Rerewhakaaitu</alt>
+  <alt>Rotoehu</alt>
+  <alt>Rotoiti</alt>
+  <alt>Rotokawa</alt>
+  <alt>Rotoma</alt>
+  <alt>Rotomahana</alt>
+  <alt>Ruato</alt>
+  <alt>Tarawera</alt>
+  <alt>Tarukenga</alt>
+  <alt>Te Ngae</alt>
+  <alt>Te Pu</alt>
+  <alt>Tikitere</alt>
+  <alt>Tumunui</alt>
+  <alt>Waikite Valley</alt>
+  <alt>Waiotapu</alt>
+  <alt>Wilsons Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100094">
+  <alt>Russell</alt>
+  <alt>Matauwhi Bay</alt>
+  <alt>Okiato</alt>
+  <alt>Orongo Bay</alt>
+  <alt>Te Wahapu</alt>
+ </alias_def>
+ <alias_def loc_id="100097">
+  <alt>Stratford</alt>
+  <alt>Cardiff</alt>
+  <alt>Douglas</alt>
+  <alt>Huinga</alt>
+  <alt>Huiroa</alt>
+  <alt>Kiore</alt>
+  <alt>Kohuratahi</alt>
+  <alt>Lowgarth</alt>
+  <alt>Mahoe</alt>
+  <alt>Makahu</alt>
+  <alt>Mangatoki</alt>
+  <alt>Matau</alt>
+  <alt>Midhirst</alt>
+  <alt>Mt Dampier</alt>
+  <alt>Ngaere</alt>
+  <alt>Pukengahu</alt>
+  <alt>Strathmore</alt>
+  <alt>Tahora</alt>
+  <alt>Tariki</alt>
+  <alt>Te Popo</alt>
+  <alt>Te Wera</alt>
+  <alt>Toko</alt>
+  <alt>Tuna</alt>
+  <alt>Tututawa</alt>
+  <alt>Whangamomona</alt>
+ </alias_def>
+ <alias_def loc_id="100098">
+  <alt>Taihape</alt>
+  <alt>Bells Junction</alt>
+  <alt>Bennetts Siding</alt>
+  <alt>Irirangi</alt>
+  <alt>Koeke Junction</alt>
+  <alt>Mataroa</alt>
+  <alt>Moawhango</alt>
+  <alt>Ngawaka</alt>
+  <alt>Ohutu</alt>
+  <alt>Opaea</alt>
+  <alt>Pukeokahu</alt>
+  <alt>Pungataua</alt>
+  <alt>Taoroa</alt>
+  <alt>Utiku</alt>
+  <alt>Wainui</alt>
+  <alt>Winiata</alt>
+ </alias_def>
+ <alias_def loc_id="100101">
+  <alt>Takaka</alt>
+  <alt>Anatoki</alt>
+  <alt>Clifton</alt>
+  <alt>East Takaka</alt>
+  <alt>Golden Bay</alt>
+  <alt>Hamama</alt>
+  <alt>Kotinga</alt>
+  <alt>Ligar Bay</alt>
+  <alt>Milnthorpe</alt>
+  <alt>Motupipi</alt>
+  <alt>Onekaka</alt>
+  <alt>Parapara</alt>
+  <alt>Patons Rock</alt>
+  <alt>Pohara</alt>
+  <alt>Puramahoi</alt>
+  <alt>Rangihaeata</alt>
+  <alt>Tata Beach</alt>
+  <alt>Three Oaks</alt>
+  <alt>Tukurua</alt>
+  <alt>Upper Takaka</alt>
+  <alt>Uruwhenua</alt>
+  <alt>Wainui</alt>
+  <alt>Wainui Bay</alt>
+  <alt>Waitapu</alt>
+ </alias_def>
+ <alias_def loc_id="100102">
+  <alt>Taumarunui</alt>
+  <alt>Hikumutu</alt>
+  <alt>Kirikau</alt>
+  <alt>Lairdvale</alt>
+  <alt>Mangakahu Valley</alt>
+  <alt>Manunui</alt>
+  <alt>Ngakonui</alt>
+  <alt>Ngapuke</alt>
+  <alt>Okahukura</alt>
+  <alt>Otunui</alt>
+  <alt>Piriaka</alt>
+  <alt>Taringamotu</alt>
+  <alt>Taringamotu Valley</alt>
+  <alt>Taumaruiti</alt>
+  <alt>Te Maire</alt>
+  <alt>Tokirima</alt>
+  <alt>Waituhi</alt>
+ </alias_def>
+ <alias_def loc_id="100103">
+  <alt>Taupo</alt>
+  <alt>Acacia Bay</alt>
+  <alt>Bonshaw Park</alt>
+  <alt>Five Mile Bay</alt>
+  <alt>Kinloch</alt>
+  <alt>Maroa</alt>
+  <alt>Oruanui</alt>
+  <alt>Rangitaiki</alt>
+  <alt>Tarawera</alt>
+  <alt>Wairakei</alt>
+  <alt>Waitahanui</alt>
+ </alias_def>
+ <alias_def loc_id="100104">
+  <alt>Tauranga</alt>
+  <alt>Bethlehem</alt>
+  <alt>Greerton</alt>
+  <alt>Kaitemako</alt>
+  <alt>Lower Kaimai</alt>
+  <alt>Mangatawa</alt>
+  <alt>Matapihi</alt>
+  <alt>McLaren Falls</alt>
+  <alt>Minden</alt>
+  <alt>Mount Maunganui</alt>
+  <alt>Ngapeke</alt>
+  <alt>Ohauiti</alt>
+  <alt>Omanawa</alt>
+  <alt>Omokoroa</alt>
+  <alt>Oropi</alt>
+  <alt>Pahoia</alt>
+  <alt>Plummers Point</alt>
+  <alt>Pyes Pa</alt>
+  <alt>Tauriko</alt>
+  <alt>Te Maunga</alt>
+  <alt>Te Puna</alt>
+  <alt>Te Puna West</alt>
+  <alt>Waimapu</alt>
+  <alt>Welcome Bay</alt>
+  <alt>Whakamarama</alt>
+ </alias_def>
+ <alias_def loc_id="100105">
+  <alt>Te Anau</alt>
+  <alt>Lynwood</alt>
+  <alt>Manapouri</alt>
+  <alt>Takitimu</alt>
+  <alt>The Key</alt>
+ </alias_def>
+ <alias_def loc_id="100106">
+  <alt>Te Aroha</alt>
+  <alt>Elstow</alt>
+  <alt>Gordon</alt>
+  <alt>Manawaru</alt>
+  <alt>Mangaiti</alt>
+  <alt>Shaftesbury</alt>
+  <alt>Te Aroha West</alt>
+  <alt>Waihou</alt>
+  <alt>Wairakau</alt>
+ </alias_def>
+ <alias_def loc_id="100107">
+  <alt>Te Awamutu</alt>
+  <alt>Arohena</alt>
+  <alt>Glenview</alt>
+  <alt>Hairini</alt>
+  <alt>Happy Valley</alt>
+  <alt>Kihikihi</alt>
+  <alt>Korakonui</alt>
+  <alt>Mangapiko</alt>
+  <alt>Mangatutu</alt>
+  <alt>Matapara</alt>
+  <alt>Ngahape</alt>
+  <alt>Ngaroma</alt>
+  <alt>Ngutunui</alt>
+  <alt>Oparau</alt>
+  <alt>Orakau</alt>
+  <alt>Owairaka Valley</alt>
+  <alt>Paepaerahi</alt>
+  <alt>Parawera</alt>
+  <alt>Paterangi</alt>
+  <alt>Pirongia</alt>
+  <alt>Pokuru</alt>
+  <alt>Priongia</alt>
+  <alt>Puahue</alt>
+  <alt>Te Kawa</alt>
+  <alt>Te Kawa West</alt>
+  <alt>Te Mawhai</alt>
+  <alt>Te Rahu</alt>
+  <alt>Te Rore</alt>
+  <alt>Tokanui</alt>
+  <alt>Waikeria</alt>
+  <alt>Wharepapa</alt>
+  <alt>Wharepapa South</alt>
+  <alt>Wharepuhunga</alt>
+ </alias_def>
+ <alias_def loc_id="100108">
+  <alt>Te Kuiti</alt>
+  <alt>Arapae</alt>
+  <alt>Aratora</alt>
+  <alt>Benneydale</alt>
+  <alt>Hangatiki</alt>
+  <alt>Kinohaku</alt>
+  <alt>Kiritehere</alt>
+  <alt>Kopaki</alt>
+  <alt>Mairoa</alt>
+  <alt>Mangapehi</alt>
+  <alt>Mapiu</alt>
+  <alt>Marokopa</alt>
+  <alt>Moeatoa</alt>
+  <alt>Mokauiti</alt>
+  <alt>Oparure</alt>
+  <alt>Pakeho</alt>
+  <alt>Piopio</alt>
+  <alt>Puketutu</alt>
+  <alt>Pureora</alt>
+  <alt>Rangitoto</alt>
+  <alt>Taharoa</alt>
+  <alt>Te Anga</alt>
+  <alt>Te Waitere</alt>
+  <alt>Waitanguru</alt>
+  <alt>Waitomo</alt>
+ </alias_def>
+ <alias_def loc_id="100109">
+  <alt>Te Puke</alt>
+  <alt>Little Waihi</alt>
+  <alt>Maketu</alt>
+  <alt>Paengaroa</alt>
+  <alt>Papamoa</alt>
+  <alt>Pongakawa</alt>
+  <alt>Pongakawa Valley</alt>
+  <alt>Pukehina</alt>
+  <alt>Pukehina Beach</alt>
+  <alt>Rangiuru</alt>
+  <alt>Te Ranga</alt>
+ </alias_def>
+ <alias_def loc_id="100110">
+  <alt>Temuka</alt>
+  <alt>Arowhenua</alt>
+  <alt>Clandeboye</alt>
+  <alt>Epworth</alt>
+  <alt>Hilton</alt>
+  <alt>Milford</alt>
+  <alt>Milford Huts</alt>
+  <alt>Orton</alt>
+  <alt>Rangitata Island</alt>
+  <alt>Te Awa</alt>
+  <alt>Upper Waitohi</alt>
+  <alt>Waitohi</alt>
+  <alt>Winchester</alt>
+ </alias_def>
+ <alias_def loc_id="100111">
+  <alt>Thames</alt>
+  <alt>Kauaeranga</alt>
+  <alt>Kereta</alt>
+  <alt>Kirikiri</alt>
+  <alt>Kopu</alt>
+  <alt>Kopuarahi</alt>
+  <alt>Mangatarata</alt>
+  <alt>Matatoki</alt>
+  <alt>Ngarimu Bay</alt>
+  <alt>Ngatea</alt>
+  <alt>Orongo</alt>
+  <alt>Puriri</alt>
+  <alt>Ruamahanga</alt>
+  <alt>Tapu</alt>
+  <alt>Te Mata</alt>
+  <alt>Te Puru</alt>
+  <alt>Temata Bay</alt>
+  <alt>Thames Coast</alt>
+  <alt>Thornton Bay</alt>
+  <alt>Totara</alt>
+  <alt>Turua</alt>
+  <alt>Waikawau</alt>
+  <alt>Waiomu</alt>
+  <alt>Waitakaruru</alt>
+  <alt>Whakatete Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100112">
+  <alt>Timaru</alt>
+  <alt>Adair</alt>
+  <alt>Claremont</alt>
+  <alt>Fairview</alt>
+  <alt>Gleniti</alt>
+  <alt>Gordons Valley</alt>
+  <alt>Hadlow</alt>
+  <alt>Hunter</alt>
+  <alt>Kerrytown</alt>
+  <alt>Kingsdown</alt>
+  <alt>Kohika</alt>
+  <alt>Levels</alt>
+  <alt>Levels Valley</alt>
+  <alt>Makikihi</alt>
+  <alt>Maungati</alt>
+  <alt>Mt Cecil</alt>
+  <alt>Normanby</alt>
+  <alt>Opihi</alt>
+  <alt>Otaio</alt>
+  <alt>Otipua</alt>
+  <alt>Pareora</alt>
+  <alt>Pareora West</alt>
+  <alt>Pleasant Point</alt>
+  <alt>Rosewill</alt>
+  <alt>Salisbury</alt>
+  <alt>Scarborough</alt>
+  <alt>Seadown</alt>
+  <alt>Seaforth</alt>
+  <alt>Southburn</alt>
+  <alt>Springbrook</alt>
+  <alt>Taiko</alt>
+  <alt>Waipopo</alt>
+  <alt>Waitawa</alt>
+  <alt>Washdyke</alt>
+ </alias_def>
+ <alias_def loc_id="100113">
+  <alt>Tokoroa</alt>
+  <alt>Athol</alt>
+  <alt>Kinleith</alt>
+ </alias_def>
+ <alias_def loc_id="100114">
+  <alt>Turangi</alt>
+  <alt>Halletts Bay</alt>
+  <alt>Korohe</alt>
+  <alt>Kuratau</alt>
+  <alt>Motuoapa</alt>
+  <alt>Motutere</alt>
+  <alt>Pukawa</alt>
+  <alt>Te Rangiita</alt>
+  <alt>Tihoi</alt>
+  <alt>Tokaanu</alt>
+  <alt>Waitetoko</alt>
+  <alt>Whareroa</alt>
+ </alias_def>
+ <alias_def loc_id="100116">
+  <alt>Upper Hutt</alt>
+  <alt>Akatarawa</alt>
+  <alt>Birchville</alt>
+  <alt>Blue Mountains</alt>
+  <alt>Mangaroa</alt>
+  <alt>Silverstream</alt>
+  <alt>Whitemans Valley</alt>
+ </alias_def>
+ <alias_def loc_id="100118">
+  <alt>Waihi</alt>
+  <alt>Golden Valley</alt>
+  <alt>Waihi Beach</alt>
+  <alt>Waikino</alt>
+  <alt>Waimata</alt>
+  <alt>Waitawheta</alt>
+  <alt>Waitekauri</alt>
+ </alias_def>
+ <alias_def loc_id="100120">
+  <alt>Waimate</alt>
+  <alt>Arno</alt>
+  <alt>Broad Gully</alt>
+  <alt>Glenavy</alt>
+  <alt>Hook</alt>
+  <alt>Ikawai</alt>
+  <alt>Makikihi</alt>
+  <alt>Maytown</alt>
+  <alt>Morven</alt>
+  <alt>Moven</alt>
+  <alt>Norton Reserve</alt>
+  <alt>Studholme</alt>
+  <alt>Uretane</alt>
+  <alt>Waihao Downs</alt>
+  <alt>Waihao Forks</alt>
+  <alt>Waihaorunga</alt>
+  <alt>Waihourunga</alt>
+  <alt>Waikakahi</alt>
+  <alt>Waituna</alt>
+  <alt>Willowbridge</alt>
+ </alias_def>
+ <alias_def loc_id="100122">
+  <alt>Waipawa</alt>
+  <alt>Omakere</alt>
+  <alt>Ongaonga</alt>
+  <alt>Pourerere</alt>
+  <alt>Pourerere Beach</alt>
+  <alt>Ruataniwha</alt>
+  <alt>Tikokino</alt>
+ </alias_def>
+ <alias_def loc_id="100123">
+  <alt>Waipukurau</alt>
+  <alt>Blackhead</alt>
+  <alt>Flemington</alt>
+  <alt>Hatuma</alt>
+  <alt>Omakere</alt>
+  <alt>Oueroa</alt>
+  <alt>Porangahau</alt>
+  <alt>Takapau</alt>
+  <alt>Wallingford</alt>
+  <alt>Wanstead</alt>
+ </alias_def>
+ <alias_def loc_id="100124">
+  <alt>Wairoa</alt>
+  <alt>Ardkeen</alt>
+  <alt>Awamate</alt>
+  <alt>Iwitea Pa</alt>
+  <alt>Marumaru</alt>
+  <alt>Ohuka</alt>
+  <alt>Onepoto</alt>
+  <alt>Ruakituri</alt>
+  <alt>Te Maire</alt>
+  <alt>Te Reinga</alt>
+  <alt>Tuai</alt>
+  <alt>Tuhara</alt>
+  <alt>Turiroa</alt>
+  <alt>Waiatai Valley</alt>
+  <alt>Waihua</alt>
+  <alt>Waikaremoana</alt>
+  <alt>Whakaki</alt>
+ </alias_def>
+ <alias_def loc_id="100126">
+  <alt>Waitara</alt>
+  <alt>Brixton</alt>
+  <alt>Motunui</alt>
+  <alt>Onaero</alt>
+  <alt>Onaero Beach</alt>
+  <alt>Tikorangi</alt>
+ </alias_def>
+ <alias_def loc_id="100127">
+  <alt>Waiuku</alt>
+  <alt>Aka Aka</alt>
+  <alt>Awhitu</alt>
+  <alt>Big Bay</alt>
+  <alt>Franklin</alt>
+  <alt>Glenbrook</alt>
+  <alt>Glenbrook Beach</alt>
+  <alt>Grahams Beach</alt>
+  <alt>Hudsons Beach</alt>
+  <alt>Karioitahi</alt>
+  <alt>Kohekohe</alt>
+  <alt>Maioro</alt>
+  <alt>Matakawau</alt>
+  <alt>Orua Bay</alt>
+  <alt>Otaua</alt>
+  <alt>Pollok</alt>
+  <alt>Pukeoware</alt>
+  <alt>Te Toro</alt>
+  <alt>Waipipi</alt>
+  <alt>Wattle Bay</alt>
+  <alt>Whataroa</alt>
+  <alt>Whiriwhiri</alt>
+ </alias_def>
+ <alias_def loc_id="100128">
+  <alt>Wakefield</alt>
+  <alt>Banbury Hills</alt>
+  <alt>Belgrove</alt>
+  <alt>Dovedale</alt>
+  <alt>Foxhill</alt>
+  <alt>Hiwipango</alt>
+  <alt>Kiwi</alt>
+  <alt>Kohatu</alt>
+  <alt>Mararewa</alt>
+  <alt>Matariki</alt>
+  <alt>Pigeon Valley</alt>
+  <alt>Rakau</alt>
+  <alt>Sherry River</alt>
+  <alt>Spring Grove</alt>
+  <alt>Stanley Brook</alt>
+  <alt>Tadmor</alt>
+  <alt>Tapawera</alt>
+  <alt>Thorpe</alt>
+  <alt>Tui</alt>
+  <alt>Wai-iti</alt>
+  <alt>Wangapeka</alt>
+  <alt>Woodstock</alt>
+ </alias_def>
+ <alias_def loc_id="100129">
+  <alt>Wanaka</alt>
+  <alt>Albert Town</alt>
+  <alt>Cardrona</alt>
+  <alt>Hawea Flat</alt>
+  <alt>Lake Hawea</alt>
+  <alt>Maungawera</alt>
+  <alt>Mt Barker</alt>
+ </alias_def>
+ <alias_def loc_id="100130">
+  <alt>Wanganui</alt>
+  <alt>Aberfeldy</alt>
+  <alt>Aramoho</alt>
+  <alt>Atene</alt>
+  <alt>Brunswick</alt>
+  <alt>Durie Hill</alt>
+  <alt>Fordell</alt>
+  <alt>Jerusalem</alt>
+  <alt>Kai Iwi</alt>
+  <alt>Kai Iwi Beach</alt>
+  <alt>Kaitoke</alt>
+  <alt>Kaiwhaiki Pa</alt>
+  <alt>Kakatahi</alt>
+  <alt>Koitiata</alt>
+  <alt>Koriniti</alt>
+  <alt>Makirikiri</alt>
+  <alt>Mangamahu</alt>
+  <alt>Marangai</alt>
+  <alt>Marybank</alt>
+  <alt>Matahiwi</alt>
+  <alt>Matarawa</alt>
+  <alt>Maxwell</alt>
+  <alt>Mowhanau</alt>
+  <alt>Mowhanau Beach</alt>
+  <alt>Ngamatapouri</alt>
+  <alt>Nukumaru</alt>
+  <alt>Okoia</alt>
+  <alt>Papaiti</alt>
+  <alt>Paparangi</alt>
+  <alt>Parikino</alt>
+  <alt>Pipiriki</alt>
+  <alt>Ranana</alt>
+  <alt>Rangitatau</alt>
+  <alt>Raorikia</alt>
+  <alt>Rapanui</alt>
+  <alt>Ratana</alt>
+  <alt>Te Tuhi</alt>
+  <alt>Turakina</alt>
+  <alt>Turakina Beach</alt>
+  <alt>Upokongaro</alt>
+  <alt>Waitotara</alt>
+  <alt>Waitotara Valley</alt>
+  <alt>Wanganui East</alt>
+  <alt>Westmere</alt>
+  <alt>Whangaehu</alt>
+  <alt>Whanganui</alt>
+ </alias_def>
+ <alias_def loc_id="100131">
+  <alt>Warkworth</alt>
+  <alt>Ahuroa</alt>
+  <alt>Algies Bay</alt>
+  <alt>Araparera</alt>
+  <alt>Baddeleys Beach</alt>
+  <alt>Brick Bay</alt>
+  <alt>Buckleton Beach</alt>
+  <alt>Campbells Beach</alt>
+  <alt>Dome Valley</alt>
+  <alt>Glorit</alt>
+  <alt>Hoteo</alt>
+  <alt>Kaipara Flats</alt>
+  <alt>Kakanui</alt>
+  <alt>Kourawhero</alt>
+  <alt>Leigh</alt>
+  <alt>Mahurangi</alt>
+  <alt>Mahurangi East</alt>
+  <alt>Mahurangi Heads</alt>
+  <alt>Mahurangi West</alt>
+  <alt>Mangakura</alt>
+  <alt>Martins Bay</alt>
+  <alt>Matakana</alt>
+  <alt>Mathesons Bay</alt>
+  <alt>Mullet Point</alt>
+  <alt>Omaha</alt>
+  <alt>Omaha Flats</alt>
+  <alt>Pohuehue</alt>
+  <alt>Point Wells</alt>
+  <alt>Puhoi</alt>
+  <alt>Rainbows End</alt>
+  <alt>Sandspit</alt>
+  <alt>Scotts Landing</alt>
+  <alt>Snells Beach</alt>
+  <alt>Takatu</alt>
+  <alt>Tauhoa</alt>
+  <alt>Ti Point</alt>
+  <alt>Whangateau</alt>
+  <alt>Woodcocks</alt>
+ </alias_def>
+ <alias_def loc_id="100133">
+  <alt>Wellsford</alt>
+  <alt>Hoteo North</alt>
+  <alt>Kaiwaka</alt>
+  <alt>Mangawhai</alt>
+  <alt>Oruawharo</alt>
+  <alt>Pakiri</alt>
+  <alt>Port Albert</alt>
+  <alt>Tapora</alt>
+  <alt>Te Arai</alt>
+  <alt>Te Arai Point</alt>
+  <alt>Te Hana</alt>
+  <alt>Tomarata</alt>
+  <alt>Topuni</alt>
+  <alt>Wayby</alt>
+  <alt>Wayby Valley</alt>
+  <alt>Whangaripo</alt>
+  <alt>Wharahine</alt>
+  <alt>Wharehine</alt>
+ </alias_def>
+ <alias_def loc_id="100134">
+  <alt>Westport</alt>
+  <alt>Birchfield</alt>
+  <alt>Cape Foulwind</alt>
+  <alt>Carters Beach</alt>
+  <alt>Charleston</alt>
+  <alt>Fairdown</alt>
+  <alt>Mokihinui</alt>
+  <alt>Nikau</alt>
+  <alt>Nine Mile</alt>
+  <alt>Sergeants Hill</alt>
+  <alt>St Helens</alt>
+  <alt>Tauranga Bay</alt>
+  <alt>Waimangaroa</alt>
+ </alias_def>
+ <alias_def loc_id="100135">
+  <alt>Whakatane</alt>
+  <alt>Awakaponga</alt>
+  <alt>Awakeri</alt>
+  <alt>Coastlands</alt>
+  <alt>Edgecumbe</alt>
+  <alt>Kawerau</alt>
+  <alt>Manawahe</alt>
+  <alt>Matata</alt>
+  <alt>Onepu</alt>
+  <alt>Opouriao</alt>
+  <alt>Otakiri</alt>
+  <alt>Pahou</alt>
+  <alt>Paroa</alt>
+  <alt>Pekatahi</alt>
+  <alt>Pikowai</alt>
+  <alt>Piripai</alt>
+  <alt>Poroporo</alt>
+  <alt>Ruatoki North</alt>
+  <alt>Taneatua</alt>
+  <alt>Te Mahoe</alt>
+  <alt>Te Teko</alt>
+  <alt>Thornton</alt>
+  <alt>Waikirikiri</alt>
+  <alt>Waiohau</alt>
+  <alt>White Pine Bush</alt>
+ </alias_def>
+ <alias_def loc_id="100136">
+  <alt>Whangamata</alt>
+  <alt>Moana Point</alt>
+  <alt>Onemana</alt>
+  <alt>Opoutere</alt>
+  <alt>Wharekawa</alt>
+  <alt>Whiritoa</alt>
+ </alias_def>
+ <alias_def loc_id="100137">
+  <alt>Whangarei</alt>
+  <alt>Glenbervie</alt>
+  <alt>Headland Farm Park</alt>
+  <alt>Kara</alt>
+  <alt>Mangakaramea</alt>
+  <alt>Manganese Point</alt>
+  <alt>Mangapai</alt>
+  <alt>Matapouri</alt>
+  <alt>Maungatapere</alt>
+  <alt>Maunu</alt>
+  <alt>Ngunguru</alt>
+  <alt>Pakotai</alt>
+  <alt>Parahaki</alt>
+  <alt>Parakao</alt>
+  <alt>Pataua North</alt>
+  <alt>Pipiwai</alt>
+  <alt>Poroti</alt>
+  <alt>Portland</alt>
+  <alt>Ruatangata</alt>
+  <alt>Takahiwai</alt>
+  <alt>Titoki</alt>
+  <alt>Tutukaka</alt>
+  <alt>Whangarei Heads</alt>
+  <alt>Whareora</alt>
+  <alt>Whatitiri</alt>
+ </alias_def>
+ <alias_def loc_id="100138">
+  <alt>Whitianga</alt>
+  <alt>Cooks Beach</alt>
+  <alt>Coroglen</alt>
+  <alt>Ferry Landing</alt>
+  <alt>Flaxmill Bay</alt>
+  <alt>Hahei</alt>
+  <alt>Hot Water Beach</alt>
+  <alt>Kaimarama</alt>
+  <alt>Kuaotunu</alt>
+  <alt>Matarangi</alt>
+  <alt>Opito</alt>
+  <alt>Opito Bay</alt>
+  <alt>Otama</alt>
+  <alt>Rings Beach</alt>
+  <alt>Simpsons Beach</alt>
+  <alt>Wharekaho Beach</alt>
+  <alt>Whenuakite</alt>
+ </alias_def>
+ <alias_def loc_id="100139">
+  <alt>Winton</alt>
+  <alt>Avondale</alt>
+  <alt>Benmore</alt>
+  <alt>Boggyburn</alt>
+  <alt>Browns</alt>
+  <alt>Centre Bush</alt>
+  <alt>Dunearn</alt>
+  <alt>Forest Hill</alt>
+  <alt>Heddon Bush</alt>
+  <alt>Hokonui</alt>
+  <alt>Kauana</alt>
+  <alt>Lady Barkly</alt>
+  <alt>Limehills</alt>
+  <alt>Lochiel</alt>
+  <alt>Lora Gorge</alt>
+  <alt>Oreti</alt>
+  <alt>Oreti Plains</alt>
+  <alt>Otapiri</alt>
+  <alt>Otapiri Gorge</alt>
+  <alt>South Hillend</alt>
+  <alt>Springhills</alt>
+  <alt>Thomsons Crossing</alt>
+  <alt>Tussock Creek</alt>
+  <alt>Wilsons Crossing</alt>
+ </alias_def>
+ <alias_def loc_id="100141">
+  <alt>Woodville</alt>
+  <alt>Hopelands</alt>
+  <alt>Kumeroa</alt>
+  <alt>Maharahara West</alt>
+  <alt>Ngawapurua</alt>
+  <alt>Papatawa</alt>
+ </alias_def>
+ <alias_def loc_id="100143">
+  <alt>Kaiapoi</alt>
+  <alt>Clarkville</alt>
+  <alt>East Eyreton</alt>
+  <alt>Eyreton</alt>
+  <alt>Flaxton</alt>
+  <alt>Mandeville</alt>
+  <alt>Mandeville North</alt>
+  <alt>Millstream</alt>
+  <alt>Ohapuku</alt>
+  <alt>Ohoka</alt>
+  <alt>Pegasus</alt>
+  <alt>Tuahiwi</alt>
+  <alt>Waikuku</alt>
+  <alt>Woodend</alt>
+  <alt>Woodend Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100144">
+  <alt>Ngaruawahia</alt>
+  <alt>Glen Massey</alt>
+  <alt>Matira</alt>
+  <alt>Ruakiwi</alt>
+  <alt>Te Akatea</alt>
+  <alt>Te Akau</alt>
+  <alt>Te Akau South</alt>
+  <alt>Tui Glen</alt>
+  <alt>Waingaro</alt>
+ </alias_def>
+ <alias_def loc_id="100145">
+  <alt>Tuakau</alt>
+  <alt>Glen Murray</alt>
+  <alt>Hedgehope</alt>
+  <alt>Onewhero</alt>
+  <alt>Opuatia</alt>
+  <alt>Port Waikato</alt>
+  <alt>Pukekawa</alt>
+  <alt>Tauranganui</alt>
+  <alt>Te Kohanga</alt>
+  <alt>Waikaretu</alt>
+  <alt>Whangarata</alt>
+ </alias_def>
+ <alias_def loc_id="100146">
+  <alt>Ashhurst</alt>
+  <alt>Awahou North</alt>
+  <alt>Awahou South</alt>
+  <alt>Komako</alt>
+  <alt>Pohangina</alt>
+  <alt>Raumai</alt>
+  <alt>Utuwai</alt>
+ </alias_def>
+ <alias_def loc_id="100148">
+  <alt>Akaroa</alt>
+  <alt>Barrys Bay</alt>
+  <alt>Chorlton</alt>
+  <alt>Duvauchelle</alt>
+  <alt>French Farm</alt>
+  <alt>Lavericks Bay</alt>
+  <alt>Le Bons Bay</alt>
+  <alt>Little Akaloa</alt>
+  <alt>Okains Bay</alt>
+  <alt>Onuku</alt>
+  <alt>Pigeon Bay</alt>
+  <alt>Robinsons Bay</alt>
+  <alt>Wainui</alt>
+ </alias_def>
+ <alias_def loc_id="100150">
+  <alt>Methven</alt>
+  <alt>Double Hill</alt>
+ </alias_def>
+ <alias_def loc_id="100151">
+  <alt>Amberley</alt>
+  <alt>Amberley Beach</alt>
+  <alt>Balcairn</alt>
+  <alt>Broomfield</alt>
+  <alt>Glasnevin</alt>
+  <alt>Glendale</alt>
+  <alt>Glenmark</alt>
+  <alt>Greta Valley</alt>
+  <alt>Leithfield</alt>
+  <alt>Omihi</alt>
+  <alt>Scargill</alt>
+  <alt>Waikari</alt>
+  <alt>Waipara</alt>
+  <alt>Weka Pass</alt>
+ </alias_def>
+ <alias_def loc_id="100155">
+  <alt>Waikouaiti</alt>
+  <alt>Evansdale</alt>
+  <alt>Flag Swamp</alt>
+  <alt>Hawksbury</alt>
+  <alt>Hawksbury Bush</alt>
+  <alt>Karitane</alt>
+  <alt>Merton</alt>
+  <alt>Omimi</alt>
+  <alt>Seacliff</alt>
+  <alt>Warrington</alt>
+ </alias_def>
+ <alias_def loc_id="100156">
+  <alt>Ngatea</alt>
+  <alt>Kaihere</alt>
+  <alt>Pipiroa</alt>
+  <alt>Torehape</alt>
+ </alias_def>
+ <alias_def loc_id="100157">
+  <alt>Rakaia</alt>
+  <alt>Bankside</alt>
+  <alt>Barrhill</alt>
+  <alt>Dorie</alt>
+  <alt>Hatfield</alt>
+  <alt>Highbank</alt>
+  <alt>Hororata</alt>
+  <alt>Mead</alt>
+  <alt>Mt Hutt</alt>
+  <alt>Overdale</alt>
+  <alt>Rakaia Gorge</alt>
+  <alt>Rakaia Huts</alt>
+  <alt>Rokeby</alt>
+  <alt>Te Pirita</alt>
+ </alias_def>
+ <alias_def loc_id="100159">
+  <alt>Te Kauwhata</alt>
+  <alt>Kopuku</alt>
+  <alt>Meremere</alt>
+  <alt>Rangiriri</alt>
+  <alt>Taniwha</alt>
+  <alt>Waerenga</alt>
+ </alias_def>
+ <alias_def loc_id="100160">
+  <alt>Palmerston</alt>
+  <alt>Bushey</alt>
+  <alt>Dunback</alt>
+  <alt>Goodwood</alt>
+  <alt>Inch Valley</alt>
+  <alt>Katiki</alt>
+  <alt>Macraes Flat</alt>
+  <alt>Meadowbank</alt>
+  <alt>Moeraki</alt>
+  <alt>Moonlight</alt>
+  <alt>Morrisons</alt>
+  <alt>Shag Point</alt>
+  <alt>Wairunga</alt>
+  <alt>Waynes Town</alt>
+ </alias_def>
+ <alias_def loc_id="100161">
+  <alt>Fairlie</alt>
+  <alt>Albury</alt>
+  <alt>Ashwick Flat</alt>
+  <alt>Burkes Pass</alt>
+  <alt>Cattle Valley</alt>
+  <alt>Cricklewood</alt>
+  <alt>Kimbell</alt>
+  <alt>Middle Valley</alt>
+  <alt>Sherwood Downs</alt>
+  <alt>Winscombe</alt>
+ </alias_def>
+ <alias_def loc_id="100164">
+  <alt>Waverley</alt>
+  <alt>Kohi</alt>
+  <alt>Ngutuwera</alt>
+  <alt>Rangikura</alt>
+  <alt>Waitotara</alt>
+  <alt>Waverley Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100165">
+  <alt>Hikurangi</alt>
+  <alt>Bland Bay</alt>
+  <alt>Helena Bay</alt>
+  <alt>Hukerenui</alt>
+  <alt>Marua</alt>
+  <alt>Oakura</alt>
+  <alt>Opuawhanga</alt>
+  <alt>Puhipuhi</alt>
+  <alt>Punaruku</alt>
+  <alt>Rawhiti</alt>
+  <alt>Teal Bay</alt>
+  <alt>Towai</alt>
+  <alt>Whananaki North</alt>
+  <alt>Whananaki South</alt>
+  <alt>Whangarei</alt>
+  <alt>Whangaruru</alt>
+ </alias_def>
+ <alias_def loc_id="100166">
+  <alt>Ranfurly</alt>
+  <alt>Gimmerburn</alt>
+  <alt>Hyde</alt>
+  <alt>Kokonga</alt>
+  <alt>Kyeburn</alt>
+  <alt>Maniototo</alt>
+  <alt>Naseby</alt>
+  <alt>Paerau</alt>
+  <alt>Patearoa</alt>
+  <alt>Puketoi</alt>
+  <alt>Waipiata</alt>
+  <alt>Wedderburn</alt>
+ </alias_def>
+ <alias_def loc_id="100167">
+  <alt>Otautau</alt>
+  <alt>Aparima</alt>
+  <alt>Bayswater</alt>
+  <alt>Birchwood</alt>
+  <alt>Blackmount</alt>
+  <alt>Clifden</alt>
+  <alt>Drummond</alt>
+  <alt>Eastern Bush</alt>
+  <alt>Fairfax</alt>
+  <alt>Feldwick</alt>
+  <alt>Flints Bush</alt>
+  <alt>Gladfield</alt>
+  <alt>Hilltop</alt>
+  <alt>Isla Bank</alt>
+  <alt>Merrivale</alt>
+  <alt>Monowai</alt>
+  <alt>Nightcaps</alt>
+  <alt>Ohai</alt>
+  <alt>Opio</alt>
+  <alt>Orawia</alt>
+  <alt>Otahu Flat</alt>
+  <alt>Pukemaori</alt>
+  <alt>Puketiti</alt>
+  <alt>Ringway</alt>
+  <alt>Ringway Ridges</alt>
+  <alt>Scotts Gap</alt>
+  <alt>Thornbury</alt>
+  <alt>Tinkertown</alt>
+  <alt>Waikouro</alt>
+  <alt>Wairio</alt>
+  <alt>Woodlaw</alt>
+  <alt>Wreys Bush</alt>
+ </alias_def>
+ <alias_def loc_id="100168">
+  <alt>Roxburgh</alt>
+  <alt>Coal Creek</alt>
+  <alt>Coal Creek Flat</alt>
+  <alt>Dumbarton</alt>
+  <alt>Ettrick</alt>
+  <alt>Millers Flat</alt>
+  <alt>Roxburgh East</alt>
+  <alt>Teviot</alt>
+ </alias_def>
+ <alias_def loc_id="100171">
+  <alt>Tapanui</alt>
+  <alt>Crookston</alt>
+  <alt>Dunrobin</alt>
+  <alt>Edievale</alt>
+  <alt>Heriot</alt>
+  <alt>Manse Bush</alt>
+  <alt>Moa Flat</alt>
+  <alt>Park Hill</alt>
+  <alt>Wilden</alt>
+ </alias_def>
+ <alias_def loc_id="100172">
+  <alt>Kaitangata</alt>
+  <alt>Inch Clutha</alt>
+  <alt>Stirling</alt>
+  <alt>Wangaloa</alt>
+ </alias_def>
+ <alias_def loc_id="100175">
+  <alt>Tirau</alt>
+ </alias_def>
+ <alias_def loc_id="100176">
+  <alt>Havelock</alt>
+  <alt>Canvastown</alt>
+  <alt>Daltons Bridge</alt>
+  <alt>Okaramio</alt>
+  <alt>Rocky Creek</alt>
+ </alias_def>
+ <alias_def loc_id="100180">
+  <alt>Lawrence</alt>
+  <alt>Beaumont</alt>
+  <alt>Bowlers Creek</alt>
+  <alt>Evans Flat</alt>
+  <alt>Manuka Creek</alt>
+  <alt>Mt Stuart</alt>
+  <alt>Puketi</alt>
+  <alt>Tuapeka Flat</alt>
+  <alt>Tuapeka West</alt>
+  <alt>Waitahuna</alt>
+  <alt>Waitahuna West</alt>
+  <alt>Wetherstons</alt>
+ </alias_def>
+ <alias_def loc_id="100183">
+  <alt>Maungaturoto</alt>
+  <alt>Brynderwyn</alt>
+  <alt>Whakapirau</alt>
+ </alias_def>
+ <alias_def loc_id="100184">
+  <alt>Waipu</alt>
+  <alt>Langs Beach</alt>
+  <alt>Waipu Cove</alt>
+ </alias_def>
+ <alias_def loc_id="100186">
+  <alt>Eketahuna</alt>
+  <alt>Alfredton</alt>
+  <alt>Hamua</alt>
+  <alt>Hastwell</alt>
+  <alt>Haunui</alt>
+  <alt>Hukanui</alt>
+  <alt>Kaiparoro</alt>
+  <alt>Kakariki</alt>
+  <alt>Newman</alt>
+  <alt>Nireaha</alt>
+  <alt>Pleckville</alt>
+  <alt>Pongaroa</alt>
+  <alt>Putara</alt>
+  <alt>Rongomai</alt>
+  <alt>Tiraumea</alt>
+ </alias_def>
+ <alias_def loc_id="100187">
+  <alt>Outram</alt>
+  <alt>Berwick</alt>
+  <alt>Clarendon</alt>
+  <alt>Clarks Junction</alt>
+  <alt>Harveys Flat</alt>
+  <alt>Henley</alt>
+  <alt>Hindon</alt>
+  <alt>Lake Mahinerangi</alt>
+  <alt>Lee Stream</alt>
+  <alt>Maungatua</alt>
+  <alt>Momona</alt>
+  <alt>Woodside</alt>
+  <alt>Wyllies Crossing</alt>
+ </alias_def>
+ <alias_def loc_id="100188">
+  <alt>Tuatapere</alt>
+  <alt>Clifden</alt>
+  <alt>Happy Valley</alt>
+  <alt>Lillburn Valley</alt>
+  <alt>Motu Bush</alt>
+  <alt>Papatotara</alt>
+  <alt>Piko Piko</alt>
+  <alt>Pukemaori</alt>
+  <alt>Rowallan</alt>
+ </alias_def>
+ <alias_def loc_id="100189">
+  <alt>Ruawai</alt>
+ </alias_def>
+ <alias_def loc_id="100190">
+  <alt>Cheviot</alt>
+  <alt>Blythe Valley</alt>
+  <alt>Domett</alt>
+  <alt>Gore Bay</alt>
+  <alt>Lagoon Flat</alt>
+  <alt>Manuka Bay</alt>
+  <alt>Mina</alt>
+  <alt>Mt Parnassus</alt>
+  <alt>Parnassus</alt>
+  <alt>Spotswood</alt>
+ </alias_def>
+ <alias_def loc_id="100191">
+  <alt>Waimauku</alt>
+  <alt>Muriwai</alt>
+  <alt>Muriwai Beach</alt>
+  <alt>Muriwai Valley</alt>
+  <alt>Rewiti</alt>
+ </alias_def>
+ <alias_def loc_id="100193">
+  <alt>Te Karaka</alt>
+  <alt>Kanakanaia</alt>
+  <alt>Motu</alt>
+  <alt>Otoko</alt>
+  <alt>Puha</alt>
+  <alt>Whakarau</alt>
+  <alt>Whatatutu</alt>
+ </alias_def>
+ <alias_def loc_id="100195">
+  <alt>Lumsden</alt>
+  <alt>Castlerock</alt>
+  <alt>Five Rivers</alt>
+  <alt>Hamilton Burn</alt>
+  <alt>Lintley</alt>
+  <alt>Lowther</alt>
+  <alt>Mossburn</alt>
+ </alias_def>
+ <alias_def loc_id="100197">
+  <alt>Ruatoria</alt>
+  <alt>Hiruharama</alt>
+  <alt>Makarika</alt>
+  <alt>Waiomatatini</alt>
+  <alt>Waiorongomai</alt>
+ </alias_def>
+ <alias_def loc_id="100198">
+  <alt>Takapau</alt>
+  <alt>Ashley Clinton</alt>
+  <alt>Kopua</alt>
+  <alt>Makaretu</alt>
+  <alt>Otawhao</alt>
+ </alias_def>
+ <alias_def loc_id="100200">
+  <alt>Murchison</alt>
+  <alt>Gowan Valley</alt>
+  <alt>Longford</alt>
+  <alt>Tutaki</alt>
+ </alias_def>
+ <alias_def loc_id="100201">
+  <alt>Piopio</alt>
+  <alt>Mangaotaki</alt>
+  <alt>Ngapaenga</alt>
+  <alt>Paemako</alt>
+ </alias_def>
+ <alias_def loc_id="100202">
+  <alt>Kurow</alt>
+  <alt>Cattle Creek</alt>
+  <alt>Hakataramea</alt>
+ </alias_def>
+ <alias_def loc_id="100204">
+  <alt>Seddon</alt>
+  <alt>Blind River</alt>
+  <alt>Cape Campbell</alt>
+  <alt>Grasmere</alt>
+  <alt>Hauwai</alt>
+  <alt>Lake Grassmere</alt>
+  <alt>Ward</alt>
+ </alias_def>
+ <alias_def loc_id="100205">
+  <alt>Owaka</alt>
+  <alt>Awatea</alt>
+  <alt>Chaslands</alt>
+  <alt>Hina Hina</alt>
+  <alt>Houipapa</alt>
+  <alt>Katea</alt>
+  <alt>Newhaven</alt>
+  <alt>Owaka Valley</alt>
+  <alt>Papatowai</alt>
+  <alt>Pounawea</alt>
+  <alt>Purakauiti</alt>
+  <alt>Tahakopa</alt>
+  <alt>Tahatika</alt>
+  <alt>Tawanui</alt>
+ </alias_def>
+ <alias_def loc_id="100206">
+  <alt>Otane</alt>
+  <alt>Elsthorpe</alt>
+  <alt>Patangata</alt>
+  <alt>Pukehou</alt>
+  <alt>Waipawa</alt>
+ </alias_def>
+ <alias_def loc_id="100214">
+  <alt>Ohaupo</alt>
+  <alt>Glenview</alt>
+  <alt>Kaipaki</alt>
+  <alt>Mystery Creek</alt>
+  <alt>Ngahinapouri</alt>
+  <alt>Paterangi</alt>
+  <alt>Rukuhia</alt>
+  <alt>Te Rahu</alt>
+ </alias_def>
+ <alias_def loc_id="100218">
+  <alt>Waikari</alt>
+ </alias_def>
+ <alias_def loc_id="100219">
+  <alt>Clinton</alt>
+  <alt>Kuriwao</alt>
+  <alt>Popotunoa</alt>
+  <alt>Taumata</alt>
+  <alt>Wairuna</alt>
+  <alt>Waiwera South</alt>
+ </alias_def>
+ <alias_def loc_id="100220">
+  <alt>Ross</alt>
+  <alt>Fergusons Bush</alt>
+  <alt>Kakapotahi</alt>
+  <alt>Waitaha</alt>
+ </alias_def>
+ <alias_def loc_id="100222">
+  <alt>Waiau</alt>
+  <alt>Mt Lyford Village</alt>
+ </alias_def>
+ <alias_def loc_id="100223">
+  <alt>Ohura</alt>
+  <alt>Tatu</alt>
+  <alt>Waitaanga</alt>
+ </alias_def>
+ <alias_def loc_id="100225">
+  <alt>Waitoa</alt>
+  <alt>Ngarua</alt>
+  <alt>Springdale</alt>
+ </alias_def>
+ <alias_def loc_id="100226">
+  <alt>Sheffield</alt>
+  <alt>Annat</alt>
+  <alt>Russells Flat</alt>
+  <alt>Waddington</alt>
+ </alias_def>
+ <alias_def loc_id="100231">
+  <alt>Waiheke Island</alt>
+  <alt>Awaawaroa Bay</alt>
+  <alt>Half Moon Bay</alt>
+  <alt>Kaikuku Bay</alt>
+  <alt>Omaru Bay</alt>
+  <alt>Onetangi</alt>
+  <alt>Orapiu</alt>
+  <alt>Rocky Bay</alt>
+  <alt>Te Matuku Bay</alt>
+  <alt>Te Whau</alt>
+  <alt>Woodside Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100236">
+  <alt>Kumeu</alt>
+  <alt>Huapai</alt>
+  <alt>Riverhead</alt>
+ </alias_def>
+ <alias_def loc_id="100246">
+  <alt>Apiti</alt>
+  <alt>Umutoi</alt>
+ </alias_def>
+ <alias_def loc_id="100253">
+  <alt>Aria</alt>
+ </alias_def>
+ <alias_def loc_id="100295">
+  <alt>Bombay</alt>
+  <alt>Paparata</alt>
+ </alias_def>
+ <alias_def loc_id="100352">
+  <alt>Dipton</alt>
+  <alt>Dipton West</alt>
+ </alias_def>
+ <alias_def loc_id="100490">
+  <alt>Matawai</alt>
+  <alt>Koranga</alt>
+  <alt>Rakauroa</alt>
+ </alias_def>
+ <alias_def loc_id="100492">
+  <alt>Matiere</alt>
+  <alt>Niho Niho</alt>
+ </alias_def>
+ <alias_def loc_id="100529">
+  <alt>Mahoenui</alt>
+ </alias_def>
+ <alias_def loc_id="100565">
+  <alt>Omakau</alt>
+  <alt>Becks</alt>
+  <alt>Lauder</alt>
+  <alt>Matakanui</alt>
+ </alias_def>
+ <alias_def loc_id="100629">
+  <alt>Norsewood</alt>
+ </alias_def>
+ <alias_def loc_id="100695">
+  <alt>Ongaonga</alt>
+  <alt>Onga Onga</alt>
+  <alt>Springhill</alt>
+  <alt>Wakarara</alt>
+ </alias_def>
+ <alias_def loc_id="100741">
+  <alt>Tangiteroria</alt>
+ </alias_def>
+ <alias_def loc_id="100770">
+  <alt>Waimiha</alt>
+ </alias_def>
+ <alias_def loc_id="100776">
+  <alt>Owhango</alt>
+  <alt>Kaitieke</alt>
+  <alt>Kakahi</alt>
+  <alt>Mount Ruapehu</alt>
+  <alt>National Park</alt>
+  <alt>Raurimu</alt>
+  <alt>Retaruke</alt>
+  <alt>Tongariro</alt>
+ </alias_def>
+ <alias_def loc_id="100790">
+  <alt>Tinui</alt>
+  <alt>Annedale</alt>
+ </alias_def>
+ <alias_def loc_id="100793">
+  <alt>Kimbolton</alt>
+  <alt>Apiti</alt>
+  <alt>Mangaweka</alt>
+  <alt>Marton Block</alt>
+  <alt>Ohingaiti</alt>
+  <alt>Peep-o-day</alt>
+  <alt>Rangiwahia</alt>
+ </alias_def>
+ <alias_def loc_id="100918">
+  <alt>Waikaia</alt>
+ </alias_def>
+ <alias_def loc_id="100971">
+  <alt>Waimana</alt>
+  <alt>Nukuhou North</alt>
+ </alias_def>
+ <alias_def loc_id="100994">
+  <alt>Urenui</alt>
+  <alt>Ahititi</alt>
+  <alt>Okau</alt>
+  <alt>Okoki</alt>
+  <alt>Pukearuhe</alt>
+  <alt>Tongaporutu</alt>
+  <alt>Uruti</alt>
+  <alt>Waitoetoe</alt>
+ </alias_def>
+ <alias_def loc_id="101019">
+  <alt>Waitati</alt>
+  <alt>Doctors Point</alt>
+  <alt>Pigeon Flat</alt>
+  <alt>Upper Junction</alt>
+ </alias_def>
+ <alias_def loc_id="101039">
+  <alt>Glenorchy</alt>
+ </alias_def>
+ <alias_def loc_id="101045">
+  <alt>Kotemaori</alt>
+ </alias_def>
+ <alias_def loc_id="101047">
+  <alt>Nuhaka</alt>
+  <alt>Kopuawhara</alt>
+  <alt>Mahanga</alt>
+  <alt>Mahia</alt>
+  <alt>Mahia Beach</alt>
+  <alt>Opoutama</alt>
+  <alt>Oraka</alt>
+  <alt>Tahaenui</alt>
+  <alt>Taylors Bay</alt>
+  <alt>Whakaki</alt>
+ </alias_def>
+ <alias_def loc_id="101088">
+  <alt>Mangaweka</alt>
+ </alias_def>
+ <alias_def loc_id="101089">
+  <alt>Raupunga</alt>
+  <alt>Mohaka</alt>
+  <alt>Putere</alt>
+ </alias_def>
+ <alias_def loc_id="101096">
+  <alt>Tolaga Bay</alt>
+  <alt>Glasgow</alt>
+  <alt>Mangatuna</alt>
+  <alt>Tauwhareparae</alt>
+  <alt>Teesdale</alt>
+  <alt>Waingaromia</alt>
+ </alias_def>
+ <alias_def loc_id="101097">
+  <alt>Tokomaru Bay</alt>
+  <alt>Te Puia Springs</alt>
+  <alt>Waipero Bay</alt>
+  <alt>Waipiro Bay</alt>
+ </alias_def>
+ <alias_def loc_id="101098">
+  <alt>Tikitiki</alt>
+  <alt>Rangitukia</alt>
+  <alt>Te Araroa</alt>
+ </alias_def>
+ <alias_def loc_id="101118">
+  <alt>Te Mata</alt>
+  <alt>Aotea</alt>
+  <alt>Moerangi</alt>
+  <alt>Te Mata</alt>
+ </alias_def>
+ <alias_def loc_id="101139">
+  <alt>Waiotira</alt>
+  <alt>Tauraroa</alt>
+  <alt>Waikiekie</alt>
+  <alt>Whangarei</alt>
+ </alias_def>
+ <alias_def loc_id="101162">
+  <alt>Kaukapakapa</alt>
+  <alt>Dunsdale</alt>
+  <alt>Kanohi</alt>
+  <alt>Makarau</alt>
+  <alt>Puhoi</alt>
+  <alt>Punganui</alt>
+  <alt>Tahekeroa</alt>
+  <alt>Upper Waiwera</alt>
+  <alt>Wainui</alt>
+  <alt>Waitoki</alt>
+  <alt>Waiwera</alt>
+ </alias_def>
+ <alias_def loc_id="101165">
+  <alt>Kaiwaka</alt>
+  <alt>Mangawhai</alt>
+  <alt>Oneriri</alt>
+ </alias_def>
+ <alias_def loc_id="101169">
+  <alt>Paparoa</alt>
+  <alt>Pahi</alt>
+ </alias_def>
+ <alias_def loc_id="101171">
+  <alt>Matakohe</alt>
+  <alt>Ararua</alt>
+  <alt>Hukatere</alt>
+  <alt>Parahi</alt>
+  <alt>Ruawai</alt>
+  <alt>Tinopai</alt>
+  <alt>Waiti</alt>
+ </alias_def>
+ <alias_def loc_id="101172">
+  <alt>Te Kopuru</alt>
+  <alt>Kellys Bay</alt>
+  <alt>Pouto</alt>
+ </alias_def>
+ <alias_def loc_id="101188">
+  <alt>Kohukohu</alt>
+  <alt>Broadwood</alt>
+  <alt>Mitimiti</alt>
+  <alt>Motukaraka</alt>
+  <alt>Motuti</alt>
+  <alt>Panguru</alt>
+  <alt>Paraoanui</alt>
+  <alt>Rangi Point</alt>
+  <alt>Reena</alt>
+  <alt>Te Huahua</alt>
+  <alt>Tutekehua</alt>
+ </alias_def>
+ <alias_def loc_id="101194">
+  <alt>Awanui</alt>
+  <alt>Waipapakauri</alt>
+ </alias_def>
+ <alias_def loc_id="101237">
+  <alt>Reporoa</alt>
+  <alt>Broadlands</alt>
+  <alt>Golden Springs</alt>
+  <alt>Mihi</alt>
+ </alias_def>
+ <alias_def loc_id="101262">
+  <alt>Broadwood</alt>
+  <alt>Pawarenga</alt>
+ </alias_def>
+ <alias_def loc_id="101268">
+  <alt>Middlemarch</alt>
+  <alt>Brookdale</alt>
+  <alt>Pukerangi</alt>
+  <alt>Sutton</alt>
+ </alias_def>
+ <alias_def loc_id="101296">
+  <alt>Hunterville</alt>
+  <alt>Manganoho</alt>
+  <alt>Ohingaiti</alt>
+  <alt>Otairi</alt>
+  <alt>Pakihikura</alt>
+  <alt>Poukiore</alt>
+  <alt>Vinegar Hill</alt>
+ </alias_def>
+ <alias_def loc_id="101472">
+  <alt>Oturehua</alt>
+  <alt>Cambrians</alt>
+  <alt>Gorge Creek</alt>
+  <alt>Hills Creek</alt>
+  <alt>Ida Valley</alt>
+  <alt>Moa Creek</alt>
+  <alt>Poolburn</alt>
+  <alt>St Bathans</alt>
+ </alias_def>
+ <alias_def loc_id="101476">
+  <alt>Pukeatua</alt>
+  <alt>Arapuni</alt>
+  <alt>Waikawau</alt>
+ </alias_def>
+ <alias_def loc_id="101729">
+  <alt>Pongaroa</alt>
+  <alt>Akitio</alt>
+  <alt>Pongaroa</alt>
+  <alt>Waione</alt>
+ </alias_def>
+ <alias_def loc_id="101954">
+  <alt>Ohinewai</alt>
+  <alt>Hoe-O-Tainui</alt>
+  <alt>Te Hoe</alt>
+  <alt>Waiterimu</alt>
+ </alias_def>
+ <alias_def loc_id="101956">
+  <alt>Mercer</alt>
+  <alt>Meremere</alt>
+ </alias_def>
+ <alias_def loc_id="101958">
+  <alt>Mokau</alt>
+  <alt>Awakino</alt>
+ </alias_def>
+ <alias_def loc_id="102059">
+  <alt>Porangahau</alt>
+  <alt>Mangaorapa</alt>
+  <alt>Porangahau</alt>
+  <alt>Porangahau Beach</alt>
+ </alias_def>
+ <alias_def loc_id="102092">
+  <alt>Oparau</alt>
+  <alt>Hauturu</alt>
+  <alt>Waiharakeke</alt>
+ </alias_def>
+ <alias_def loc_id="102201">
+  <alt>Atiamuri</alt>
+  <alt>Mokai</alt>
+  <alt>Tirohanga</alt>
+  <alt>Upper Atiamuri</alt>
+ </alias_def>
+ <alias_def loc_id="102606">
+  <alt>Kawhia</alt>
+  <alt>Aotea</alt>
+  <alt>Okapu</alt>
+ </alias_def>
+ <alias_def loc_id="102624">
+  <alt>Kaeo</alt>
+  <alt>Matauri Bay</alt>
+  <alt>Totara North</alt>
+  <alt>Whangaroa</alt>
+ </alias_def>
+ <alias_def loc_id="102684">
+  <alt>Manutuke</alt>
+  <alt>Tiniroto</alt>
+  <alt>Waingake</alt>
+ </alias_def>
+ <alias_def loc_id="102694">
+  <alt>Balfour</alt>
+  <alt>St Patricks</alt>
+ </alias_def>
+ <alias_def loc_id="102750">
+  <alt>Collingwood</alt>
+  <alt>Bainham</alt>
+  <alt>Ferntown</alt>
+  <alt>Golden Bay</alt>
+  <alt>Kaihoka</alt>
+  <alt>Pakawau</alt>
+  <alt>Puponga</alt>
+ </alias_def>
+ <alias_def loc_id="102839">
+  <alt>Diamond Harbour</alt>
+  <alt>Camp Bay</alt>
+  <alt>Parau Bay</alt>
+  <alt>Port Levy</alt>
+  <alt>Purau</alt>
+ </alias_def>
+ <alias_def loc_id="102847">
+  <alt>Cave</alt>
+  <alt>Albury</alt>
+  <alt>Cannington</alt>
+  <alt>Monavale</alt>
+  <alt>Motukaika</alt>
+ </alias_def>
+ <alias_def loc_id="102852">
+  <alt>Little River</alt>
+  <alt>Birdlings Flat</alt>
+  <alt>Kaitorete Spit</alt>
+  <alt>Okuti Valley</alt>
+  <alt>Puaha</alt>
+  <alt>Robin Hood Bay</alt>
+ </alias_def>
+ <alias_def loc_id="102929">
+  <alt>Upper Moutere</alt>
+  <alt>Braeburn</alt>
+  <alt>Bronte</alt>
+  <alt>Deepdale</alt>
+  <alt>Harakeke</alt>
+  <alt>Kina</alt>
+  <alt>Lower Moutere</alt>
+  <alt>Mapua</alt>
+  <alt>Mariri</alt>
+  <alt>Neudorf</alt>
+  <alt>Prices Corner</alt>
+  <alt>Ruby Bay</alt>
+  <alt>Tasman</alt>
+ </alias_def>
+ <alias_def loc_id="102994">
+  <alt>Peel Forest</alt>
+ </alias_def>
+ <alias_def loc_id="103030">
+  <alt>French Pass</alt>
+  <alt>Admiralty Bay</alt>
+  <alt>Canoe Bay</alt>
+  <alt>Cissy Bay</alt>
+  <alt>Croisilles Harbour</alt>
+  <alt>Elaine Bay</alt>
+  <alt>Elmslie Bay</alt>
+  <alt>Matapihi Bay</alt>
+  <alt>Matephi Bay</alt>
+  <alt>Ngaio Bay</alt>
+  <alt>Okiwa Bay</alt>
+  <alt>Okiwi Bay</alt>
+  <alt>Rai Valley</alt>
+  <alt>Taipare Bay</alt>
+  <alt>Waikawa Bay</alt>
+  <alt>Wairangi Bay</alt>
+  <alt>Whakitenga Bay</alt>
+  <alt>Woodlands bay</alt>
+ </alias_def>
+ <alias_def loc_id="103037">
+  <alt>Coalgate</alt>
+  <alt>Glenroy</alt>
+  <alt>Glentunnel</alt>
+  <alt>Greendale</alt>
+  <alt>Whitecliffs</alt>
+ </alias_def>
+ <alias_def loc_id="103064">
+  <alt>Karamea</alt>
+  <alt>Karanga</alt>
+  <alt>Umere</alt>
+ </alias_def>
+ <alias_def loc_id="103082">
+  <alt>Hawarden</alt>
+  <alt>Hurunui</alt>
+  <alt>Masons Flat</alt>
+  <alt>Medbury</alt>
+  <alt>Pyramid Valley</alt>
+  <alt>The Peaks</alt>
+ </alias_def>
+ <alias_def loc_id="103195">
+  <alt>Culverden</alt>
+  <alt>Balmoral</alt>
+  <alt>Rotherham</alt>
+ </alias_def>
+ <alias_def loc_id="103215">
+  <alt>Harihari</alt>
+ </alias_def>
+ <alias_def loc_id="103270">
+  <alt>Whataroa</alt>
+  <alt>Fox Glacier</alt>
+  <alt>Franz Josef Glacier</alt>
+  <alt>Haast</alt>
+  <alt>Te Taho</alt>
+ </alias_def>
+ <alias_def loc_id="103335">
+  <alt>Rai Valley</alt>
+  <alt>Duncan Bay</alt>
+  <alt>French Pass</alt>
+  <alt>Pelorus</alt>
+  <alt>Pelorus Bridge</alt>
+  <alt>Penzance Bay</alt>
+  <alt>Tuna Bay Tennyson Inlet</alt>
+ </alias_def>
+ <alias_def loc_id="103340">
+  <alt>Rotherham</alt>
+ </alias_def>
+ <alias_def loc_id="103396">
+  <alt>Hikuai</alt>
+  <alt>Pauanui</alt>
+ </alias_def>
+ <alias_def loc_id="103569">
+  <alt>Greta Valley</alt>
+  <alt>Motunau Beach</alt>
+ </alias_def>
+ <alias_def loc_id="103592">
+  <alt>Okaihau</alt>
+  <alt>Happy Valley</alt>
+  <alt>Horeke</alt>
+  <alt>Mangamuka</alt>
+  <alt>Mangamuka Bridge</alt>
+  <alt>Motukiore</alt>
+  <alt>Omahuta</alt>
+  <alt>Puketi</alt>
+  <alt>Rahiri</alt>
+  <alt>Rangiahua</alt>
+  <alt>Umawera</alt>
+  <alt>Utakura</alt>
+  <alt>Waihou Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103594">
+  <alt>Great Barrier Island</alt>
+  <alt>Awana Bay</alt>
+  <alt>Claris</alt>
+  <alt>Medlands Beach</alt>
+  <alt>Okupu</alt>
+  <alt>Puriri Bay</alt>
+  <alt>Rosalie Bay</alt>
+  <alt>Schooner Bay</alt>
+  <alt>Tryphena</alt>
+  <alt>Whangaparapara</alt>
+ </alias_def>
+ <alias_def loc_id="103822">
+  <alt>Richmond</alt>
+  <alt>Appleby</alt>
+  <alt>Best Island</alt>
+  <alt>Hope</alt>
+  <alt>Redwood Valley</alt>
+  <alt>Waimea West</alt>
+ </alias_def>
+ <alias_def loc_id="103844">
+  <alt>St Andrews</alt>
+  <alt>Blue Cliffs</alt>
+  <alt>Esk Valley</alt>
+  <alt>Lyalldale</alt>
+ </alias_def>
+ <alias_def loc_id="103859">
+  <alt>Raetihi</alt>
+  <alt>Horopito</alt>
+  <alt>Pipiriki</alt>
+  <alt>Ruatiti</alt>
+ </alias_def>
+ <alias_def loc_id="104030">
+  <alt>Mangonui</alt>
+  <alt>Hihi</alt>
+ </alias_def>
+ <alias_def loc_id="104031">
+  <alt>Mosgiel</alt>
+  <alt>Allanton</alt>
+  <alt>Janefield</alt>
+  <alt>North Taieri</alt>
+  <alt>Otokia</alt>
+  <alt>Wingatui</alt>
+  <alt>Wyllies Crossing</alt>
+ </alias_def>
+ <alias_def loc_id="104032">
+  <alt>Wyndham</alt>
+  <alt>Edendale</alt>
+  <alt>Fortification</alt>
+  <alt>Glenham</alt>
+  <alt>Kamahi</alt>
+  <alt>Mataura Island</alt>
+  <alt>Menzies Ferry</alt>
+  <alt>Mimihau</alt>
+  <alt>Mokoreta</alt>
+  <alt>Morton Mains</alt>
+  <alt>Oteramika</alt>
+  <alt>Oware</alt>
+  <alt>Pine Bush</alt>
+  <alt>Redan</alt>
+  <alt>Seaward Downs</alt>
+  <alt>South Wyndham</alt>
+  <alt>Spurhead</alt>
+  <alt>Te Peka</alt>
+  <alt>Titiroa</alt>
+  <alt>Two Creeks</alt>
+  <alt>Waimahaka</alt>
+  <alt>Waituna</alt>
+ </alias_def>
+ <alias_def loc_id="104033">
+  <alt>Havelock North</alt>
+  <alt>Elsthorpe</alt>
+  <alt>Kairakau Beach</alt>
+  <alt>Mangakuri Beach</alt>
+  <alt>Marae Totara</alt>
+  <alt>Maraetotara</alt>
+  <alt>Ocean Beach</alt>
+  <alt>Waimarama</alt>
+ </alias_def>
+ <alias_def loc_id="104034">
+  <alt>Lyttelton</alt>
+  <alt>Allandale</alt>
+  <alt>Cass Bay</alt>
+  <alt>Charteris Bay</alt>
+  <alt>Church Bay</alt>
+  <alt>Diamond Harbour</alt>
+  <alt>Governors Bay</alt>
+  <alt>Ohinetahi</alt>
+  <alt>Rapaki</alt>
+  <alt>Teddington</alt>
+ </alias_def>
+ <alias_def loc_id="104035">
+  <alt>Drury</alt>
+  <alt>Ararimu</alt>
+  <alt>Karaka</alt>
+  <alt>Ramarama</alt>
+  <alt>Runciman</alt>
+ </alias_def>
+ <alias_def loc_id="104036">
+  <alt>Taupiri</alt>
+  <alt>Gordonton</alt>
+  <alt>Hopuhopu</alt>
+  <alt>Kainui</alt>
+  <alt>Komakorau</alt>
+  <alt>Ngaruawahia</alt>
+  <alt>Orini</alt>
+  <alt>Whitikahu</alt>
+ </alias_def>
+ <alias_def loc_id="104037">
+  <alt>Waikanae</alt>
+  <alt>Peka Peka</alt>
+  <alt>Reikorangi</alt>
+  <alt>Waikanae Downs</alt>
+ </alias_def>
+ <alias_def loc_id="1000000">
+  <alt>Wainuiomata</alt>
+  <alt>Homedale</alt>
+  <alt>Lower Hutt</alt>
+  <alt>Moores Valley</alt>
+ </alias_def>
+ <alias_def loc_id="1000002">
+  <alt>Manurewa</alt>
+  <alt>Alfriston</alt>
+  <alt>Brookby</alt>
+  <alt>Whitford</alt>
+ </alias_def>
+ <alias_def loc_id="1000004">
+  <alt>New Lynn</alt>
+  <alt>Karekare</alt>
+  <alt>Piha</alt>
+  <alt>Waitakere</alt>
+ </alias_def>
+ <alias_def loc_id="1000005">
+  <alt>Onerahi</alt>
+  <alt>Parua Bay</alt>
+  <alt>Pataua South</alt>
+ </alias_def>
+ <alias_def loc_id="1000006">
+  <alt>Ongarue</alt>
+  <alt>Waimiha</alt>
+ </alias_def>
+ <alias_def loc_id="1000010">
+  <alt>Henderson</alt>
+  <alt>Bethells Beach</alt>
+  <alt>Massey</alt>
+  <alt>Swanson</alt>
+  <alt>Taupaki</alt>
+  <alt>Te Henga</alt>
+  <alt>Waitakere</alt>
+ </alias_def>
+ <alias_def loc_id="1000011">
+  <alt>Howick</alt>
+  <alt>Beachlands</alt>
+  <alt>Maraetai</alt>
+  <alt>Whitford</alt>
+ </alias_def>
+ <alias_def loc_id="1000012">
+  <alt>Kamo</alt>
+  <alt>Kauri</alt>
+  <alt>Matarau</alt>
+  <alt>Springs Flat</alt>
+ </alias_def>
+ <alias_def loc_id="1000013">
+  <alt>Karori</alt>
+  <alt>Makara</alt>
+  <alt>Makara Beach</alt>
+ </alias_def>
+ <alias_def loc_id="1000014">
+  <alt>Kumara</alt>
+  <alt>Inchbonnie</alt>
+  <alt>Kumara Junction</alt>
+  <alt>Mitchells</alt>
+  <alt>Rotomanu</alt>
+  <alt>Ruru</alt>
+  <alt>Taramakau</alt>
+  <alt>Te Kinga</alt>
+ </alias_def>
+ <alias_def loc_id="1000016">
+  <alt>Belfast</alt>
+  <alt>Coutts Island</alt>
+ </alias_def>
+ <alias_def loc_id="1000017">
+  <alt>Blackball</alt>
+  <alt>Ahaura</alt>
+  <alt>Atarau</alt>
+  <alt>Blackwater</alt>
+  <alt>Hukarere</alt>
+  <alt>Ikamatua</alt>
+  <alt>Moonlight</alt>
+  <alt>Totara Flat</alt>
+ </alias_def>
+ <alias_def loc_id="1000018">
+  <alt>Brighton</alt>
+  <alt>Akatore</alt>
+  <alt>Kuri Bush</alt>
+  <alt>Taieri Beach</alt>
+  <alt>Taieri Mouth</alt>
+ </alias_def>
+ <alias_def loc_id="1000019">
+  <alt>Albany</alt>
+  <alt>Browns Bay</alt>
+  <alt>Coatesville</alt>
+  <alt>Dairy Flat</alt>
+  <alt>Okura</alt>
+  <alt>Paremoremo</alt>
+  <alt>Redvale</alt>
+  <alt>Riverhead</alt>
+  <alt>Tahekeroa</alt>
+  <alt>Torbay</alt>
+  <alt>Woodside Bay</alt>
+ </alias_def>
+ <alias_def loc_id="1000020">
+  <alt>Dobson</alt>
+  <alt>Bell Hill</alt>
+  <alt>Grey Valley</alt>
+  <alt>Haupiri</alt>
+  <alt>Kamaka</alt>
+  <alt>Kokiri</alt>
+  <alt>Kotuku</alt>
+  <alt>Matai</alt>
+  <alt>Moana</alt>
+  <alt>Nelson Creek</alt>
+  <alt>Ngahere</alt>
+  <alt>Stillwater</alt>
+ </alias_def>
+ <alias_def loc_id="1000023">
+  <alt>Pokeno</alt>
+  <alt>Bombay</alt>
+  <alt>Kaiaua</alt>
+  <alt>Kopuku</alt>
+  <alt>Mangatangi</alt>
+  <alt>Mangatawhiri</alt>
+  <alt>Maramarua</alt>
+  <alt>Miranda</alt>
+  <alt>Waharau</alt>
+  <alt>Whakatiwai</alt>
+ </alias_def>
+ <alias_def loc_id="1000025">
+  <alt>Port Chalmers</alt>
+  <alt>Aramoana</alt>
+  <alt>Careys Bay</alt>
+  <alt>Deborah Bay</alt>
+  <alt>Hamilton Bay</alt>
+  <alt>Long Beach</alt>
+  <alt>Mihiwaka</alt>
+  <alt>Osborne</alt>
+  <alt>Purakaunui</alt>
+  <alt>Te Ngaru</alt>
+  <alt>Waipuna Bay</alt>
+ </alias_def>
+ <alias_def loc_id="1000026">
+  <alt>Walton</alt>
+  <alt>Kiwitahi</alt>
+  <alt>Richmond Downs</alt>
+ </alias_def>
+ <alias_def loc_id="1000027">
+  <alt>Runanga</alt>
+  <alt>Barrytown</alt>
+  <alt>Punakaiki</alt>
+ </alias_def>
+ <alias_def loc_id="1000028">
+  <alt>Silverdale</alt>
+  <alt>Pine Valley</alt>
+  <alt>Stillwater</alt>
+  <alt>Wainui</alt>
+ </alias_def>
+ <alias_def loc_id="1000029">
+  <alt>Springfield</alt>
+  <alt>Kowai Bush</alt>
+ </alias_def>
+ <alias_def loc_id="1000031">
+  <alt>Rewa</alt>
+  <alt>Cheltenham</alt>
+ </alias_def>
+ <alias_def loc_id="1000032">
+  <alt>Waharoa</alt>
+  <alt>Hungahunga</alt>
+  <alt>Wardville</alt>
+ </alias_def>
+ <alias_def loc_id="1000234">
+  <alt>Tokanui</alt>
+  <alt>Curio Bay</alt>
+  <alt>Haldane</alt>
+  <alt>Niagara</alt>
+  <alt>Progress Valley</alt>
+  <alt>Quarry Hills</alt>
+  <alt>Slope Point</alt>
+  <alt>Waikawa</alt>
+  <alt>Waikawa Valley</alt>
+ </alias_def>
+ <alias_def loc_id="1000235">
+  <alt>Twizel</alt>
+  <alt>Aoraki Mount Cook</alt>
+  <alt>Lake Tekapo</alt>
+  <alt>Mount Cook</alt>
+ </alias_def>
+</alias_list>
+<!-- September 2014 -->
+<alias_list name="StateAliases">
+ <alias_def loc_id="100001">
+  <alt>Alexandra</alt>
+  <alt>Alexander</alt>
+ </alias_def>
+ <alias_def loc_id="100002">
+  <alt>Arrowtown</alt>
+ </alias_def>
+ <alias_def loc_id="100003">
+  <alt>Ashburton</alt>
+ </alias_def>
+ <alias_def loc_id="100004">
+  <alt>Auckland</alt>
+  <alt>Auckland City</alt>
+  <alt>Manukau</alt>
+  <alt>Manukau City</alt>
+  <alt>North Shore City</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+  <alt>Waitakere</alt>
+  <alt>Waitakere City</alt>
+ </alias_def>
+ <alias_def loc_id="100005">
+  <alt>Balclutha</alt>
+ </alias_def>
+ <alias_def loc_id="100006">
+  <alt>Blenheim</alt>
+  <alt>Blenhiem</alt>
+  <alt>Wairau</alt>
+ </alias_def>
+ <alias_def loc_id="100007">
+  <alt>Bluff</alt>
+ </alias_def>
+ <alias_def loc_id="100008">
+  <alt>Brightwater</alt>
+ </alias_def>
+ <alias_def loc_id="100009">
+  <alt>Bulls</alt>
+ </alias_def>
+ <alias_def loc_id="100010">
+  <alt>Cambridge</alt>
+ </alias_def>
+ <alias_def loc_id="100011">
+  <alt>Carterton</alt>
+ </alias_def>
+ <alias_def loc_id="100012">
+  <alt>Christchurch</alt>
+  <alt>Chch</alt>
+  <alt>Christchurch City</alt>
+  <alt>Otautahi</alt>
+  <alt>Rolleston</alt>
+ </alias_def>
+ <alias_def loc_id="100013">
+  <alt>Coromandel</alt>
+ </alias_def>
+ <alias_def loc_id="100014">
+  <alt>Cromwell</alt>
+ </alias_def>
+ <alias_def loc_id="100015">
+  <alt>Dannevirke</alt>
+ </alias_def>
+ <alias_def loc_id="100016">
+  <alt>Darfield</alt>
+  <alt>Darfeild</alt>
+ </alias_def>
+ <alias_def loc_id="100017">
+  <alt>Dargaville</alt>
+ </alias_def>
+ <alias_def loc_id="100018">
+  <alt>Dunedin</alt>
+  <alt>Dunedin City</alt>
+  <alt>Otepoti</alt>
+ </alias_def>
+ <alias_def loc_id="100019">
+  <alt>Edgecumbe</alt>
+  <alt>Edgecombe</alt>
+ </alias_def>
+ <alias_def loc_id="100020">
+  <alt>Eltham</alt>
+ </alias_def>
+ <alias_def loc_id="100021">
+  <alt>Featherston</alt>
+  <alt>Kaiwaewae</alt>
+ </alias_def>
+ <alias_def loc_id="100022">
+  <alt>Feilding</alt>
+  <alt>Fielding</alt>
+ </alias_def>
+ <alias_def loc_id="100023">
+  <alt>Foxton</alt>
+  <alt>Foxton Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100025">
+  <alt>Geraldine</alt>
+ </alias_def>
+ <alias_def loc_id="100026">
+  <alt>Gisborne</alt>
+  <alt>Gisborne City</alt>
+  <alt>Gisbourne</alt>
+  <alt>Turanga-Nui-A-Kiwa</alt>
+ </alias_def>
+ <alias_def loc_id="100027">
+  <alt>Gore</alt>
+ </alias_def>
+ <alias_def loc_id="100028">
+  <alt>Greymouth</alt>
+  <alt>Mawhera</alt>
+ </alias_def>
+ <alias_def loc_id="100029">
+  <alt>Greytown</alt>
+  <alt>Houhou-Pounamu</alt>
+  <alt>Kura-Tawhiti</alt>
+ </alias_def>
+ <alias_def loc_id="100030">
+  <alt>Hamilton</alt>
+  <alt>Hamilton City</alt>
+  <alt>Kirikiriroa</alt>
+ </alias_def>
+ <alias_def loc_id="100031">
+  <alt>Hanmer Springs</alt>
+  <alt>Hamner Springs</alt>
+ </alias_def>
+ <alias_def loc_id="100032">
+  <alt>Hastings</alt>
+  <alt>Hastings City</alt>
+  <alt>Heretaunga</alt>
+ </alias_def>
+ <alias_def loc_id="100033">
+  <alt>Hawera</alt>
+ </alias_def>
+ <alias_def loc_id="100034">
+  <alt>Helensville</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100035">
+  <alt>Hokitika</alt>
+ </alias_def>
+ <alias_def loc_id="100036">
+  <alt>Huntly</alt>
+  <alt>Rahui-Pokeka</alt>
+ </alias_def>
+ <alias_def loc_id="100037">
+  <alt>Inglewood</alt>
+ </alias_def>
+ <alias_def loc_id="100038">
+  <alt>Invercargill</alt>
+  <alt>Murihiku</alt>
+ </alias_def>
+ <alias_def loc_id="100039">
+  <alt>Kaikohe</alt>
+ </alias_def>
+ <alias_def loc_id="100040">
+  <alt>Kaikoura</alt>
+ </alias_def>
+ <alias_def loc_id="100041">
+  <alt>Kaitaia</alt>
+ </alias_def>
+ <alias_def loc_id="100043">
+  <alt>Katikati</alt>
+  <alt>Kati Kati</alt>
+  <alt>Nga Kuri-A-Wharei</alt>
+ </alias_def>
+ <alias_def loc_id="100044">
+  <alt>Kawakawa</alt>
+ </alias_def>
+ <alias_def loc_id="100045">
+  <alt>Kawerau</alt>
+ </alias_def>
+ <alias_def loc_id="100046">
+  <alt>Kerikeri</alt>
+  <alt>Keri Keri</alt>
+ </alias_def>
+ <alias_def loc_id="100047">
+  <alt>Leeston</alt>
+ </alias_def>
+ <alias_def loc_id="100048">
+  <alt>Levin</alt>
+  <alt>Horowhenua</alt>
+ </alias_def>
+ <alias_def loc_id="100049">
+  <alt>Lincoln</alt>
+ </alias_def>
+ <alias_def loc_id="100050">
+  <alt>Lower Hutt</alt>
+  <alt>Awakairangi</alt>
+  <alt>Hutt City</alt>
+  <alt>Lower Hutt City</alt>
+ </alias_def>
+ <alias_def loc_id="100051">
+  <alt>Manaia</alt>
+ </alias_def>
+ <alias_def loc_id="100052">
+  <alt>Mangakino</alt>
+ </alias_def>
+ <alias_def loc_id="100054">
+  <alt>Martinborough</alt>
+ </alias_def>
+ <alias_def loc_id="100055">
+  <alt>Marton</alt>
+ </alias_def>
+ <alias_def loc_id="100056">
+  <alt>Masterton</alt>
+  <alt>Te Oreore</alt>
+  <alt>Whakaoriori</alt>
+ </alias_def>
+ <alias_def loc_id="100057">
+  <alt>Matamata</alt>
+  <alt>Mata Mata</alt>
+ </alias_def>
+ <alias_def loc_id="100058">
+  <alt>Milton</alt>
+ </alias_def>
+ <alias_def loc_id="100060">
+  <alt>Morrinsville</alt>
+ </alias_def>
+ <alias_def loc_id="100061">
+  <alt>Motueka</alt>
+ </alias_def>
+ <alias_def loc_id="100062">
+  <alt>Murupara</alt>
+ </alias_def>
+ <alias_def loc_id="100063">
+  <alt>Napier</alt>
+  <alt>Ahuriri</alt>
+  <alt>Napier City</alt>
+ </alias_def>
+ <alias_def loc_id="100064">
+  <alt>Nelson</alt>
+  <alt>Nelson City</alt>
+  <alt>Whakatu</alt>
+ </alias_def>
+ <alias_def loc_id="100065">
+  <alt>New Plymouth</alt>
+  <alt>New Plymouth City</alt>
+  <alt>Ngamotu</alt>
+ </alias_def>
+ <alias_def loc_id="100067">
+  <alt>Oamaru</alt>
+  <alt>Te Oha-A-Maru</alt>
+ </alias_def>
+ <alias_def loc_id="100068">
+  <alt>Ohakune</alt>
+ </alias_def>
+ <alias_def loc_id="100069">
+  <alt>Opotiki</alt>
+ </alias_def>
+ <alias_def loc_id="100070">
+  <alt>Opunake</alt>
+ </alias_def>
+ <alias_def loc_id="100071">
+  <alt>Otaki</alt>
+ </alias_def>
+ <alias_def loc_id="100072">
+  <alt>Otorohanga</alt>
+ </alias_def>
+ <alias_def loc_id="100073">
+  <alt>Oxford</alt>
+ </alias_def>
+ <alias_def loc_id="100074">
+  <alt>Paeroa</alt>
+ </alias_def>
+ <alias_def loc_id="100075">
+  <alt>Pahiatua</alt>
+ </alias_def>
+ <alias_def loc_id="100076">
+  <alt>Paihia</alt>
+ </alias_def>
+ <alias_def loc_id="100077">
+  <alt>Palmerston North</alt>
+  <alt>Palmerston North City</alt>
+  <alt>Palmerston Nth</alt>
+  <alt>Te Papa-I-Oea</alt>
+ </alias_def>
+ <alias_def loc_id="100078">
+  <alt>Papakura</alt>
+  <alt>Auckland</alt>
+  <alt>Papakura City</alt>
+  <alt>South Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100079">
+  <alt>Patea</alt>
+ </alias_def>
+ <alias_def loc_id="100080">
+  <alt>Picton</alt>
+ </alias_def>
+ <alias_def loc_id="100081">
+  <alt>Pleasant Point</alt>
+  <alt>Pleasant Pt</alt>
+ </alias_def>
+ <alias_def loc_id="100082">
+  <alt>Porirua</alt>
+  <alt>North City</alt>
+  <alt>Porirua City</alt>
+ </alias_def>
+ <alias_def loc_id="100083">
+  <alt>Pukekohe</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100084">
+  <alt>Putaruru</alt>
+ </alias_def>
+ <alias_def loc_id="100085">
+  <alt>Queenstown</alt>
+  <alt>Fernhill</alt>
+  <alt>Queens Town</alt>
+ </alias_def>
+ <alias_def loc_id="100087">
+  <alt>Raglan</alt>
+ </alias_def>
+ <alias_def loc_id="100088">
+  <alt>Rangiora</alt>
+ </alias_def>
+ <alias_def loc_id="100089">
+  <alt>Reefton</alt>
+ </alias_def>
+ <alias_def loc_id="100090">
+  <alt>Riverton</alt>
+ </alias_def>
+ <alias_def loc_id="100091">
+  <alt>Whangaparaoa</alt>
+  <alt>Auckland</alt>
+  <alt>Hibiscus Coast</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100092">
+  <alt>Rolleston</alt>
+ </alias_def>
+ <alias_def loc_id="100093">
+  <alt>Rotorua</alt>
+ </alias_def>
+ <alias_def loc_id="100094">
+  <alt>Russell</alt>
+ </alias_def>
+ <alias_def loc_id="100095">
+  <alt>Shannon</alt>
+ </alias_def>
+ <alias_def loc_id="100097">
+  <alt>Stratford</alt>
+ </alias_def>
+ <alias_def loc_id="100098">
+  <alt>Taihape</alt>
+ </alias_def>
+ <alias_def loc_id="100099">
+  <alt>Taipa</alt>
+ </alias_def>
+ <alias_def loc_id="100100">
+  <alt>Tairua</alt>
+ </alias_def>
+ <alias_def loc_id="100101">
+  <alt>Takaka</alt>
+ </alias_def>
+ <alias_def loc_id="100102">
+  <alt>Taumarunui</alt>
+ </alias_def>
+ <alias_def loc_id="100103">
+  <alt>Taupo</alt>
+  <alt>Taupo-Nui-A-Tia</alt>
+ </alias_def>
+ <alias_def loc_id="100104">
+  <alt>Tauranga</alt>
+  <alt>Tauranga-Moana</alt>
+ </alias_def>
+ <alias_def loc_id="100105">
+  <alt>Te Anau</alt>
+ </alias_def>
+ <alias_def loc_id="100106">
+  <alt>Te Aroha</alt>
+ </alias_def>
+ <alias_def loc_id="100107">
+  <alt>Te Awamutu</alt>
+ </alias_def>
+ <alias_def loc_id="100108">
+  <alt>Te Kuiti</alt>
+ </alias_def>
+ <alias_def loc_id="100109">
+  <alt>Te Puke</alt>
+  <alt>Tepuke</alt>
+ </alias_def>
+ <alias_def loc_id="100110">
+  <alt>Temuka</alt>
+  <alt>Te Muka</alt>
+ </alias_def>
+ <alias_def loc_id="100111">
+  <alt>Thames</alt>
+  <alt>Parawai</alt>
+ </alias_def>
+ <alias_def loc_id="100112">
+  <alt>Timaru</alt>
+  <alt>Te Tihi-O-Maru</alt>
+ </alias_def>
+ <alias_def loc_id="100113">
+  <alt>Tokoroa</alt>
+ </alias_def>
+ <alias_def loc_id="100114">
+  <alt>Turangi</alt>
+ </alias_def>
+ <alias_def loc_id="100115">
+  <alt>Twizel</alt>
+ </alias_def>
+ <alias_def loc_id="100116">
+  <alt>Upper Hutt</alt>
+  <alt>Upper Hutt City</alt>
+  <alt>Whakatiki</alt>
+ </alias_def>
+ <alias_def loc_id="100118">
+  <alt>Waihi</alt>
+  <alt>Waihi Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100119">
+  <alt>Waihi Beach</alt>
+  <alt>Waihi</alt>
+ </alias_def>
+ <alias_def loc_id="100120">
+  <alt>Waimate</alt>
+ </alias_def>
+ <alias_def loc_id="100121">
+  <alt>Waiouru</alt>
+ </alias_def>
+ <alias_def loc_id="100122">
+  <alt>Waipawa</alt>
+ </alias_def>
+ <alias_def loc_id="100123">
+  <alt>Waipukurau</alt>
+ </alias_def>
+ <alias_def loc_id="100124">
+  <alt>Wairoa</alt>
+  <alt>Te Wairoa</alt>
+ </alias_def>
+ <alias_def loc_id="100126">
+  <alt>Waitara</alt>
+ </alias_def>
+ <alias_def loc_id="100127">
+  <alt>Waiuku</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100128">
+  <alt>Wakefield</alt>
+ </alias_def>
+ <alias_def loc_id="100129">
+  <alt>Wanaka</alt>
+ </alias_def>
+ <alias_def loc_id="100130">
+  <alt>Wanganui</alt>
+  <alt>Wanganui City</alt>
+  <alt>Whanganui</alt>
+ </alias_def>
+ <alias_def loc_id="100131">
+  <alt>Warkworth</alt>
+  <alt>Algies Bay</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+  <alt>Walkworth</alt>
+ </alias_def>
+ <alias_def loc_id="100132">
+  <alt>Wellington</alt>
+  <alt>Te Whanga-Nui-A-Tara</alt>
+  <alt>Wellington City</alt>
+ </alias_def>
+ <alias_def loc_id="100133">
+  <alt>Wellsford</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100134">
+  <alt>Westport</alt>
+ </alias_def>
+ <alias_def loc_id="100135">
+  <alt>Whakatane</alt>
+ </alias_def>
+ <alias_def loc_id="100136">
+  <alt>Whangamata</alt>
+ </alias_def>
+ <alias_def loc_id="100137">
+  <alt>Whangarei</alt>
+  <alt>Whangarei City</alt>
+  <alt>Whangarei-Terenga-Paraoa</alt>
+ </alias_def>
+ <alias_def loc_id="100138">
+  <alt>Whitianga</alt>
+ </alias_def>
+ <alias_def loc_id="100139">
+  <alt>Winton</alt>
+ </alias_def>
+ <alias_def loc_id="100140">
+  <alt>Woodend</alt>
+ </alias_def>
+ <alias_def loc_id="100141">
+  <alt>Woodville</alt>
+ </alias_def>
+ <alias_def loc_id="100142">
+  <alt>Edendale</alt>
+ </alias_def>
+ <alias_def loc_id="100143">
+  <alt>Kaiapoi</alt>
+ </alias_def>
+ <alias_def loc_id="100144">
+  <alt>Ngaruawahia</alt>
+ </alias_def>
+ <alias_def loc_id="100145">
+  <alt>Tuakau</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100146">
+  <alt>Ashhurst</alt>
+ </alias_def>
+ <alias_def loc_id="100147">
+  <alt>Ruakaka</alt>
+ </alias_def>
+ <alias_def loc_id="100148">
+  <alt>Akaroa</alt>
+ </alias_def>
+ <alias_def loc_id="100149">
+  <alt>Omokoroa</alt>
+ </alias_def>
+ <alias_def loc_id="100150">
+  <alt>Methven</alt>
+ </alias_def>
+ <alias_def loc_id="100151">
+  <alt>Amberley</alt>
+ </alias_def>
+ <alias_def loc_id="100152">
+  <alt>Clyde</alt>
+ </alias_def>
+ <alias_def loc_id="100154">
+  <alt>Oakura</alt>
+ </alias_def>
+ <alias_def loc_id="100155">
+  <alt>Waikouaiti</alt>
+ </alias_def>
+ <alias_def loc_id="100156">
+  <alt>Ngatea</alt>
+ </alias_def>
+ <alias_def loc_id="100157">
+  <alt>Rakaia</alt>
+ </alias_def>
+ <alias_def loc_id="100159">
+  <alt>Te Kauwhata</alt>
+ </alias_def>
+ <alias_def loc_id="100160">
+  <alt>Palmerston</alt>
+  <alt>Palmerston South</alt>
+ </alias_def>
+ <alias_def loc_id="100161">
+  <alt>Fairlie</alt>
+  <alt>Fairley</alt>
+ </alias_def>
+ <alias_def loc_id="100162">
+  <alt>Clarks Beach</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100163">
+  <alt>Mapua</alt>
+ </alias_def>
+ <alias_def loc_id="100164">
+  <alt>Waverley</alt>
+ </alias_def>
+ <alias_def loc_id="100165">
+  <alt>Hikurangi</alt>
+ </alias_def>
+ <alias_def loc_id="100166">
+  <alt>Ranfurly</alt>
+ </alias_def>
+ <alias_def loc_id="100167">
+  <alt>Otautau</alt>
+ </alias_def>
+ <alias_def loc_id="100168">
+  <alt>Roxburgh</alt>
+ </alias_def>
+ <alias_def loc_id="100169">
+  <alt>Riverhead</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100170">
+  <alt>Otematata</alt>
+ </alias_def>
+ <alias_def loc_id="100171">
+  <alt>Tapanui</alt>
+ </alias_def>
+ <alias_def loc_id="100172">
+  <alt>Kaitangata</alt>
+ </alias_def>
+ <alias_def loc_id="100173">
+  <alt>Burnham</alt>
+ </alias_def>
+ <alias_def loc_id="100175">
+  <alt>Tirau</alt>
+ </alias_def>
+ <alias_def loc_id="100176">
+  <alt>Havelock</alt>
+  <alt>Marlborough Sounds</alt>
+ </alias_def>
+ <alias_def loc_id="100177">
+  <alt>Mamaku</alt>
+ </alias_def>
+ <alias_def loc_id="100178">
+  <alt>Taneatua</alt>
+ </alias_def>
+ <alias_def loc_id="100179">
+  <alt>Southbridge</alt>
+ </alias_def>
+ <alias_def loc_id="100180">
+  <alt>Lawrence</alt>
+ </alias_def>
+ <alias_def loc_id="100182">
+  <alt>Mangawhai</alt>
+ </alias_def>
+ <alias_def loc_id="100183">
+  <alt>Maungaturoto</alt>
+ </alias_def>
+ <alias_def loc_id="100184">
+  <alt>Waipu</alt>
+ </alias_def>
+ <alias_def loc_id="100186">
+  <alt>Eketahuna</alt>
+ </alias_def>
+ <alias_def loc_id="100187">
+  <alt>Outram</alt>
+ </alias_def>
+ <alias_def loc_id="100188">
+  <alt>Tuatapere</alt>
+ </alias_def>
+ <alias_def loc_id="100189">
+  <alt>Ruawai</alt>
+ </alias_def>
+ <alias_def loc_id="100190">
+  <alt>Cheviot</alt>
+ </alias_def>
+ <alias_def loc_id="100191">
+  <alt>Waimauku</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100192">
+  <alt>Wallacetown</alt>
+  <alt>Wallace Town</alt>
+ </alias_def>
+ <alias_def loc_id="100193">
+  <alt>Te Karaka</alt>
+ </alias_def>
+ <alias_def loc_id="100194">
+  <alt>Pirongia</alt>
+ </alias_def>
+ <alias_def loc_id="100195">
+  <alt>Lumsden</alt>
+ </alias_def>
+ <alias_def loc_id="100196">
+  <alt>Opua</alt>
+ </alias_def>
+ <alias_def loc_id="100197">
+  <alt>Ruatoria</alt>
+ </alias_def>
+ <alias_def loc_id="100198">
+  <alt>Takapau</alt>
+  <alt>Takapau Plains</alt>
+ </alias_def>
+ <alias_def loc_id="100199">
+  <alt>Okato</alt>
+ </alias_def>
+ <alias_def loc_id="100200">
+  <alt>Murchison</alt>
+ </alias_def>
+ <alias_def loc_id="100201">
+  <alt>Piopio</alt>
+  <alt>Pio Pio</alt>
+ </alias_def>
+ <alias_def loc_id="100202">
+  <alt>Kurow</alt>
+ </alias_def>
+ <alias_def loc_id="100203">
+  <alt>Hampden</alt>
+  <alt>Hampton</alt>
+ </alias_def>
+ <alias_def loc_id="100204">
+  <alt>Seddon</alt>
+ </alias_def>
+ <alias_def loc_id="100205">
+  <alt>Owaka</alt>
+ </alias_def>
+ <alias_def loc_id="100206">
+  <alt>Otane</alt>
+ </alias_def>
+ <alias_def loc_id="100207">
+  <alt>Ohai</alt>
+ </alias_def>
+ <alias_def loc_id="100208">
+  <alt>Sanson</alt>
+ </alias_def>
+ <alias_def loc_id="100211">
+  <alt>Nightcaps</alt>
+ </alias_def>
+ <alias_def loc_id="100212">
+  <alt>Pareora</alt>
+ </alias_def>
+ <alias_def loc_id="100214">
+  <alt>Ohaupo</alt>
+ </alias_def>
+ <alias_def loc_id="100216">
+  <alt>Granity</alt>
+ </alias_def>
+ <alias_def loc_id="100217">
+  <alt>Tangimoana</alt>
+ </alias_def>
+ <alias_def loc_id="100218">
+  <alt>Waikari</alt>
+ </alias_def>
+ <alias_def loc_id="100219">
+  <alt>Clinton</alt>
+ </alias_def>
+ <alias_def loc_id="100220">
+  <alt>Ross</alt>
+ </alias_def>
+ <alias_def loc_id="100221">
+  <alt>Waikuku Beach</alt>
+  <alt>Waikuku</alt>
+ </alias_def>
+ <alias_def loc_id="100222">
+  <alt>Waiau</alt>
+ </alias_def>
+ <alias_def loc_id="100223">
+  <alt>Ohura</alt>
+ </alias_def>
+ <alias_def loc_id="100224">
+  <alt>Hector</alt>
+ </alias_def>
+ <alias_def loc_id="100225">
+  <alt>Waitoa</alt>
+ </alias_def>
+ <alias_def loc_id="100226">
+  <alt>Sheffield</alt>
+ </alias_def>
+ <alias_def loc_id="100231">
+  <alt>Waiheke Island</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+  <alt>Waiheke</alt>
+ </alias_def>
+ <alias_def loc_id="100236">
+  <alt>Kumeu</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="100237">
+  <alt>Milford Sound</alt>
+ </alias_def>
+ <alias_def loc_id="100238">
+  <alt>Omarama</alt>
+ </alias_def>
+ <alias_def loc_id="100239">
+  <alt>Acton</alt>
+ </alias_def>
+ <alias_def loc_id="100242">
+  <alt>Aokautere</alt>
+ </alias_def>
+ <alias_def loc_id="100246">
+  <alt>Apiti</alt>
+ </alias_def>
+ <alias_def loc_id="100253">
+  <alt>Aria</alt>
+ </alias_def>
+ <alias_def loc_id="100257">
+  <alt>Athol</alt>
+ </alias_def>
+ <alias_def loc_id="100295">
+  <alt>Bombay</alt>
+ </alias_def>
+ <alias_def loc_id="100296">
+  <alt>Coromandel Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="100316">
+  <alt>Clydevale</alt>
+ </alias_def>
+ <alias_def loc_id="100317">
+  <alt>Coatesville</alt>
+ </alias_def>
+ <alias_def loc_id="100323">
+  <alt>Broadlands</alt>
+ </alias_def>
+ <alias_def loc_id="100329">
+  <alt>Halcombe</alt>
+ </alias_def>
+ <alias_def loc_id="100352">
+  <alt>Dipton</alt>
+ </alias_def>
+ <alias_def loc_id="100353">
+  <alt>Dipton West</alt>
+ </alias_def>
+ <alias_def loc_id="100356">
+  <alt>Donnellys Crossing</alt>
+ </alias_def>
+ <alias_def loc_id="100366">
+  <alt>Duntroon</alt>
+ </alias_def>
+ <alias_def loc_id="100377">
+  <alt>Glen Massey</alt>
+ </alias_def>
+ <alias_def loc_id="100380">
+  <alt>Karangahake</alt>
+ </alias_def>
+ <alias_def loc_id="100383">
+  <alt>Kaiwhaiki</alt>
+ </alias_def>
+ <alias_def loc_id="100395">
+  <alt>Glenbrook</alt>
+ </alias_def>
+ <alias_def loc_id="100434">
+  <alt>Kahuranaki</alt>
+ </alias_def>
+ <alias_def loc_id="100454">
+  <alt>Mauriceville</alt>
+ </alias_def>
+ <alias_def loc_id="100471">
+  <alt>Kauri</alt>
+ </alias_def>
+ <alias_def loc_id="100490">
+  <alt>Matawai</alt>
+ </alias_def>
+ <alias_def loc_id="100492">
+  <alt>Matiere</alt>
+ </alias_def>
+ <alias_def loc_id="100519">
+  <alt>Kumeroa</alt>
+ </alias_def>
+ <alias_def loc_id="100521">
+  <alt>Lowther</alt>
+ </alias_def>
+ <alias_def loc_id="100525">
+  <alt>Macraes Flat</alt>
+ </alias_def>
+ <alias_def loc_id="100529">
+  <alt>Mahoenui</alt>
+ </alias_def>
+ <alias_def loc_id="100539">
+  <alt>Moeraki</alt>
+ </alias_def>
+ <alias_def loc_id="100546">
+  <alt>Mossburn</alt>
+ </alias_def>
+ <alias_def loc_id="100551">
+  <alt>Manawaru</alt>
+ </alias_def>
+ <alias_def loc_id="100553">
+  <alt>Maungakaramea</alt>
+ </alias_def>
+ <alias_def loc_id="100564">
+  <alt>Omaha</alt>
+ </alias_def>
+ <alias_def loc_id="100565">
+  <alt>Omakau</alt>
+ </alias_def>
+ <alias_def loc_id="100579">
+  <alt>Maraekakaho</alt>
+ </alias_def>
+ <alias_def loc_id="100580">
+  <alt>Maramarua</alt>
+ </alias_def>
+ <alias_def loc_id="100595">
+  <alt>Orini</alt>
+ </alias_def>
+ <alias_def loc_id="100597">
+  <alt>Ormondville</alt>
+ </alias_def>
+ <alias_def loc_id="100600">
+  <alt>Oropi</alt>
+ </alias_def>
+ <alias_def loc_id="100623">
+  <alt>Pukehina</alt>
+ </alias_def>
+ <alias_def loc_id="100625">
+  <alt>Pukekawa</alt>
+ </alias_def>
+ <alias_def loc_id="100629">
+  <alt>Norsewood</alt>
+ </alias_def>
+ <alias_def loc_id="100635">
+  <alt>Kyeburn</alt>
+ </alias_def>
+ <alias_def loc_id="100640">
+  <alt>Patearoa</alt>
+ </alias_def>
+ <alias_def loc_id="100641">
+  <alt>Patetonga</alt>
+ </alias_def>
+ <alias_def loc_id="100684">
+  <alt>Papamoa</alt>
+  <alt>Papamoa Beach</alt>
+ </alias_def>
+ <alias_def loc_id="100695">
+  <alt>Ongaonga</alt>
+ </alias_def>
+ <alias_def loc_id="100704">
+  <alt>Springdale</alt>
+ </alias_def>
+ <alias_def loc_id="100726">
+  <alt>Nukuhou</alt>
+ </alias_def>
+ <alias_def loc_id="100737">
+  <alt>Rongotea</alt>
+ </alias_def>
+ <alias_def loc_id="100739">
+  <alt>Richmond Downs</alt>
+ </alias_def>
+ <alias_def loc_id="100741">
+  <alt>Tangiteroria</alt>
+ </alias_def>
+ <alias_def loc_id="100744">
+  <alt>Tapora</alt>
+ </alias_def>
+ <alias_def loc_id="100749">
+  <alt>Taringamotu</alt>
+ </alias_def>
+ <alias_def loc_id="100755">
+  <alt>Tauhei</alt>
+ </alias_def>
+ <alias_def loc_id="100761">
+  <alt>Te Kohanga</alt>
+ </alias_def>
+ <alias_def loc_id="100770">
+  <alt>Waimiha</alt>
+ </alias_def>
+ <alias_def loc_id="100775">
+  <alt>Parawera</alt>
+ </alias_def>
+ <alias_def loc_id="100776">
+  <alt>Owhango</alt>
+ </alias_def>
+ <alias_def loc_id="100787">
+  <alt>Tikokino</alt>
+ </alias_def>
+ <alias_def loc_id="100790">
+  <alt>Tinui</alt>
+ </alias_def>
+ <alias_def loc_id="100792">
+  <alt>Kakahi</alt>
+ </alias_def>
+ <alias_def loc_id="100793">
+  <alt>Kimbolton</alt>
+ </alias_def>
+ <alias_def loc_id="100796">
+  <alt>Tararua Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="100797">
+  <alt>Catlins Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="100801">
+  <alt>Taupaki</alt>
+ </alias_def>
+ <alias_def loc_id="100815">
+  <alt>Pungarehu</alt>
+ </alias_def>
+ <alias_def loc_id="100839">
+  <alt>Tahuna</alt>
+ </alias_def>
+ <alias_def loc_id="100841">
+  <alt>Taieri Mouth</alt>
+ </alias_def>
+ <alias_def loc_id="100858">
+  <alt>Taharoa</alt>
+ </alias_def>
+ <alias_def loc_id="100860">
+  <alt>Ratapiko</alt>
+ </alias_def>
+ <alias_def loc_id="100863">
+  <alt>Mahia</alt>
+ </alias_def>
+ <alias_def loc_id="100871">
+  <alt>Herbert</alt>
+ </alias_def>
+ <alias_def loc_id="100876">
+  <alt>Saint Bathans</alt>
+ </alias_def>
+ <alias_def loc_id="100880">
+  <alt>Kawakawa Bay</alt>
+ </alias_def>
+ <alias_def loc_id="100883">
+  <alt>Dyerville</alt>
+ </alias_def>
+ <alias_def loc_id="100885">
+  <alt>Fordell</alt>
+ </alias_def>
+ <alias_def loc_id="100897">
+  <alt>Whareora</alt>
+  <alt>Wharaora</alt>
+ </alias_def>
+ <alias_def loc_id="100918">
+  <alt>Waikaia</alt>
+ </alias_def>
+ <alias_def loc_id="100925">
+  <alt>Waitoki</alt>
+ </alias_def>
+ <alias_def loc_id="100937">
+  <alt>Weber</alt>
+ </alias_def>
+ <alias_def loc_id="100948">
+  <alt>Te Kaha</alt>
+ </alias_def>
+ <alias_def loc_id="100956">
+  <alt>Whakamarama</alt>
+ </alias_def>
+ <alias_def loc_id="100957">
+  <alt>Aongatete</alt>
+  <alt>Angatete</alt>
+ </alias_def>
+ <alias_def loc_id="100971">
+  <alt>Waimana</alt>
+ </alias_def>
+ <alias_def loc_id="100992">
+  <alt>Upokongaro</alt>
+ </alias_def>
+ <alias_def loc_id="100994">
+  <alt>Urenui</alt>
+ </alias_def>
+ <alias_def loc_id="101002">
+  <alt>Kaihu</alt>
+ </alias_def>
+ <alias_def loc_id="101019">
+  <alt>Waitati</alt>
+ </alias_def>
+ <alias_def loc_id="101024">
+  <alt>Hunua</alt>
+ </alias_def>
+ <alias_def loc_id="101039">
+  <alt>Glenorchy</alt>
+ </alias_def>
+ <alias_def loc_id="101045">
+  <alt>Kotemaori</alt>
+ </alias_def>
+ <alias_def loc_id="101047">
+  <alt>Nuhaka</alt>
+ </alias_def>
+ <alias_def loc_id="101049">
+  <alt>Manakau</alt>
+ </alias_def>
+ <alias_def loc_id="101053">
+  <alt>Miranda</alt>
+ </alias_def>
+ <alias_def loc_id="101056">
+  <alt>Orere Point</alt>
+ </alias_def>
+ <alias_def loc_id="101071">
+  <alt>Kaka Point</alt>
+ </alias_def>
+ <alias_def loc_id="101088">
+  <alt>Mangaweka</alt>
+ </alias_def>
+ <alias_def loc_id="101089">
+  <alt>Raupunga</alt>
+ </alias_def>
+ <alias_def loc_id="101091">
+  <alt>Motuoapa</alt>
+ </alias_def>
+ <alias_def loc_id="101093">
+  <alt>Naseby</alt>
+ </alias_def>
+ <alias_def loc_id="101096">
+  <alt>Tolaga Bay</alt>
+ </alias_def>
+ <alias_def loc_id="101097">
+  <alt>Tokomaru Bay</alt>
+ </alias_def>
+ <alias_def loc_id="101098">
+  <alt>Tikitiki</alt>
+ </alias_def>
+ <alias_def loc_id="101118">
+  <alt>Te Mata</alt>
+ </alias_def>
+ <alias_def loc_id="101133">
+  <alt>Wainuioru</alt>
+ </alias_def>
+ <alias_def loc_id="101138">
+  <alt>Waiotahi Valley</alt>
+ </alias_def>
+ <alias_def loc_id="101139">
+  <alt>Waiotira</alt>
+ </alias_def>
+ <alias_def loc_id="101149">
+  <alt>Warea</alt>
+ </alias_def>
+ <alias_def loc_id="101153">
+  <alt>Piha</alt>
+ </alias_def>
+ <alias_def loc_id="101160">
+  <alt>Bethells Beach</alt>
+ </alias_def>
+ <alias_def loc_id="101162">
+  <alt>Kaukapakapa</alt>
+ </alias_def>
+ <alias_def loc_id="101165">
+  <alt>Kaiwaka</alt>
+ </alias_def>
+ <alias_def loc_id="101168">
+  <alt>Whakapirau</alt>
+ </alias_def>
+ <alias_def loc_id="101169">
+  <alt>Paparoa</alt>
+ </alias_def>
+ <alias_def loc_id="101170">
+  <alt>Tinopai</alt>
+ </alias_def>
+ <alias_def loc_id="101171">
+  <alt>Matakohe</alt>
+ </alias_def>
+ <alias_def loc_id="101172">
+  <alt>Te Kopuru</alt>
+ </alias_def>
+ <alias_def loc_id="101174">
+  <alt>Pouto</alt>
+ </alias_def>
+ <alias_def loc_id="101180">
+  <alt>Aranga</alt>
+ </alias_def>
+ <alias_def loc_id="101181">
+  <alt>Baylys Beach</alt>
+ </alias_def>
+ <alias_def loc_id="101188">
+  <alt>Kohukohu</alt>
+ </alias_def>
+ <alias_def loc_id="101189">
+  <alt>Panguru</alt>
+ </alias_def>
+ <alias_def loc_id="101191">
+  <alt>Pawarenga</alt>
+ </alias_def>
+ <alias_def loc_id="101194">
+  <alt>Awanui</alt>
+ </alias_def>
+ <alias_def loc_id="101197">
+  <alt>Te Kao</alt>
+ </alias_def>
+ <alias_def loc_id="101199">
+  <alt>Pukenui</alt>
+ </alias_def>
+ <alias_def loc_id="101205">
+  <alt>Karikari Peninsula</alt>
+ </alias_def>
+ <alias_def loc_id="101212">
+  <alt>Leigh</alt>
+ </alias_def>
+ <alias_def loc_id="101216">
+  <alt>Haruru</alt>
+ </alias_def>
+ <alias_def loc_id="101221">
+  <alt>Karetu</alt>
+ </alias_def>
+ <alias_def loc_id="101226">
+  <alt>Brunswick</alt>
+ </alias_def>
+ <alias_def loc_id="101237">
+  <alt>Reporoa</alt>
+ </alias_def>
+ <alias_def loc_id="101239">
+  <alt>Raukawa</alt>
+ </alias_def>
+ <alias_def loc_id="101249">
+  <alt>Lake Hawea</alt>
+  <alt>Hawea</alt>
+ </alias_def>
+ <alias_def loc_id="101251">
+  <alt>Lindis Pass</alt>
+ </alias_def>
+ <alias_def loc_id="101259">
+  <alt>Whangarei Heads</alt>
+ </alias_def>
+ <alias_def loc_id="101266">
+  <alt>Ruahine Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="101268">
+  <alt>Middlemarch</alt>
+ </alias_def>
+ <alias_def loc_id="101269">
+  <alt>Moa Creek</alt>
+ </alias_def>
+ <alias_def loc_id="101296">
+  <alt>Hunterville</alt>
+ </alias_def>
+ <alias_def loc_id="101300">
+  <alt>Flemington</alt>
+ </alias_def>
+ <alias_def loc_id="101303">
+  <alt>Parua Bay</alt>
+ </alias_def>
+ <alias_def loc_id="101314">
+  <alt>Glen Oroua</alt>
+ </alias_def>
+ <alias_def loc_id="101335">
+  <alt>Waitaki Bridge</alt>
+ </alias_def>
+ <alias_def loc_id="101343">
+  <alt>Whakaki</alt>
+ </alias_def>
+ <alias_def loc_id="101345">
+  <alt>Makara Beach</alt>
+ </alias_def>
+ <alias_def loc_id="101346">
+  <alt>Waipapa</alt>
+ </alias_def>
+ <alias_def loc_id="101349">
+  <alt>Egmont Village</alt>
+ </alias_def>
+ <alias_def loc_id="101364">
+  <alt>Omanawa</alt>
+ </alias_def>
+ <alias_def loc_id="101377">
+  <alt>Tarata</alt>
+ </alias_def>
+ <alias_def loc_id="101389">
+  <alt>Kaweka Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="101408">
+  <alt>Haast</alt>
+ </alias_def>
+ <alias_def loc_id="101414">
+  <alt>Manapouri</alt>
+ </alias_def>
+ <alias_def loc_id="101419">
+  <alt>Whanganui National Park</alt>
+ </alias_def>
+ <alias_def loc_id="101425">
+  <alt>Pirinoa</alt>
+ </alias_def>
+ <alias_def loc_id="101431">
+  <alt>Tongariro National Park</alt>
+ </alias_def>
+ <alias_def loc_id="101438">
+  <alt>Ruakituri</alt>
+  <alt>Ruakaturi</alt>
+ </alias_def>
+ <alias_def loc_id="101472">
+  <alt>Oturehua</alt>
+ </alias_def>
+ <alias_def loc_id="101474">
+  <alt>Pollok</alt>
+ </alias_def>
+ <alias_def loc_id="101475">
+  <alt>Poukawa</alt>
+ </alias_def>
+ <alias_def loc_id="101476">
+  <alt>Pukeatua</alt>
+ </alias_def>
+ <alias_def loc_id="101477">
+  <alt>Pureora Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="101585">
+  <alt>Waimarama</alt>
+ </alias_def>
+ <alias_def loc_id="101587">
+  <alt>Elsthorpe</alt>
+ </alias_def>
+ <alias_def loc_id="101588">
+  <alt>Omakere</alt>
+ </alias_def>
+ <alias_def loc_id="101646">
+  <alt>Waiterimu</alt>
+  <alt>Waitarimu</alt>
+ </alias_def>
+ <alias_def loc_id="101647">
+  <alt>Rimutaka Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="101650">
+  <alt>Aorangi Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="101658">
+  <alt>Herbertville</alt>
+ </alias_def>
+ <alias_def loc_id="101729">
+  <alt>Pongaroa</alt>
+ </alias_def>
+ <alias_def loc_id="101955">
+  <alt>Urewera National Park</alt>
+ </alias_def>
+ <alias_def loc_id="101956">
+  <alt>Mercer</alt>
+ </alias_def>
+ <alias_def loc_id="101958">
+  <alt>Mokau</alt>
+ </alias_def>
+ <alias_def loc_id="101963">
+  <alt>Rerewhakaaitu</alt>
+ </alias_def>
+ <alias_def loc_id="102004">
+  <alt>Kahutara</alt>
+ </alias_def>
+ <alias_def loc_id="102023">
+  <alt>Matakana Island</alt>
+ </alias_def>
+ <alias_def loc_id="102057">
+  <alt>Onewhero</alt>
+ </alias_def>
+ <alias_def loc_id="102059">
+  <alt>Porangahau</alt>
+ </alias_def>
+ <alias_def loc_id="102092">
+  <alt>Oparau</alt>
+ </alias_def>
+ <alias_def loc_id="102110">
+  <alt>Hamurana</alt>
+ </alias_def>
+ <alias_def loc_id="102125">
+  <alt>Awhitu</alt>
+ </alias_def>
+ <alias_def loc_id="102188">
+  <alt>Kawau Island</alt>
+ </alias_def>
+ <alias_def loc_id="102201">
+  <alt>Atiamuri</alt>
+ </alias_def>
+ <alias_def loc_id="102205">
+  <alt>Mount Aspiring National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102209">
+  <alt>South Head</alt>
+ </alias_def>
+ <alias_def loc_id="102578">
+  <alt>Ngakuru</alt>
+ </alias_def>
+ <alias_def loc_id="102589">
+  <alt>Port Waikato</alt>
+ </alias_def>
+ <alias_def loc_id="102606">
+  <alt>Kawhia</alt>
+ </alias_def>
+ <alias_def loc_id="102624">
+  <alt>Kaeo</alt>
+ </alias_def>
+ <alias_def loc_id="102656">
+  <alt>Kairanga</alt>
+ </alias_def>
+ <alias_def loc_id="102662">
+  <alt>Opaki</alt>
+ </alias_def>
+ <alias_def loc_id="102667">
+  <alt>Tauherenikau</alt>
+ </alias_def>
+ <alias_def loc_id="102669">
+  <alt>Egmont National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102674">
+  <alt>Tahawai</alt>
+ </alias_def>
+ <alias_def loc_id="102684">
+  <alt>Manutuke</alt>
+ </alias_def>
+ <alias_def loc_id="102686">
+  <alt>Paengaroa</alt>
+ </alias_def>
+ <alias_def loc_id="102694">
+  <alt>Balfour</alt>
+ </alias_def>
+ <alias_def loc_id="102712">
+  <alt>Norfolk</alt>
+ </alias_def>
+ <alias_def loc_id="102718">
+  <alt>Southburn</alt>
+ </alias_def>
+ <alias_def loc_id="102750">
+  <alt>Collingwood</alt>
+ </alias_def>
+ <alias_def loc_id="102756">
+  <alt>Arthur's Pass National Park</alt>
+  <alt>Arthurs Pass</alt>
+  <alt>Arthurs Pass National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102765">
+  <alt>Kahurangi National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102769">
+  <alt>Matata</alt>
+ </alias_def>
+ <alias_def loc_id="102782">
+  <alt>Lake Coleridge</alt>
+ </alias_def>
+ <alias_def loc_id="102786">
+  <alt>Matakana</alt>
+ </alias_def>
+ <alias_def loc_id="102787">
+  <alt>Point Wells</alt>
+ </alias_def>
+ <alias_def loc_id="102836">
+  <alt>Mount Peel</alt>
+ </alias_def>
+ <alias_def loc_id="102839">
+  <alt>Diamond Harbour</alt>
+ </alias_def>
+ <alias_def loc_id="102840">
+  <alt>Domett</alt>
+ </alias_def>
+ <alias_def loc_id="102841">
+  <alt>Dorie</alt>
+ </alias_def>
+ <alias_def loc_id="102847">
+  <alt>Cave</alt>
+ </alias_def>
+ <alias_def loc_id="102849">
+  <alt>Ruatapu</alt>
+ </alias_def>
+ <alias_def loc_id="102851">
+  <alt>Lake Sumner National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102852">
+  <alt>Little River</alt>
+ </alias_def>
+ <alias_def loc_id="102853">
+  <alt>Loburn</alt>
+ </alias_def>
+ <alias_def loc_id="102855">
+  <alt>Nelson Lakes National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102877">
+  <alt>Kokatahi</alt>
+ </alias_def>
+ <alias_def loc_id="102878">
+  <alt>Leithfield</alt>
+ </alias_def>
+ <alias_def loc_id="102883">
+  <alt>Fox Glacier</alt>
+ </alias_def>
+ <alias_def loc_id="102896">
+  <alt>Dairy Flat</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="102911">
+  <alt>West Eyreton</alt>
+ </alias_def>
+ <alias_def loc_id="102913">
+  <alt>West Melton</alt>
+ </alias_def>
+ <alias_def loc_id="102927">
+  <alt>Ohoka</alt>
+ </alias_def>
+ <alias_def loc_id="102929">
+  <alt>Upper Moutere</alt>
+ </alias_def>
+ <alias_def loc_id="102942">
+  <alt>Okuku</alt>
+ </alias_def>
+ <alias_def loc_id="102950">
+  <alt>Okains Bay</alt>
+ </alias_def>
+ <alias_def loc_id="102952">
+  <alt>Ngahere</alt>
+ </alias_def>
+ <alias_def loc_id="102964">
+  <alt>Westland National Park</alt>
+ </alias_def>
+ <alias_def loc_id="102995">
+  <alt>Mount Somers</alt>
+ </alias_def>
+ <alias_def loc_id="103018">
+  <alt>French Farm</alt>
+  <alt>Wainui Banks Peninsula District</alt>
+ </alias_def>
+ <alias_def loc_id="103029">
+  <alt>Okiwi Bay</alt>
+ </alias_def>
+ <alias_def loc_id="103037">
+  <alt>Coalgate</alt>
+ </alias_def>
+ <alias_def loc_id="103059">
+  <alt>Paparoa National Park</alt>
+ </alias_def>
+ <alias_def loc_id="103060">
+  <alt>Punakaiki</alt>
+ </alias_def>
+ <alias_def loc_id="103061">
+  <alt>Cape Foulwind</alt>
+ </alias_def>
+ <alias_def loc_id="103064">
+  <alt>Karamea</alt>
+ </alias_def>
+ <alias_def loc_id="103071">
+  <alt>Linkwater</alt>
+ </alias_def>
+ <alias_def loc_id="103074">
+  <alt>Waipara</alt>
+ </alias_def>
+ <alias_def loc_id="103078">
+  <alt>Seadown</alt>
+ </alias_def>
+ <alias_def loc_id="103082">
+  <alt>Hawarden</alt>
+ </alias_def>
+ <alias_def loc_id="103084">
+  <alt>Hira</alt>
+ </alias_def>
+ <alias_def loc_id="103114">
+  <alt>Fairhall</alt>
+ </alias_def>
+ <alias_def loc_id="103115">
+  <alt>Aoraki Mount Cook National Park</alt>
+  <alt>Mt Cook</alt>
+ </alias_def>
+ <alias_def loc_id="103126">
+  <alt>Hakataramea Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103128">
+  <alt>Glentunnel</alt>
+ </alias_def>
+ <alias_def loc_id="103133">
+  <alt>Governors Bay</alt>
+ </alias_def>
+ <alias_def loc_id="103140">
+  <alt>Dunsandel</alt>
+ </alias_def>
+ <alias_def loc_id="103141">
+  <alt>Duvauchelle</alt>
+ </alias_def>
+ <alias_def loc_id="103163">
+  <alt>Mangatawhiri</alt>
+ </alias_def>
+ <alias_def loc_id="103164">
+  <alt>Pirongia Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="103182">
+  <alt>Arnold Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103183">
+  <alt>Arthur's Pass</alt>
+  <alt>Arthurs Pass</alt>
+ </alias_def>
+ <alias_def loc_id="103195">
+  <alt>Culverden</alt>
+ </alias_def>
+ <alias_def loc_id="103197">
+  <alt>Cust</alt>
+ </alias_def>
+ <alias_def loc_id="103207">
+  <alt>Waihopai Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103211">
+  <alt>Totara Flat</alt>
+ </alias_def>
+ <alias_def loc_id="103212">
+  <alt>St Arnaud</alt>
+ </alias_def>
+ <alias_def loc_id="103215">
+  <alt>Harihari</alt>
+ </alias_def>
+ <alias_def loc_id="103223">
+  <alt>Swannanoa</alt>
+ </alias_def>
+ <alias_def loc_id="103226">
+  <alt>Tai Tapu</alt>
+  <alt>Taitapu</alt>
+ </alias_def>
+ <alias_def loc_id="103228">
+  <alt>Takamatua</alt>
+ </alias_def>
+ <alias_def loc_id="103231">
+  <alt>Hororata</alt>
+ </alias_def>
+ <alias_def loc_id="103242">
+  <alt>Albury</alt>
+ </alias_def>
+ <alias_def loc_id="103253">
+  <alt>Balmoral</alt>
+ </alias_def>
+ <alias_def loc_id="103254">
+  <alt>Bankside</alt>
+ </alias_def>
+ <alias_def loc_id="103264">
+  <alt>Pigeon Bay</alt>
+ </alias_def>
+ <alias_def loc_id="103265">
+  <alt>Little Akaloa</alt>
+ </alias_def>
+ <alias_def loc_id="103266">
+  <alt>Le Bons Bay</alt>
+ </alias_def>
+ <alias_def loc_id="103270">
+  <alt>Whataroa</alt>
+ </alias_def>
+ <alias_def loc_id="103335">
+  <alt>Rai Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103340">
+  <alt>Rotherham</alt>
+ </alias_def>
+ <alias_def loc_id="103343">
+  <alt>Robinsons Bay</alt>
+ </alias_def>
+ <alias_def loc_id="103351">
+  <alt>Sefton</alt>
+ </alias_def>
+ <alias_def loc_id="103388">
+  <alt>Pongakawa</alt>
+  <alt>Pungakawa</alt>
+ </alias_def>
+ <alias_def loc_id="103396">
+  <alt>Hikuai</alt>
+ </alias_def>
+ <alias_def loc_id="103509">
+  <alt>Inchbonnie</alt>
+ </alias_def>
+ <alias_def loc_id="103526">
+  <alt>Franz Josef Glacier</alt>
+  <alt>Franz Josef</alt>
+ </alias_def>
+ <alias_def loc_id="103528">
+  <alt>Abel Tasman National Park</alt>
+ </alias_def>
+ <alias_def loc_id="103569">
+  <alt>Greta Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103571">
+  <alt>Lauriston</alt>
+ </alias_def>
+ <alias_def loc_id="103577">
+  <alt>Kaimiro</alt>
+ </alias_def>
+ <alias_def loc_id="103578">
+  <alt>Fiordland National Park</alt>
+ </alias_def>
+ <alias_def loc_id="103588">
+  <alt>Clevedon</alt>
+  <alt>Auckland</alt>
+  <alt>Manukau</alt>
+  <alt>Papakura</alt>
+  <alt>South Auckland</alt>
+ </alias_def>
+ <alias_def loc_id="103592">
+  <alt>Okaihau</alt>
+ </alias_def>
+ <alias_def loc_id="103594">
+  <alt>Great Barrier Island (Aotea Island)</alt>
+  <alt>Great Barrier Island</alt>
+ </alias_def>
+ <alias_def loc_id="103610">
+  <alt>Waikuku</alt>
+ </alias_def>
+ <alias_def loc_id="103624">
+  <alt>Riverlands</alt>
+ </alias_def>
+ <alias_def loc_id="103661">
+  <alt>Karamu</alt>
+ </alias_def>
+ <alias_def loc_id="103663">
+  <alt>Gladstone</alt>
+ </alias_def>
+ <alias_def loc_id="103676">
+  <alt>Longbush</alt>
+ </alias_def>
+ <alias_def loc_id="103679">
+  <alt>Riversdale</alt>
+ </alias_def>
+ <alias_def loc_id="103714">
+  <alt>Ohau</alt>
+ </alias_def>
+ <alias_def loc_id="103720">
+  <alt>Tokanui</alt>
+ </alias_def>
+ <alias_def loc_id="103760">
+  <alt>Otaua</alt>
+ </alias_def>
+ <alias_def loc_id="103775">
+  <alt>Muriwai</alt>
+ </alias_def>
+ <alias_def loc_id="103786">
+  <alt>Wainui</alt>
+ </alias_def>
+ <alias_def loc_id="103795">
+  <alt>Springfield</alt>
+ </alias_def>
+ <alias_def loc_id="103822">
+  <alt>Richmond</alt>
+ </alias_def>
+ <alias_def loc_id="103844">
+  <alt>Saint Andrews</alt>
+  <alt>St Andrews</alt>
+ </alias_def>
+ <alias_def loc_id="103846">
+  <alt>Lake Tekapo</alt>
+  <alt>Tekapo</alt>
+ </alias_def>
+ <alias_def loc_id="103847">
+  <alt>Wairau Valley</alt>
+ </alias_def>
+ <alias_def loc_id="103848">
+  <alt>Broomfield</alt>
+ </alias_def>
+ <alias_def loc_id="103853">
+  <alt>Moana</alt>
+ </alias_def>
+ <alias_def loc_id="103859">
+  <alt>Raetihi</alt>
+ </alias_def>
+ <alias_def loc_id="104018">
+  <alt>Red Beach</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="104019">
+  <alt>Takanini</alt>
+  <alt>Auckland</alt>
+  <alt>South Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="104020">
+  <alt>Cable Bay</alt>
+ </alias_def>
+ <alias_def loc_id="104021">
+  <alt>Clive</alt>
+ </alias_def>
+ <alias_def loc_id="104022">
+  <alt>Coopers Beach</alt>
+ </alias_def>
+ <alias_def loc_id="104023">
+  <alt>Mataura</alt>
+ </alias_def>
+ <alias_def loc_id="104024">
+  <alt>Paraparaumu</alt>
+  <alt>Kapiti</alt>
+ </alias_def>
+ <alias_def loc_id="104025">
+  <alt>Ohope</alt>
+ </alias_def>
+ <alias_def loc_id="104026">
+  <alt>Orewa</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="104027">
+  <alt>Paekakariki</alt>
+  <alt>Kapiti</alt>
+ </alias_def>
+ <alias_def loc_id="104028">
+  <alt>Prebbleton</alt>
+ </alias_def>
+ <alias_def loc_id="104029">
+  <alt>Pukerua Bay</alt>
+  <alt>North City</alt>
+  <alt>Porirua City</alt>
+ </alias_def>
+ <alias_def loc_id="104030">
+  <alt>Mangonui</alt>
+ </alias_def>
+ <alias_def loc_id="104031">
+  <alt>Mosgiel</alt>
+ </alias_def>
+ <alias_def loc_id="104032">
+  <alt>Wyndham</alt>
+ </alias_def>
+ <alias_def loc_id="104033">
+  <alt>Havelock North</alt>
+  <alt>Havelock Nth</alt>
+ </alias_def>
+ <alias_def loc_id="104034">
+  <alt>Lyttelton</alt>
+  <alt>Lyttleton</alt>
+ </alias_def>
+ <alias_def loc_id="104035">
+  <alt>Drury</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="104036">
+  <alt>Taupiri</alt>
+ </alias_def>
+ <alias_def loc_id="104037">
+  <alt>Waikanae</alt>
+  <alt>Kapiti</alt>
+ </alias_def>
+ <alias_def loc_id="104038">
+  <alt>Haumoana</alt>
+ </alias_def>
+ <alias_def loc_id="104039">
+  <alt>Te Awanga</alt>
+ </alias_def>
+ <alias_def loc_id="104040">
+  <alt>Chatham Islands</alt>
+ </alias_def>
+ <alias_def loc_id="104042">
+  <alt>Stewart Island</alt>
+ </alias_def>
+ <alias_def loc_id="104043">
+  <alt>Spring Creek</alt>
+ </alias_def>
+ <alias_def loc_id="104044">
+  <alt>Renwick</alt>
+ </alias_def>
+ <alias_def loc_id="104045">
+  <alt>Springston</alt>
+ </alias_def>
+ <alias_def loc_id="104046">
+  <alt>Tongariro Forest Park</alt>
+ </alias_def>
+ <alias_def loc_id="104048">
+  <alt>Tirohanga</alt>
+ </alias_def>
+ <alias_def loc_id="104049">
+  <alt>Puhi Puhi</alt>
+ </alias_def>
+ <alias_def loc_id="104050">
+  <alt>Seaward Valley</alt>
+ </alias_def>
+ <alias_def loc_id="104051">
+  <alt>Mount Pleasant</alt>
+ </alias_def>
+ <alias_def loc_id="104053">
+  <alt>Whangateau</alt>
+ </alias_def>
+ <alias_def loc_id="104054">
+  <alt>Big Omaha</alt>
+ </alias_def>
+ <alias_def loc_id="104055">
+  <alt>Whirinaki</alt>
+ </alias_def>
+ <alias_def loc_id="104070">
+  <alt>Whitford</alt>
+ </alias_def>
+ <alias_def loc_id="104074">
+  <alt>Moerewa</alt>
+ </alias_def>
+ <alias_def loc_id="104075">
+  <alt>Waddington</alt>
+ </alias_def>
+ <alias_def loc_id="104077">
+  <alt>Mount Maunganui</alt>
+  <alt>Mt Maunganui</alt>
+  <alt>Tauranga</alt>
+ </alias_def>
+ <alias_def loc_id="104078">
+  <alt>Doyleston</alt>
+  <alt>Burnham</alt>
+  <alt>Lincoln</alt>
+  <alt>Southbridge</alt>
+ </alias_def>
+ <alias_def loc_id="104079">
+  <alt>Lansdowne</alt>
+ </alias_def>
+ <alias_def loc_id="104080">
+  <alt>Stirling</alt>
+ </alias_def>
+ <alias_def loc_id="104081">
+  <alt>Kingston</alt>
+ </alias_def>
+ <alias_def loc_id="104082">
+  <alt>Pauanui</alt>
+ </alias_def>
+ <alias_def loc_id="104083">
+  <alt>Minginui</alt>
+ </alias_def>
+ <alias_def loc_id="104084">
+  <alt>Ward</alt>
+ </alias_def>
+ <alias_def loc_id="200003">
+  <alt>Marlborough Sounds</alt>
+  <alt>Allports Island</alt>
+  <alt>Anakoha</alt>
+  <alt>Bay Of Many Coves</alt>
+  <alt>Beatrix Bay</alt>
+  <alt>Big Bay</alt>
+  <alt>Black Rock</alt>
+  <alt>Blackwood Bay</alt>
+  <alt>Broughton Bay</alt>
+  <alt>Cape Jackson</alt>
+  <alt>Clark Island</alt>
+  <alt>Crail Bay</alt>
+  <alt>Double Cove</alt>
+  <alt>Endeavour Inlet</alt>
+  <alt>Forsyth Bay</alt>
+  <alt>Furneaux</alt>
+  <alt>Goulter Bay</alt>
+  <alt>Homewood Marlborough District</alt>
+  <alt>Kaiaho Point</alt>
+  <alt>Kaipakirikiri Bay</alt>
+  <alt>Kauauroa Bay</alt>
+  <alt>Kenepuru Head</alt>
+  <alt>Ketu Bay</alt>
+  <alt>Koutuwai Point</alt>
+  <alt>Kumutoto Bay</alt>
+  <alt>Lochmara Bay</alt>
+  <alt>Mahau Sound</alt>
+  <alt>Manaroa</alt>
+  <alt>Melville Cove</alt>
+  <alt>Mills Bay</alt>
+  <alt>Nikau Bay</alt>
+  <alt>Nopera</alt>
+  <alt>Ohauparuparu Bay</alt>
+  <alt>Onahau</alt>
+  <alt>Otaki Marlborough District</alt>
+  <alt>Ouokaha Island</alt>
+  <alt>Pohuenui</alt>
+  <alt>Portage</alt>
+  <alt>Pukekoikoi</alt>
+  <alt>Punga Cove</alt>
+  <alt>Raetihi Marlborough District</alt>
+  <alt>Resolution Bay</alt>
+  <alt>Ruakaka Bay District</alt>
+  <alt>Saint Omer</alt>
+  <alt>Schnapper Point</alt>
+  <alt>Ships Cove</alt>
+  <alt>Snake Point</alt>
+  <alt>South East Bay</alt>
+  <alt>Tamuri</alt>
+  <alt>Te Mahia</alt>
+  <alt>The Pines</alt>
+  <alt>Titirangi</alt>
+  <alt>Torea Bay</alt>
+  <alt>Totaranui</alt>
+  <alt>Umungata Bay</alt>
+  <alt>Waitaria Bay</alt>
+  <alt>Waitui Bay</alt>
+  <alt>Yncyca Bay</alt>
+ </alias_def>
+ <alias_def loc_id="200004">
+  <alt>One Tree Point</alt>
+ </alias_def>
+ <alias_def loc_id="200005">
+  <alt>Otaika</alt>
+ </alias_def>
+ <alias_def loc_id="200006">
+  <alt>Parakai</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="200007">
+  <alt>Turua</alt>
+ </alias_def>
+ <alias_def loc_id="200008">
+  <alt>Winchester</alt>
+ </alias_def>
+ <alias_def loc_id="200010">
+  <alt>Pukaki</alt>
+ </alias_def>
+ <alias_def loc_id="200012">
+  <alt>Ahuriri Conservation Park</alt>
+ </alias_def>
+ <alias_def loc_id="200013">
+  <alt>Te Pahu</alt>
+  <alt>Karamu</alt>
+ </alias_def>
+ <alias_def loc_id="1000006">
+  <alt>Ongarue</alt>
+  <alt>Taumarunui</alt>
+ </alias_def>
+ <alias_def loc_id="1000014">
+  <alt>Kumara</alt>
+ </alias_def>
+ <alias_def loc_id="1000017">
+  <alt>Blackball</alt>
+ </alias_def>
+ <alias_def loc_id="1000023">
+  <alt>Pokeno</alt>
+ </alias_def>
+ <alias_def loc_id="1000025">
+  <alt>Port Chalmers</alt>
+ </alias_def>
+ <alias_def loc_id="1000027">
+  <alt>Runanga</alt>
+ </alias_def>
+ <alias_def loc_id="1000028">
+  <alt>Silverdale</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+ </alias_def>
+ <alias_def loc_id="1000032">
+  <alt>Waharoa</alt>
+ </alias_def>
+ <alias_def loc_id="1000033">
+  <alt>Snells Beach</alt>
+  <alt>Algies Bay</alt>
+  <alt>Auckland</alt>
+  <alt>Tamaki-Makau-Rau</alt>
+  <alt>Warkworth</alt>
+ </alias_def>
+ <alias_def loc_id="1000034">
+  <alt>Pegasus</alt>
+  <alt>Waikuku</alt>
+ </alias_def>
+ <alias_def loc_id="1000035">
+  <alt>The Pines Beach</alt>
+ </alias_def>
+ <alias_def loc_id="1000036">
+  <alt>Kairaki</alt>
+ </alias_def>
+ <alias_def loc_id="1000037">
+  <alt>Ngakawau</alt>
+ </alias_def>
+ <alias_def loc_id="1000038">
+  <alt>Whangara</alt>
+ </alias_def>
+ <alias_def loc_id="1000039">
+  <alt>Waimata</alt>
+ </alias_def>
+ <alias_def loc_id="1000040">
+  <alt>Pehiri</alt>
+ </alias_def>
+ <alias_def loc_id="1000041">
+  <alt>Wharekopae</alt>
+ </alias_def>
+</alias_list>
+<!-- end September 2014 -->
+  <alias_list name="ZIPAliases">
           <alias_def>
             <alt>00007</alt>
             <alt>7</alt>
